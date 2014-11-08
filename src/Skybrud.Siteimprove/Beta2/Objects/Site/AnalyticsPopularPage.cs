@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Skybrud.Siteimprove.Skybrud.Social;
 using Skybrud.Social.Json;
 
 namespace Skybrud.Siteimprove.Beta2.Objects.Site {

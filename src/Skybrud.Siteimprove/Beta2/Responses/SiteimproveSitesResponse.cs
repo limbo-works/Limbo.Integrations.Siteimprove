@@ -1,10 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Newtonsoft.Json;
 using Skybrud.Siteimprove.Beta2.Objects;
-using Skybrud.Siteimprove.Skybrud.Social;
+using Skybrud.Social;
 using Skybrud.Social.Json;
 
 namespace Skybrud.Siteimprove.Beta2.Responses {

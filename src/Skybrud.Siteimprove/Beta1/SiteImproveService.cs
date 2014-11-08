@@ -1,4 +1,4 @@
-﻿using Skybrud.Siteimprove.Skybrud.Social;
+﻿using Skybrud.Social;
 using Skybrud.Social.Json;
 
 namespace Skybrud.Siteimprove.Beta1 {

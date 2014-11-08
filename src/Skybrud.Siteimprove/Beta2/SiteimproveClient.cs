@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Net;
 using System.Reflection;
 using Skybrud.Siteimprove.Beta2.Endpoints.Raw;
-using Skybrud.Siteimprove.Skybrud.Social;
 using Skybrud.Social;
 
 namespace Skybrud.Siteimprove.Beta2 {
