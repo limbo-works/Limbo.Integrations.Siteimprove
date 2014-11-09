@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 using System.Net;
-using Skybrud.Social;
+using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Beta1 {
     

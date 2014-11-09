@@ -4,6 +4,7 @@ using System.Net;
 using System.Reflection;
 using Skybrud.Siteimprove.Beta2.Endpoints.Raw;
 using Skybrud.Social;
+using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Beta2 {
     

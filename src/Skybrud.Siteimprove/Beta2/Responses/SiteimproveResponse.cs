@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using Skybrud.Social;
+using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Beta2.Responses {
 

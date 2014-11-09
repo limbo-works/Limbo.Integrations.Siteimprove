@@ -1,5 +1,5 @@
 ﻿using System.Collections.Specialized;
-using Skybrud.Social;
+using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Beta2.Endpoints.Raw {
 
