@@ -1,4 +1,6 @@
-﻿namespace Skybrud.Siteimprove {
+﻿using Skybrud.Siteimprove.Endpoints;
+
+namespace Skybrud.Siteimprove {
     
     public class SiteimproveService {
 
@@ -8,12 +10,16 @@
         /// Gets a reference to the underlying client used for the raw communication.
         /// </summary>
         public SiteimproveClient Client { get; private set; }
+
+        public SiteimproveSitesEndpoint Sites { get; private set; }
         
         #endregion
 
         #region Constructor
 
-        private SiteimproveService() { }
+        private SiteimproveService() {
+            Sites = new SiteimproveSitesEndpoint(this);
+        }
 
         #endregion
 

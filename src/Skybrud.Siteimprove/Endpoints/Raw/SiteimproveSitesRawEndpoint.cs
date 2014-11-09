@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using Skybrud.Social.Http;
 
-namespace Skybrud.Siteimprove.Endpoints {
+namespace Skybrud.Siteimprove.Endpoints.Raw {
 
     public class SiteimproveSitesRawEndpoint {
 

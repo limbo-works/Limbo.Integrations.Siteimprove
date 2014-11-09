@@ -47,8 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Endpoints\SiteimproveSitesRawEndpoint.cs" />
+    <Compile Include="Endpoints\Raw\SiteimproveSitesRawEndpoint.cs" />
+    <Compile Include="Endpoints\SiteimproveSitesEndpoint.cs" />
+    <Compile Include="Objects\SiteimproveSiteSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\SiteimproveSitesResponse.cs" />
+    <Compile Include="Responses\SiteimproveResponse.cs" />
     <Compile Include="SiteimproveClient.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -59,6 +63,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>grunt release</PostBuildEvent>

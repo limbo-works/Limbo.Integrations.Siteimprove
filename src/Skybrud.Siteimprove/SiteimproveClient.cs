@@ -2,15 +2,14 @@
 using System.Configuration;
 using System.Net;
 using System.Reflection;
-using Skybrud.Siteimprove.Endpoints;
-using Skybrud.Social;
+using Skybrud.Siteimprove.Endpoints.Raw;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove {
     
     public class SiteimproveClient {
-
-        public const string ApiUrl = "http://api.siteimprove.com/v1/";
+        
+        public const string ApiUrl = "https://api.siteimprove.com/v1/";
 
         #region Properties
 
@@ -72,14 +71,19 @@ namespace Skybrud.Siteimprove {
         /// <param name="url">The URL of the request.</param>
         /// <param name="query">The query string of the request.</param>
         public SocialHttpResponse DoHttpGetRequest(string url, NameValueCollection query) {
-            return new SocialHttpRequest {
+
+            // Intitialize the request
+            SocialHttpRequest request = new SocialHttpRequest {
+                Method = "GET",
                 Url = url,
+                Accept = "application/json",
                 QueryString = query,
-                Credentials = Crendentials,
-                Headers = new SocialHeaderCollection {
-                    Accept = "application/json"
-                }
-            }.GetResponse();
+                Credentials = Crendentials
+            };
+
+            // Make the call to the API
+            return request.GetResponse();
+        
         }
 
         public SocialHttpResponse DoHttpGetRequest(string url, object query) {
