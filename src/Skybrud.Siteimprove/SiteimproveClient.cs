@@ -1,8 +1,10 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Net;
 using System.Reflection;
 using Skybrud.Siteimprove.Endpoints.Raw;
+using Skybrud.Social;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove {
@@ -16,7 +18,8 @@ namespace Skybrud.Siteimprove {
         public NetworkCredential Crendentials { get; private set; }
 
         public SiteimproveSitesRawEndpoint Sites { get; private set; }
-        //public SiteimprovePagesRawEndpoint Pages { get; private set; }
+        public SiteimproveAccessibilityRawEndpoint Accessibility { get; private set; }
+        public SiteimproveQualityAssuranceRawEndpoint QualityAssurance { get; private set; }
 
         #endregion
 
@@ -24,7 +27,8 @@ namespace Skybrud.Siteimprove {
 
         private SiteimproveClient() {
             Sites = new SiteimproveSitesRawEndpoint(this);
-            //Pages = new SiteimprovePagesRawEndpoint(this);
+            Accessibility = new SiteimproveAccessibilityRawEndpoint(this);
+            QualityAssurance = new SiteimproveQualityAssuranceRawEndpoint(this);
         }
 
         #endregion
@@ -83,37 +87,46 @@ namespace Skybrud.Siteimprove {
 
             // Make the call to the API
             return request.GetResponse();
-        
-        }
-
-        public SocialHttpResponse DoHttpGetRequest(string url, object query) {
-
-            NameValueCollection nvc = new NameValueCollection();
-
-            // Get all public properties from the specified data object
-            PropertyInfo[] properties = query.GetType().GetProperties();
-
-            foreach (PropertyInfo property in properties) {
-                object value = property.GetValue(query, new object[0]);
-                nvc[property.Name] = value == null ? null : value + "";
-            }
-
-            return DoHttpGetRequest(url, nvc);
 
         }
 
-        public NameValueCollection ObjectToNameValueCollection(object query) {
-
-            NameValueCollection nvc = new NameValueCollection();
-
-            foreach (PropertyInfo property in query.GetType().GetProperties()) {
-                object value = property.GetValue(query, new object[0]);
-                nvc[property.Name] = value == null ? null : value + "";
-            }
-
-            return nvc;
-
+        /// <summary>
+        /// Make a HTTP GET request to the specified URL.
+        /// </summary>
+        /// <param name="url">The URL of the request.</param>
+        /// <param name="query">The query string of the request.</param>
+        public SocialHttpResponse DoHttpGetRequest(string url, SocialQueryString query) {
+            return DoHttpGetRequest(url, query == null ? null : query.NameValueCollection);
         }
+
+        //public SocialHttpResponse DoHttpGetRequest(string url, object query) {
+
+        //    NameValueCollection nvc = new NameValueCollection();
+
+        //    // Get all public properties from the specified data object
+        //    PropertyInfo[] properties = query.GetType().GetProperties();
+
+        //    foreach (PropertyInfo property in properties) {
+        //        object value = property.GetValue(query, new object[0]);
+        //        nvc[property.Name] = value == null ? null : value + "";
+        //    }
+
+        //    return DoHttpGetRequest(url, nvc);
+
+        //}
+
+        //public NameValueCollection ObjectToNameValueCollection(object query) {
+
+        //    NameValueCollection nvc = new NameValueCollection();
+
+        //    foreach (PropertyInfo property in query.GetType().GetProperties()) {
+        //        object value = property.GetValue(query, new object[0]);
+        //        nvc[property.Name] = value == null ? null : value + "";
+        //    }
+
+        //    return nvc;
+
+        //}
 
         #endregion
 

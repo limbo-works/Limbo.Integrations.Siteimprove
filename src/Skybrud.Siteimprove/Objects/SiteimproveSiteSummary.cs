@@ -32,7 +32,7 @@ namespace Skybrud.Siteimprove.Objects {
         public int BrokenLinkCount { get; private set; }
         
         [JsonProperty("_links")]
-        public Dictionary<string, string> Links { get; private set; }
+        public LinkCollection Links { get; private set; }
 
         #endregion
 
@@ -55,11 +55,39 @@ namespace Skybrud.Siteimprove.Objects {
                 PotentialMisspellingCount = obj.GetInt32("potential_misspelling_count"),
                 MisspellingCount = obj.GetInt32("misspelling_count"),
                 BrokenLinkCount = obj.GetInt32("broken_link_count"),
-                Links = links.Keys.ToDictionary(key => key, links.GetString)
+                Links = obj.GetObject("_links", LinkCollection.Parse)
             };
         }
 
         #endregion
+
+        public class LinkCollection : SocialJsonObject {
+
+            #region Properties
+
+            [JsonProperty("site")]
+            public string Site { get; private set; }
+
+            #endregion
+
+            #region Constructor
+
+            private LinkCollection(JsonObject obj) : base(obj) { }
+
+            #endregion
+
+            #region Static methods
+
+            public static LinkCollection Parse(JsonObject obj) {
+                if (obj == null) return null;
+                return new LinkCollection(obj) {
+                    Site = obj.GetString("site")
+                };
+            }
+
+            #endregion
+
+        }
     
     }
 

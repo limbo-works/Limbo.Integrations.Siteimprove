@@ -1,7 +1,6 @@
-﻿using System.Collections.Specialized;
-using Skybrud.Siteimprove.Endpoints.Raw;
+﻿using Skybrud.Siteimprove.Endpoints.Raw;
+using Skybrud.Siteimprove.Objects;
 using Skybrud.Siteimprove.Responses;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Endpoints {
 
@@ -33,20 +32,20 @@ namespace Skybrud.Siteimprove.Endpoints {
 
         #region Methods
 
-        //public SocialHttpResponse GetSite(int siteId) {
-        //    return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "/sites/" + siteId);
-        //}
+        public SiteimproveResponse<SiteimproveSite> GetSite(int siteId) {
+            return SiteimproveHelpers.ParseResponse(Raw.GetSite(siteId), SiteimproveSite.Parse);
+        }
 
-        public SiteimproveSitesResponse GetSites() {
+        public SiteimproveResponse<SiteimproveSiteSummary> GetSites() {
             return GetSites(0, 0);
         }
 
-        public SiteimproveSitesResponse GetSites(int size) {
-            return GetSites(0, 0);
+        public SiteimproveResponse<SiteimproveSiteSummary> GetSites(int pageSize) {
+            return GetSites(0, pageSize);
         }
 
-        public SiteimproveSitesResponse GetSites(int page, int pageSize) {
-            return SiteimproveSitesResponse.ParseResponse(Raw.GetSites(page, pageSize));
+        public SiteimproveResponse<SiteimproveSiteSummary> GetSites(int page, int pageSize) {
+            return SiteimproveHelpers.ParseResponse(Raw.GetSites(page, pageSize), SiteimproveSiteSummary.Parse);
         }
 
         #endregion

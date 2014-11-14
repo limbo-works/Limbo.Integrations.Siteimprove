@@ -29,8 +29,8 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
             return GetSites(0, 0);
         }
 
-        public SocialHttpResponse GetSites(int size) {
-            return GetSites(0, 0);
+        public SocialHttpResponse GetSites(int pageSize) {
+            return GetSites(0, pageSize);
         }
 
         public SocialHttpResponse GetSites(int page, int pageSize) {

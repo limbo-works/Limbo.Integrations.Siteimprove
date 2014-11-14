@@ -12,6 +12,10 @@ namespace Skybrud.Siteimprove {
         public SiteimproveClient Client { get; private set; }
 
         public SiteimproveSitesEndpoint Sites { get; private set; }
+
+        public SiteimproveAccessibilityEndpoint Accessibility { get; private set; }
+
+        public SiteimproveQualityAssuranceEndpoint QualityAssurance { get; private set; }
         
         #endregion
 
@@ -19,6 +23,8 @@ namespace Skybrud.Siteimprove {
 
         private SiteimproveService() {
             Sites = new SiteimproveSitesEndpoint(this);
+            Accessibility = new SiteimproveAccessibilityEndpoint(this);
+            QualityAssurance = new SiteimproveQualityAssuranceEndpoint(this);
         }
 
         #endregion
@@ -54,44 +60,7 @@ namespace Skybrud.Siteimprove {
         }
 
         #endregion
-
-        #region Member methods
-
-        ///// <summary>
-        ///// Get a list of all sites on the account that you have access to.
-        ///// </summary>
-        //public SiteimproveSitesResponse GetSites() {
-        //    return SiteimproveSitesResponse.Parse(Client.Sites.GetSites());
-        //}
-
-        ///// <summary>
-        ///// Get a list of all sites on the account that you have access to.
-        ///// </summary>
-        //public SiteimproveSitesResponse GetSites(int offset) {
-        //    return SiteimproveSitesResponse.Parse(Client.Sites.GetSites(offset));
-        //}
-
-        ///// <summary>
-        ///// Gets informations about the site with the specified <code>siteId</code>.
-        ///// </summary>
-        ///// <param name="siteId">The ID of the site.</param>
-        ///// <returns></returns>
-        //public SiteimproveSite GetSite(int siteId) {
-        //    return SiteimproveSite.Parse(Client.Sites.GetSite(siteId));
-        //}
-
-        //public SiteimprovePage GetPage(int siteId, string url) {
-
-        //    // Make the call to the API
-        //    SocialHttpResponse response = Client.GetPage(siteId, url);
-
-        //    // Parse the response
-        //    return SiteimprovePage.ParseJson(response.GetBodyAsString());
         
-        //}
-
-        #endregion
-
     }
 
 }
