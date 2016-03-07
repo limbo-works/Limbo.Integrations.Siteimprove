@@ -1,6 +1,7 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Raw;
-using Skybrud.Siteimprove.Objects;
+using Skybrud.Siteimprove.Objects.Sites;
 using Skybrud.Siteimprove.Responses;
+using Skybrud.Siteimprove.Responses.Sites;
 
 namespace Skybrud.Siteimprove.Endpoints {
 
@@ -33,19 +34,19 @@ namespace Skybrud.Siteimprove.Endpoints {
         #region Methods
 
         public SiteimproveResponse<SiteimproveSite> GetSite(int siteId) {
-            return SiteimproveHelpers.ParseResponse(Raw.GetSite(siteId), SiteimproveSite.Parse);
+            return SiteimproveGetSiteResponse.ParseResponse(Raw.GetSite(siteId));
         }
 
-        public SiteimproveResponse<SiteimproveSiteSummary> GetSites() {
+        public SiteimproveGetSitesResponse GetSites() {
             return GetSites(0, 0);
         }
 
-        public SiteimproveResponse<SiteimproveSiteSummary> GetSites(int pageSize) {
+        public SiteimproveGetSitesResponse GetSites(int pageSize) {
             return GetSites(0, pageSize);
         }
 
-        public SiteimproveResponse<SiteimproveSiteSummary> GetSites(int page, int pageSize) {
-            return SiteimproveHelpers.ParseResponse(Raw.GetSites(page, pageSize), SiteimproveSiteSummary.Parse);
+        public SiteimproveGetSitesResponse GetSites(int page, int pageSize) {
+            return SiteimproveGetSitesResponse.ParseResponse(Raw.GetSites(page, pageSize));
         }
 
         #endregion

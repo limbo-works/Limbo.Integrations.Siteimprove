@@ -2,10 +2,9 @@
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Net;
-using System.Reflection;
 using Skybrud.Siteimprove.Endpoints.Raw;
-using Skybrud.Social;
 using Skybrud.Social.Http;
+using Skybrud.Social.Interfaces;
 
 namespace Skybrud.Siteimprove {
     
@@ -18,6 +17,7 @@ namespace Skybrud.Siteimprove {
         public NetworkCredential Crendentials { get; private set; }
 
         public SiteimproveSitesRawEndpoint Sites { get; private set; }
+        public SiteimprovePagesRawEndpoint Pages { get; private set; }
         public SiteimproveAccessibilityRawEndpoint Accessibility { get; private set; }
         public SiteimproveQualityAssuranceRawEndpoint QualityAssurance { get; private set; }
 
@@ -27,6 +27,7 @@ namespace Skybrud.Siteimprove {
 
         private SiteimproveClient() {
             Sites = new SiteimproveSitesRawEndpoint(this);
+            Pages = new SiteimprovePagesRawEndpoint(this);
             Accessibility = new SiteimproveAccessibilityRawEndpoint(this);
             QualityAssurance = new SiteimproveQualityAssuranceRawEndpoint(this);
         }
@@ -36,7 +37,7 @@ namespace Skybrud.Siteimprove {
         #region Static methods
 
         /// <summary>
-        /// Initialize a new instance of <code>SiteimproveRawClient</code> based on values from the app settings.
+        /// Initialize a new instance of <see cref="SiteimproveClient"/> based on values from the app settings.
         /// </summary>
         public static SiteimproveClient CreateFromConfig() {
             string username = ConfigurationManager.AppSettings["SiteimproveUsername"];
@@ -47,7 +48,7 @@ namespace Skybrud.Siteimprove {
         }
 
         /// <summary>
-        /// Initialize a new instance of <code>SiteimproveRawClient</code> from the specified username and password.
+        /// Initialize a new instance of <see cref="SiteimproveClient"/> from the specified username and password.
         /// </summary>
         /// <param name="username">The username of the Siteimprove account.</param>
         /// <param name="password">The password of the Siteimprove account.</param>
@@ -65,8 +66,21 @@ namespace Skybrud.Siteimprove {
         /// Make a HTTP GET request to the specified URL.
         /// </summary>
         /// <param name="url">The URL of the request.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse DoHttpGetRequest(string url) {
-            return DoHttpGetRequest(url, null);
+            return DoHttpGetRequest(url, default(NameValueCollection));
+        }
+
+        /// <summary>
+        /// Make a HTTP GET request to the specified URL.
+        /// </summary>
+        /// <param name="url">The URL of the request.</param>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        public SocialHttpResponse DoHttpGetRequest(string url, IGetOptions options) {
+            if (String.IsNullOrWhiteSpace(url)) throw new ArgumentNullException("url");
+            if (options == null) throw new ArgumentNullException("options");
+            return DoHttpGetRequest(url, options.GetQueryString());
         }
 
         /// <summary>
@@ -74,7 +88,11 @@ namespace Skybrud.Siteimprove {
         /// </summary>
         /// <param name="url">The URL of the request.</param>
         /// <param name="query">The query string of the request.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse DoHttpGetRequest(string url, NameValueCollection query) {
+
+            // Some input validation
+            if (String.IsNullOrWhiteSpace(url)) throw new ArgumentNullException("url");
 
             // Intitialize the request
             SocialHttpRequest request = new SocialHttpRequest {
@@ -95,38 +113,10 @@ namespace Skybrud.Siteimprove {
         /// </summary>
         /// <param name="url">The URL of the request.</param>
         /// <param name="query">The query string of the request.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         public SocialHttpResponse DoHttpGetRequest(string url, SocialQueryString query) {
             return DoHttpGetRequest(url, query == null ? null : query.NameValueCollection);
         }
-
-        //public SocialHttpResponse DoHttpGetRequest(string url, object query) {
-
-        //    NameValueCollection nvc = new NameValueCollection();
-
-        //    // Get all public properties from the specified data object
-        //    PropertyInfo[] properties = query.GetType().GetProperties();
-
-        //    foreach (PropertyInfo property in properties) {
-        //        object value = property.GetValue(query, new object[0]);
-        //        nvc[property.Name] = value == null ? null : value + "";
-        //    }
-
-        //    return DoHttpGetRequest(url, nvc);
-
-        //}
-
-        //public NameValueCollection ObjectToNameValueCollection(object query) {
-
-        //    NameValueCollection nvc = new NameValueCollection();
-
-        //    foreach (PropertyInfo property in query.GetType().GetProperties()) {
-        //        object value = property.GetValue(query, new object[0]);
-        //        nvc[property.Name] = value == null ? null : value + "";
-        //    }
-
-        //    return nvc;
-
-        //}
 
         #endregion
 

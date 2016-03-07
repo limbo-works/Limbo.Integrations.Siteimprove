@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Endpoints\Raw\SiteimprovePagesRawEndpoint.cs" />
     <Compile Include="Endpoints\SiteimproveBrokenLinksEndpoint.cs" />
+    <Compile Include="Endpoints\SiteimprovePagesEndpoint.cs" />
     <Compile Include="Endpoints\SiteimproveSpellingEndpoint.cs" />
     <Compile Include="Endpoints\Raw\SiteimproveSpellingRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\SiteimproveBrokenLinksRawEndpoint.cs" />
@@ -58,22 +60,32 @@
     <Compile Include="Endpoints\Raw\SiteimproveSitesRawEndpoint.cs" />
     <Compile Include="Endpoints\SiteimproveSitesEndpoint.cs" />
     <Compile Include="Exceptions\SiteimproveApiException.cs" />
+    <Compile Include="HelpersToBeDeletedWhenWeUpgradeSkybrudSocial.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityCollection.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityConformanceLevel.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityIssueSummary.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityResult.cs" />
     <Compile Include="Objects\Accessibility\AccessibilitySeverity.cs" />
     <Compile Include="Objects\Links\LinksCollection.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePage.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePagesCollection.cs" />
     <Compile Include="Objects\QualityAssurance\BrokenLinks\Overview\BrokenLinksCollection.cs" />
     <Compile Include="Objects\QualityAssurance\BrokenLinks\Overview\BrokenLinksResult.cs" />
     <Compile Include="Objects\QualityAssurance\Spelling\Overview\SpellingResult.cs" />
     <Compile Include="Objects\QualityAssurance\Spelling\Overview\SpellingCollection.cs" />
+    <Compile Include="Objects\SiteimproveObject.cs" />
     <Compile Include="Objects\SiteimproveSitesCollection.cs" />
-    <Compile Include="Objects\SiteimproveSite.cs" />
-    <Compile Include="Objects\SiteimproveSiteSummary.cs" />
+    <Compile Include="Objects\Sites\SiteimproveSite.cs" />
+    <Compile Include="Objects\Sites\SiteimproveSiteSummary.cs" />
+    <Compile Include="Objects\Sites\SiteimproveSitesCollection.cs" />
+    <Compile Include="Options\Pages\SiteimproveGetPagesOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\SiteimproveRateLimiting.cs" />
+    <Compile Include="Responses\Pages\SiteimproveGetPageResponse.cs" />
+    <Compile Include="Responses\Pages\SiteimproveGetPagesResponse.cs" />
     <Compile Include="Responses\SiteimproveResponse.cs" />
+    <Compile Include="Responses\Sites\SiteimproveGetSiteResponse.cs" />
+    <Compile Include="Responses\Sites\SiteimproveGetSitesResponse.cs" />
     <Compile Include="SiteimproveClient.cs">
       <SubType>Code</SubType>
     </Compile>
