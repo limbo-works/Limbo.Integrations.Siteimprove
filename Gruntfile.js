@@ -31,7 +31,7 @@ module.exports = function (grunt) {
 					'src/' + pkg.name + '/bin/Release/Skybrud.Social.xml',
 					'src/' + pkg.name + '/bin/Release/' + pkg.name + '.dll',
 					'src/' + pkg.name + '/bin/Release/' + pkg.name + '.xml',
-					'src/' + pkg.name + '/LICENSE.txt'
+					'src/' + pkg.name + '/LICENSE.html'
                 ],
                 dest: 'releases/github/' + pkg.name + '.v' + version + '.zip'
             }

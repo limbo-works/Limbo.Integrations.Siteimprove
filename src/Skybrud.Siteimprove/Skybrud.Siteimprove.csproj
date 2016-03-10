@@ -110,7 +110,7 @@
     <None Include="Skybrud.Siteimprove.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LICENSE.txt" />
+    <None Include="LICENSE.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
