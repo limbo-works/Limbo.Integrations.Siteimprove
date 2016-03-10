@@ -67,9 +67,17 @@
     <Compile Include="Objects\Accessibility\AccessibilityIssueSummary.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityResult.cs" />
     <Compile Include="Objects\Accessibility\AccessibilitySeverity.cs" />
+    <Compile Include="Objects\Common\SiteimproveLinksCollection.cs" />
+    <Compile Include="Objects\Common\SiteimproveWebLinksCollection.cs" />
     <Compile Include="Objects\Links\LinksCollection.cs" />
     <Compile Include="Objects\Pages\SiteimprovePage.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePageAccesibility.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePageAccessibilityResult.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePageQualityAssurance.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePageQualityAssuranceLinksCollection.cs" />
     <Compile Include="Objects\Pages\SiteimprovePagesCollection.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePagesLinksCollection.cs" />
+    <Compile Include="Objects\Pages\SiteimprovePageSummary.cs" />
     <Compile Include="Objects\QualityAssurance\BrokenLinks\Overview\BrokenLinksCollection.cs" />
     <Compile Include="Objects\QualityAssurance\BrokenLinks\Overview\BrokenLinksResult.cs" />
     <Compile Include="Objects\QualityAssurance\Spelling\Overview\SpellingResult.cs" />

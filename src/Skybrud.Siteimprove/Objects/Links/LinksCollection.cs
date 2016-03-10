@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Skybrud.Social;
 using Skybrud.Social.Json;
 
@@ -27,6 +28,11 @@ namespace Skybrud.Siteimprove.Objects.Links {
 
         private LinksCollection(JsonObject obj) : base(obj) {
             WebApp = obj.GetString("webapp");
+        }
+
+        public static LinksCollection Parse(JObject obj) {
+            // TODO: Implement in a proper way (replace "Skybrud.Social" with the newer "Skybrud.Social.Core")
+            return Parse(JsonObject.ParseJson(obj + ""));
         }
 
         public static LinksCollection Parse(JsonObject obj) {

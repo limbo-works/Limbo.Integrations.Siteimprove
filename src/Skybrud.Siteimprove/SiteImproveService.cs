@@ -13,6 +13,8 @@ namespace Skybrud.Siteimprove {
 
         public SiteimproveSitesEndpoint Sites { get; private set; }
 
+        public SiteimprovePagesEndpoint Pages { get; private set; }
+
         public SiteimproveAccessibilityEndpoint Accessibility { get; private set; }
 
         public SiteimproveQualityAssuranceEndpoint QualityAssurance { get; private set; }
@@ -23,6 +25,7 @@ namespace Skybrud.Siteimprove {
 
         private SiteimproveService() {
             Sites = new SiteimproveSitesEndpoint(this);
+            Pages = new SiteimprovePagesEndpoint(this);
             Accessibility = new SiteimproveAccessibilityEndpoint(this);
             QualityAssurance = new SiteimproveQualityAssuranceEndpoint(this);
         }
@@ -32,7 +35,7 @@ namespace Skybrud.Siteimprove {
         #region Static methods
 
         /// <summary>
-        /// Initialize a new instance of <code>SiteimproveRawClient</code> based on values from the app settings.
+        /// Initialize a new instance of <see cref="SiteimproveClient"/> based on values from the app settings.
         /// </summary>
         public static SiteimproveService CreateFromConfig() {
             return new SiteimproveService {
@@ -41,7 +44,7 @@ namespace Skybrud.Siteimprove {
         }
 
         /// <summary>
-        /// Initialize a new instance of <code>SiteimproveRawClient</code> from the specified client.
+        /// Initialize a new instance of <see cref="SiteimproveClient"/> from the specified client.
         /// </summary>
         /// <param name="client">The raw client to be used.</param>
         public static SiteimproveService CreateFromClient(SiteimproveClient client) {
@@ -51,7 +54,7 @@ namespace Skybrud.Siteimprove {
         }
 
         /// <summary>
-        /// Initialize a new instance of <code>SiteimproveRawClient</code> from the specified username and password.
+        /// Initialize a new instance of <see cref="SiteimproveClient"/> from the specified username and password.
         /// </summary>
         /// <param name="username">The username of the Siteimprove account.</param>
         /// <param name="password">The password of the Siteimprove account.</param>
