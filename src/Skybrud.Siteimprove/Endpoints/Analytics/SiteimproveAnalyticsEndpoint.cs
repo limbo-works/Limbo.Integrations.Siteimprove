@@ -18,6 +18,8 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
             get { return Service.Client.Analytics; }
         }
 
+        public SiteimproveAnalyticsBehaviorEndpoint Behavior { get; private set; }
+
         public SiteimproveAnalyticsContentEndpoint Content { get; private set; }
 
         public SiteimproveAnalyticsVisitorsEndpoint Visitors { get; private set; }
@@ -28,6 +30,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
 
         internal SiteimproveAnalyticsEndpoint(SiteimproveService service) {
             Service = service;
+            Behavior = new SiteimproveAnalyticsBehaviorEndpoint(service, this);
             Content = new SiteimproveAnalyticsContentEndpoint(service, this);
             Visitors = new SiteimproveAnalyticsVisitorsEndpoint(service, this);
         }

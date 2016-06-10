@@ -1,6 +1,7 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Analytics.Raw;
-using Skybrud.Siteimprove.Options.Analytics;
+using Skybrud.Siteimprove.Options.Analytics.Content;
 using Skybrud.Siteimprove.Responses.Analytics;
+using Skybrud.Siteimprove.Responses.Analytics.Content;
 
 namespace Skybrud.Siteimprove.Endpoints.Analytics {
 
@@ -72,6 +73,24 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/> representing the response.</returns>
         public SiteimproveAnalyticsGetPopularPagesResponse GetMostPopularPages(SiteimproveAnalyticsGetPopularPagesOptions options) {
             return SiteimproveAnalyticsGetPopularPagesResponse.ParseResponse(Raw.GetMostPopularPages(options));
+        }
+
+        /// <summary>
+        /// Gets a list of all content pages for the site with the specified <code>siteId</code>. 
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <returns>Returns an instance of <see cref="SiteimproveGetAllPagesResponse"/> representing the response.</returns>
+        public SiteimproveGetAllPagesResponse GetAllPages(int siteId) {
+            return SiteimproveGetAllPagesResponse.ParseResponse(Raw.GetAllPages(siteId));
+        }
+
+        /// <summary>
+        /// Gets a list of all content pages for the site matching the specified <code>options</code>.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="SiteimproveGetAllPagesResponse"/> representing the response.</returns>
+        public SiteimproveGetAllPagesResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
+            return SiteimproveGetAllPagesResponse.ParseResponse(Raw.GetAllPages(options));
         }
 
         #endregion

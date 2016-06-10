@@ -6,6 +6,8 @@
 
         public SiteimproveClient Client { get; private set; }
 
+        public SiteimproveAnalyticsBehaviorRawEndpoint Behavior { get; private set; }
+
         public SiteimproveAnalyticsContentRawEndpoint Content { get; private set; }
 
         public SiteimproveAnalyticsVisitorsRawEndpoint Visitors { get; private set; }
@@ -16,6 +18,7 @@
 
         internal SiteimproveAnalyticsRawEndpoint(SiteimproveClient client) {
             Client = client;
+            Behavior = new SiteimproveAnalyticsBehaviorRawEndpoint(client, this);
             Content = new SiteimproveAnalyticsContentRawEndpoint(client, this);
             Visitors = new SiteimproveAnalyticsVisitorsRawEndpoint(client, this);
         }

@@ -3,7 +3,7 @@ using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Siteimprove.Objects.Common.Aggregations {
     
-    public class SiteimproveAnalyticsVisitsAggregation : SiteimproveObject {
+    public class SiteimproveAnalyticsSumAggregation : SiteimproveObject {
 
         #region Properties
             
@@ -13,7 +13,7 @@ namespace Skybrud.Siteimprove.Objects.Common.Aggregations {
 
         #region Constructors
 
-        private SiteimproveAnalyticsVisitsAggregation(JObject obj) : base(obj) {
+        private SiteimproveAnalyticsSumAggregation(JObject obj) : base(obj) {
             Sum = obj.GetInt32("sum");
         }
 
@@ -21,8 +21,8 @@ namespace Skybrud.Siteimprove.Objects.Common.Aggregations {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsVisitsAggregation Parse(JObject obj) {
-            return obj == null ? null : new SiteimproveAnalyticsVisitsAggregation(obj);
+        public static SiteimproveAnalyticsSumAggregation Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveAnalyticsSumAggregation(obj);
         }
 
         #endregion

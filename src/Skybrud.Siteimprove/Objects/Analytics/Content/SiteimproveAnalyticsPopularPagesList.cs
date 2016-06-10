@@ -3,7 +3,7 @@ using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Siteimprove.Objects.Analytics.Content {
     
-    public class SiteimproveAnalyticsGetPopularPagesList : SiteimproveObject {
+    public class SiteimproveAnalyticsPopularPagesList : SiteimproveObject {
 
         #region Properties
 
@@ -26,7 +26,7 @@ namespace Skybrud.Siteimprove.Objects.Analytics.Content {
 
         #region Constructors
 
-        private SiteimproveAnalyticsGetPopularPagesList(JObject obj) : base(obj) {
+        private SiteimproveAnalyticsPopularPagesList(JObject obj) : base(obj) {
             Items = obj.GetArray("items", SiteimproveAnalyticsPopularPage.Parse);
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
@@ -36,8 +36,8 @@ namespace Skybrud.Siteimprove.Objects.Analytics.Content {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsGetPopularPagesList Parse(JObject obj) {
-            return obj == null ? null : new SiteimproveAnalyticsGetPopularPagesList(obj);
+        public static SiteimproveAnalyticsPopularPagesList Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveAnalyticsPopularPagesList(obj);
         }
 
         #endregion

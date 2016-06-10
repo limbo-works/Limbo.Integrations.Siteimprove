@@ -6,7 +6,7 @@ using Skybrud.Social.Json;
 
 namespace Skybrud.Siteimprove.Responses.Analytics {
 
-    public class SiteimproveAnalyticsGetPopularPagesResponse : SiteimproveResponse<SiteimproveAnalyticsGetPopularPagesList> {
+    public class SiteimproveAnalyticsGetPopularPagesResponse : SiteimproveResponse<SiteimproveAnalyticsPopularPagesList> {
 
         #region Constructors
 
@@ -16,7 +16,7 @@ namespace Skybrud.Siteimprove.Responses.Analytics {
             ValidateResponse(response);
 
             // Parse the response body
-            Body = ParseJsonObject(response.Body, SiteimproveAnalyticsGetPopularPagesList.Parse);
+            Body = ParseJsonObject(response.Body, SiteimproveAnalyticsPopularPagesList.Parse);
 
         }
 

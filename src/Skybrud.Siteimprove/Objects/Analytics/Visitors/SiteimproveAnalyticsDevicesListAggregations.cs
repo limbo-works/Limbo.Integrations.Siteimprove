@@ -8,14 +8,14 @@ namespace Skybrud.Siteimprove.Objects.Analytics.Visitors {
 
         #region Properties
             
-        public SiteimproveAnalyticsVisitsAggregation Visits { get; private set; }
+        public SiteimproveAnalyticsSumAggregation Visits { get; private set; }
 
         #endregion
 
         #region Constructors
 
         private SiteimproveAnalyticsDevicesListAggregations(JObject obj) : base(obj) {
-            Visits = obj.GetObject("visits", SiteimproveAnalyticsVisitsAggregation.Parse);
+            Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse);
         }
 
         #endregion

@@ -3,7 +3,7 @@ using Skybrud.Siteimprove.Exceptions;
 using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces;
 
-namespace Skybrud.Siteimprove.Options.Analytics {
+namespace Skybrud.Siteimprove.Options.Analytics.Content {
     
     public class SiteimproveAnalyticsGetPopularPagesOptions : IGetOptions {
 
