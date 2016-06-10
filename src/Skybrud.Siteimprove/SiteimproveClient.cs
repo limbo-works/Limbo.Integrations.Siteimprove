@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Net;
+using Skybrud.Siteimprove.Endpoints.Analytics.Raw;
 using Skybrud.Siteimprove.Endpoints.Raw;
 using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces;
@@ -9,16 +10,22 @@ using Skybrud.Social.Interfaces;
 namespace Skybrud.Siteimprove {
     
     public class SiteimproveClient {
-        
+
         public const string ApiUrl = "https://api.siteimprove.com/v1/";
+        public const string ApiUrlV2 = "https://api.siteimprove.com/v2/";
 
         #region Properties
 
         public NetworkCredential Crendentials { get; private set; }
 
         public SiteimproveSitesRawEndpoint Sites { get; private set; }
+        
         public SiteimprovePagesRawEndpoint Pages { get; private set; }
+        
+        public SiteimproveAnalyticsRawEndpoint Analytics { get; private set; }
+        
         public SiteimproveAccessibilityRawEndpoint Accessibility { get; private set; }
+        
         public SiteimproveQualityAssuranceRawEndpoint QualityAssurance { get; private set; }
 
         #endregion
@@ -29,6 +36,7 @@ namespace Skybrud.Siteimprove {
             Sites = new SiteimproveSitesRawEndpoint(this);
             Pages = new SiteimprovePagesRawEndpoint(this);
             Accessibility = new SiteimproveAccessibilityRawEndpoint(this);
+            Analytics = new SiteimproveAnalyticsRawEndpoint(this);
             QualityAssurance = new SiteimproveQualityAssuranceRawEndpoint(this);
         }
 

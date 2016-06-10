@@ -48,6 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsContentRawEndpoint.cs" />
+    <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsVisitorsRawEndpoint.cs" />
+    <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsContentEndpoint.cs" />
+    <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsVisitorsEndpoint.cs" />
+    <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsEndpoint.cs" />
+    <Compile Include="Exceptions\SiteimproveHttpException.cs" />
+    <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsPopularPage.cs" />
+    <Compile Include="Objects\Analytics\Visitors\SiteimproveAnalyticsDevice.cs" />
+    <Compile Include="Objects\Analytics\Visitors\SiteimproveAnalyticsDevicesList.cs" />
+    <Compile Include="Objects\Analytics\Visitors\SiteimproveAnalyticsDevicesListAggregations.cs" />
+    <Compile Include="Objects\Common\Aggregations\SiteimproveAnalyticsVisitsAggregation.cs" />
+    <Compile Include="Options\Analytics\SiteimproveAnalyticsGetPopularPagesOptions.cs" />
+    <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\SiteimprovePagesRawEndpoint.cs" />
     <Compile Include="Endpoints\SiteimproveBrokenLinksEndpoint.cs" />
     <Compile Include="Endpoints\SiteimprovePagesEndpoint.cs" />
@@ -60,6 +73,7 @@
     <Compile Include="Endpoints\Raw\SiteimproveAccessibilityRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\SiteimproveSitesRawEndpoint.cs" />
     <Compile Include="Endpoints\SiteimproveSitesEndpoint.cs" />
+    <Compile Include="Exceptions\PropertyNotSetException.cs" />
     <Compile Include="Exceptions\SiteimproveApiException.cs" />
     <Compile Include="HelpersToBeDeletedWhenWeUpgradeSkybrudSocial.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityCollection.cs" />
@@ -87,10 +101,14 @@
     <Compile Include="Objects\Sites\SiteimproveSite.cs" />
     <Compile Include="Objects\Sites\SiteimproveSiteSummary.cs" />
     <Compile Include="Objects\Sites\SiteimproveSitesCollection.cs" />
+    <Compile Include="Options\Analytics\Visitors\SiteimproveAnalyticsGetDevicesOptions.cs" />
     <Compile Include="Options\Pages\SiteimproveGetPagesOptions.cs" />
     <Compile Include="Properties\AssemblyInfoGenerated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\SiteimproveRateLimiting.cs" />
+    <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsGetPopularPagesList.cs" />
+    <Compile Include="Responses\Analytics\SiteimproveGetPopularPagesResponse.cs" />
+    <Compile Include="Responses\Analytics\Visitors\SiteimproveGetDevicesResponse.cs" />
     <Compile Include="Responses\Pages\SiteimproveGetPageResponse.cs" />
     <Compile Include="Responses\Pages\SiteimproveGetPagesResponse.cs" />
     <Compile Include="Responses\SiteimproveResponse.cs" />

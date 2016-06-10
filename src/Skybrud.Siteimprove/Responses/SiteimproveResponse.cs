@@ -51,7 +51,7 @@ namespace Skybrud.Siteimprove.Responses {
             // Skip error checking if the server responds with an OK status code
             if (response.StatusCode == HttpStatusCode.OK) return;
             
-            throw new Exception("Invalid response received from the Siteimprove API (Status: " + ((int)response.StatusCode) + ")");
+            throw new SiteimproveHttpException(response);
 
         }
 

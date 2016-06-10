@@ -1,4 +1,5 @@
 ﻿using Skybrud.Siteimprove.Endpoints;
+using Skybrud.Siteimprove.Endpoints.Analytics;
 
 namespace Skybrud.Siteimprove {
     
@@ -17,6 +18,8 @@ namespace Skybrud.Siteimprove {
 
         public SiteimproveAccessibilityEndpoint Accessibility { get; private set; }
 
+        public SiteimproveAnalyticsEndpoint Analytics { get; private set; }
+
         public SiteimproveQualityAssuranceEndpoint QualityAssurance { get; private set; }
         
         #endregion
@@ -27,6 +30,7 @@ namespace Skybrud.Siteimprove {
             Sites = new SiteimproveSitesEndpoint(this);
             Pages = new SiteimprovePagesEndpoint(this);
             Accessibility = new SiteimproveAccessibilityEndpoint(this);
+            Analytics = new SiteimproveAnalyticsEndpoint(this);
             QualityAssurance = new SiteimproveQualityAssuranceEndpoint(this);
         }
 
