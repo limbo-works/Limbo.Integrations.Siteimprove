@@ -1,4 +1,6 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Analytics.Raw;
+using Skybrud.Siteimprove.Options.Analytics;
+using Skybrud.Siteimprove.Responses.Analytics.Behavior;
 
 namespace Skybrud.Siteimprove.Endpoints.Analytics {
 
@@ -19,8 +21,8 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveAnalyticsContentRawEndpoint Raw {
-            get { return Service.Client.Analytics.Content; }
+        public SiteimproveAnalyticsBehaviorRawEndpoint Raw {
+            get { return Service.Client.Analytics.Behavior; }
         }
 
         #endregion
@@ -35,6 +37,24 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
         #endregion
 
         #region Member methods
+
+        /// <summary>
+        /// Gets a list with historical data for the average duration a user spends on the site with the specified <code>siteId</code>.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsVisitLengthResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(int siteId) {
+            return SiteimproveAnalyticsVisitLengthResponse.ParseResponse(Raw.GetVisitLengthHistory(siteId));
+        }
+
+        /// <summary>
+        /// Gets a list with historical data for the average duration a user spends on the site matching the specified <code>options</code>.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsVisitLengthResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(SiteimproveAnalyticsGetPeriodOptions options) {
+            return SiteimproveAnalyticsVisitLengthResponse.ParseResponse(Raw.GetVisitLengthHistory(options));
+        }
 
         #endregion
 

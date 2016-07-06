@@ -1,6 +1,5 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
-using Skybrud.Siteimprove.Objects.Analytics.Overview;
 using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Siteimprove.Objects.Analytics.Behavior {
