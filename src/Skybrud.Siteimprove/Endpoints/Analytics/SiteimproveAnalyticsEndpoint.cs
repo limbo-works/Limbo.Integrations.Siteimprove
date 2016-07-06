@@ -22,6 +22,8 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
 
         public SiteimproveAnalyticsContentEndpoint Content { get; private set; }
 
+        public SiteimproveAnalyticsOverviewEndpoint Overview { get; private set; }
+
         public SiteimproveAnalyticsVisitorsEndpoint Visitors { get; private set; }
 
         #endregion
@@ -32,6 +34,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
             Service = service;
             Behavior = new SiteimproveAnalyticsBehaviorEndpoint(service, this);
             Content = new SiteimproveAnalyticsContentEndpoint(service, this);
+            Overview = new SiteimproveAnalyticsOverviewEndpoint(service, this);
             Visitors = new SiteimproveAnalyticsVisitorsEndpoint(service, this);
         }
 

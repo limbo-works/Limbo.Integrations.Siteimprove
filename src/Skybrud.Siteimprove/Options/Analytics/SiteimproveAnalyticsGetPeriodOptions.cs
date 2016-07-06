@@ -3,9 +3,9 @@ using Skybrud.Siteimprove.Exceptions;
 using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces;
 
-namespace Skybrud.Siteimprove.Options.Analytics.Content {
+namespace Skybrud.Siteimprove.Options.Analytics {
     
-    public class SiteimproveAnalyticsGetPopularPagesOptions : IGetOptions {
+    public class SiteimproveAnalyticsGetPeriodOptions : IGetOptions {
 
         #region Properties
 
@@ -46,13 +46,13 @@ namespace Skybrud.Siteimprove.Options.Analytics.Content {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        public SiteimproveAnalyticsGetPopularPagesOptions() { }
+        public SiteimproveAnalyticsGetPeriodOptions() { }
 
         /// <summary>
         /// Initializes a new instance with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveAnalyticsGetPopularPagesOptions(int siteId) {
+        public SiteimproveAnalyticsGetPeriodOptions(int siteId) {
             SiteId = siteId;
         }
 
@@ -62,7 +62,7 @@ namespace Skybrud.Siteimprove.Options.Analytics.Content {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items per page.</param>
-        public SiteimproveAnalyticsGetPopularPagesOptions(int siteId, int page, int pageSize) {
+        public SiteimproveAnalyticsGetPeriodOptions(int siteId, int page, int pageSize) {
             SiteId = siteId;
             Page = page;
             PageSize = pageSize;
@@ -77,7 +77,7 @@ namespace Skybrud.Siteimprove.Options.Analytics.Content {
         /// </summary>
         /// <param name="day">The day.</param>
         /// <returns>Returns the options instance for method chaining.</returns>
-        public SiteimproveAnalyticsGetPopularPagesOptions SetPeriod(DateTime day) {
+        public SiteimproveAnalyticsGetPeriodOptions SetPeriod(DateTime day) {
             Period = day.ToString("yyyyMMdd");
             return this;
         }
@@ -88,7 +88,7 @@ namespace Skybrud.Siteimprove.Options.Analytics.Content {
         /// <param name="from">The start date of the period.</param>
         /// <param name="to">The end date of the period.</param>
         /// <returns>Returns the options instance for method chaining.</returns>
-        public SiteimproveAnalyticsGetPopularPagesOptions SetPeriod(DateTime from, DateTime to) {
+        public SiteimproveAnalyticsGetPeriodOptions SetPeriod(DateTime from, DateTime to) {
             Period = from.ToString("yyyyMMdd") + "_" + to.ToString("yyyyMMdd");
             return this;
         }

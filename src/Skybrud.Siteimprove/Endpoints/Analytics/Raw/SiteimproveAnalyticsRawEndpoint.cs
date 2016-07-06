@@ -10,6 +10,8 @@
 
         public SiteimproveAnalyticsContentRawEndpoint Content { get; private set; }
 
+        public SiteimproveAnalyticsOverviewRawEndpoint Overview { get; private set; }
+
         public SiteimproveAnalyticsVisitorsRawEndpoint Visitors { get; private set; }
 
         #endregion
@@ -20,6 +22,7 @@
             Client = client;
             Behavior = new SiteimproveAnalyticsBehaviorRawEndpoint(client, this);
             Content = new SiteimproveAnalyticsContentRawEndpoint(client, this);
+            Overview = new SiteimproveAnalyticsOverviewRawEndpoint(client, this);
             Visitors = new SiteimproveAnalyticsVisitorsRawEndpoint(client, this);
         }
 

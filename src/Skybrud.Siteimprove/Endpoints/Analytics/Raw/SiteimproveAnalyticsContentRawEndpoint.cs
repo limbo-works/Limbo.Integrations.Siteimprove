@@ -1,7 +1,6 @@
 ﻿using System;
 using Skybrud.Siteimprove.Exceptions;
 using Skybrud.Siteimprove.Options.Analytics;
-using Skybrud.Siteimprove.Options.Analytics.Content;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
@@ -41,7 +40,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetLeastPopularPages(SiteimproveAnalyticsGetPopularPagesOptions options) {
+        public SocialHttpResponse GetLeastPopularPages(SiteimproveAnalyticsGetPeriodOptions options) {
             if (options == null) throw new ArgumentNullException("options");
             if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/least_popular_pages", options);
@@ -61,7 +60,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetMostPopularPages(SiteimproveAnalyticsGetPopularPagesOptions options) {
+        public SocialHttpResponse GetMostPopularPages(SiteimproveAnalyticsGetPeriodOptions options) {
             if (options == null) throw new ArgumentNullException("options");
             if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/most_popular_pages", options);
@@ -70,8 +69,8 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
         public SocialHttpResponse GetAllPages(int siteId) {
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/content/all_pages");
         }
-        
-        public SocialHttpResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
+
+        public SocialHttpResponse GetAllPages(SiteimproveAnalyticsGetPeriodOptions options) {
             if (options == null) throw new ArgumentNullException("options");
             if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/all_pages", options);

@@ -1,6 +1,6 @@
 ﻿using System;
 using Skybrud.Siteimprove.Exceptions;
-using Skybrud.Siteimprove.Options.Analytics.Visitors;
+using Skybrud.Siteimprove.Options.Analytics;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
@@ -33,7 +33,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
         }
 
         public SocialHttpResponse GetDevices(int siteId, int page, int pageSize, int groupId, int filterId, string period) {
-            return GetDevices(new SiteimproveAnalyticsGetDevicesOptions {
+            return GetDevices(new SiteimproveAnalyticsGetPeriodOptions {
                 SiteId = siteId,
                 Page = page,
                 PageSize = pageSize,
@@ -43,7 +43,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
             });
         }
 
-        public SocialHttpResponse GetDevices(SiteimproveAnalyticsGetDevicesOptions options) {
+        public SocialHttpResponse GetDevices(SiteimproveAnalyticsGetPeriodOptions options) {
             if (options == null) throw new ArgumentNullException("options");
             if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/visitors/devices", options);

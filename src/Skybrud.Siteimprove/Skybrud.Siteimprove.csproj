@@ -49,23 +49,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsBehaviorRawEndpoint.cs" />
+    <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsOverviewRawEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsContentRawEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsVisitorsRawEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsBehaviorEndpoint.cs" />
+    <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsOverviewEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsContentEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsVisitorsEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsEndpoint.cs" />
     <Compile Include="Exceptions\SiteimproveHttpException.cs" />
+    <Compile Include="Objects\Analytics\Behavior\SiteimproveAnalyticsVisitLengthGraphItem.cs" />
+    <Compile Include="Objects\Analytics\Behavior\SiteimproveAnalyticsVisitLengthGraphList.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsContentPageList.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsContentPage.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsContentPageListAggregations.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsPopularPage.cs" />
+    <Compile Include="Objects\Analytics\Overview\SiteimproveAnalyticsOverviewItem.cs" />
+    <Compile Include="Objects\Analytics\Overview\SiteimproveAnalyticsOverviewList.cs" />
     <Compile Include="Objects\Analytics\Visitors\SiteimproveAnalyticsDevice.cs" />
     <Compile Include="Objects\Analytics\Visitors\SiteimproveAnalyticsDevicesList.cs" />
     <Compile Include="Objects\Analytics\Visitors\SiteimproveAnalyticsDevicesListAggregations.cs" />
     <Compile Include="Objects\Common\Aggregations\SiteimproveAnalyticsSumAggregation.cs" />
-    <Compile Include="Options\Analytics\Content\SiteimproveAnalyticsGetAllPagesOptions.cs" />
-    <Compile Include="Options\Analytics\Content\SiteimproveAnalyticsGetPopularPagesOptions.cs" />
     <Compile Include="Endpoints\Analytics\Raw\SiteimproveAnalyticsRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\SiteimprovePagesRawEndpoint.cs" />
     <Compile Include="Endpoints\SiteimproveBrokenLinksEndpoint.cs" />
@@ -107,7 +111,7 @@
     <Compile Include="Objects\Sites\SiteimproveSite.cs" />
     <Compile Include="Objects\Sites\SiteimproveSiteSummary.cs" />
     <Compile Include="Objects\Sites\SiteimproveSitesCollection.cs" />
-    <Compile Include="Options\Analytics\Visitors\SiteimproveAnalyticsGetDevicesOptions.cs" />
+    <Compile Include="Options\Analytics\SiteimproveAnalyticsGetPeriodOptions.cs" />
     <Compile Include="Options\Pages\SiteimproveGetPagesOptions.cs" />
     <Compile Include="Properties\AssemblyInfoGenerated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +119,8 @@
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsPopularPagesList.cs" />
     <Compile Include="Responses\Analytics\Content\SiteimproveGetAllPagesResponse.cs" />
     <Compile Include="Responses\Analytics\Content\SiteimproveGetPopularPagesResponse.cs" />
+    <Compile Include="Responses\Analytics\Behavior\SiteimproveAnalyticsVisitLengthResponse.cs" />
+    <Compile Include="Responses\Analytics\Overview\SiteimproveAnalyticsGetHistoryResponse.cs" />
     <Compile Include="Responses\Analytics\Visitors\SiteimproveGetDevicesResponse.cs" />
     <Compile Include="Responses\Pages\SiteimproveGetPageResponse.cs" />
     <Compile Include="Responses\Pages\SiteimproveGetPagesResponse.cs" />
@@ -137,6 +143,7 @@
   <ItemGroup>
     <None Include="LICENSE.html" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)build\UpdateAssemblyInfoJson.exe" "$(ProjectPath)" "$(TargetPath)"</PostBuildEvent>

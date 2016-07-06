@@ -1,5 +1,5 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Analytics.Raw;
-using Skybrud.Siteimprove.Options.Analytics.Content;
+using Skybrud.Siteimprove.Options.Analytics;
 using Skybrud.Siteimprove.Responses.Analytics;
 using Skybrud.Siteimprove.Responses.Analytics.Content;
 
@@ -53,7 +53,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetPopularPagesResponse GetLeastPopularPages(SiteimproveAnalyticsGetPopularPagesOptions options) {
+        public SiteimproveAnalyticsGetPopularPagesResponse GetLeastPopularPages(SiteimproveAnalyticsGetPeriodOptions options) {
             return SiteimproveAnalyticsGetPopularPagesResponse.ParseResponse(Raw.GetLeastPopularPages(options));
         }
 
@@ -71,7 +71,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetPopularPagesResponse GetMostPopularPages(SiteimproveAnalyticsGetPopularPagesOptions options) {
+        public SiteimproveAnalyticsGetPopularPagesResponse GetMostPopularPages(SiteimproveAnalyticsGetPeriodOptions options) {
             return SiteimproveAnalyticsGetPopularPagesResponse.ParseResponse(Raw.GetMostPopularPages(options));
         }
 
@@ -89,7 +89,7 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveGetAllPagesResponse"/> representing the response.</returns>
-        public SiteimproveGetAllPagesResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
+        public SiteimproveGetAllPagesResponse GetAllPages(SiteimproveAnalyticsGetPeriodOptions options) {
             return SiteimproveGetAllPagesResponse.ParseResponse(Raw.GetAllPages(options));
         }
 
