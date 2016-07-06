@@ -64,6 +64,7 @@
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsContentPage.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsContentPageListAggregations.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsPopularPage.cs" />
+    <Compile Include="Objects\Analytics\Overview\SiteimproveAnalyticsSite.cs" />
     <Compile Include="Objects\Analytics\Overview\SiteimproveAnalyticsOverviewItem.cs" />
     <Compile Include="Objects\Analytics\Overview\SiteimproveAnalyticsOverviewList.cs" />
     <Compile Include="Objects\Analytics\Visitors\SiteimproveAnalyticsDevice.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Responses\Analytics\Content\SiteimproveGetAllPagesResponse.cs" />
     <Compile Include="Responses\Analytics\Content\SiteimproveGetPopularPagesResponse.cs" />
     <Compile Include="Responses\Analytics\Behavior\SiteimproveAnalyticsVisitLengthResponse.cs" />
+    <Compile Include="Responses\Analytics\Overview\SiteimproveAnalyticsGetSummaryResponse.cs" />
     <Compile Include="Responses\Analytics\Overview\SiteimproveAnalyticsGetHistoryResponse.cs" />
     <Compile Include="Responses\Analytics\Visitors\SiteimproveGetDevicesResponse.cs" />
     <Compile Include="Responses\Pages\SiteimproveGetPageResponse.cs" />

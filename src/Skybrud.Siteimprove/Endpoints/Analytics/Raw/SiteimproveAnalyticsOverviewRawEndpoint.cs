@@ -45,6 +45,26 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
             if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/overview/history", options);
         }
+        
+        /// <summary>
+        /// Gets a summary with the most common statistics for the site with the specified <code>siteId</code>.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        public SocialHttpResponse GetSummary(int siteId) {
+            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/overview/summary");
+        }
+
+        /// <summary>
+        /// Gets a summary with the most common statistics for the site matching the specified <code>options</code>.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        public SocialHttpResponse GetSummary(SiteimproveAnalyticsGetPeriodOptions options) {
+            if (options == null) throw new ArgumentNullException("options");
+            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
+            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/overview/summary", options);
+        }
 
         #endregion
 

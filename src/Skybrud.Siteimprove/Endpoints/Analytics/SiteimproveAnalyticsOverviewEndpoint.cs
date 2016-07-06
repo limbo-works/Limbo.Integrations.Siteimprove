@@ -56,6 +56,24 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
             return SiteimproveAnalyticsGetHistoryResponse.ParseResponse(Raw.GetHistory(options));
         }
 
+        /// <summary>
+        /// Gets a summary with the most common statistics for the site with the specified <code>siteId</code>.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetSummaryResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsGetSummaryResponse GetSummary(int siteId) {
+            return SiteimproveAnalyticsGetSummaryResponse.ParseResponse(Raw.GetSummary(siteId));
+        }
+
+        /// <summary>
+        /// Gets a summary with the most common statistics for the site matching the specified <code>options</code>.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetSummaryResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsGetSummaryResponse GetSummary(SiteimproveAnalyticsGetPeriodOptions options) {
+            return SiteimproveAnalyticsGetSummaryResponse.ParseResponse(Raw.GetSummary(options));
+        }
+
         #endregion
 
     }
