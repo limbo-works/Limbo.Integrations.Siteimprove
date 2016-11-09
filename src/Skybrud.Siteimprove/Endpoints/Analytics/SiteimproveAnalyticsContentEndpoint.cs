@@ -1,5 +1,6 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Analytics.Raw;
 using Skybrud.Siteimprove.Options.Analytics;
+using Skybrud.Siteimprove.Options.Analytics.Content;
 using Skybrud.Siteimprove.Responses.Analytics;
 using Skybrud.Siteimprove.Responses.Analytics.Content;
 
@@ -90,6 +91,15 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics {
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveGetAllPagesResponse"/> representing the response.</returns>
         public SiteimproveGetAllPagesResponse GetAllPages(SiteimproveAnalyticsGetPeriodOptions options) {
+            return SiteimproveGetAllPagesResponse.ParseResponse(Raw.GetAllPages(options));
+        }
+
+        /// <summary>
+        /// Gets a list of all content pages for the site matching the specified <code>options</code>.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="SiteimproveGetAllPagesResponse"/> representing the response.</returns>
+        public SiteimproveGetAllPagesResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
             return SiteimproveGetAllPagesResponse.ParseResponse(Raw.GetAllPages(options));
         }
 

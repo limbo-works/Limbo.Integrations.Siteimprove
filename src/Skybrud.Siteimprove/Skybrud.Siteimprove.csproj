@@ -112,6 +112,8 @@
     <Compile Include="Objects\Sites\SiteimproveSite.cs" />
     <Compile Include="Objects\Sites\SiteimproveSiteSummary.cs" />
     <Compile Include="Objects\Sites\SiteimproveSitesCollection.cs" />
+    <Compile Include="Options\Analytics\Content\SiteimproveAnalyticsGetAllPagesField.cs" />
+    <Compile Include="Options\Analytics\Content\SiteimproveAnalyticsGetAllPagesOptions.cs" />
     <Compile Include="Options\Analytics\SiteimproveAnalyticsGetPeriodOptions.cs" />
     <Compile Include="Options\Pages\SiteimproveGetPagesOptions.cs" />
     <Compile Include="Properties\AssemblyInfoGenerated.cs" />

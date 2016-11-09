@@ -1,6 +1,7 @@
 ﻿using System;
 using Skybrud.Siteimprove.Exceptions;
 using Skybrud.Siteimprove.Options.Analytics;
+using Skybrud.Siteimprove.Options.Analytics.Content;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
@@ -66,11 +67,26 @@ namespace Skybrud.Siteimprove.Endpoints.Analytics.Raw {
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/most_popular_pages", options);
         }
 
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Analytics/get_sites_site_id_analytics_content_all_pages</cref>
+        /// </see>
         public SocialHttpResponse GetAllPages(int siteId) {
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/content/all_pages");
         }
 
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Analytics/get_sites_site_id_analytics_content_all_pages</cref>
+        /// </see>
         public SocialHttpResponse GetAllPages(SiteimproveAnalyticsGetPeriodOptions options) {
+            if (options == null) throw new ArgumentNullException("options");
+            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
+            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/all_pages", options);
+        }
+
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Analytics/get_sites_site_id_analytics_content_all_pages</cref>
+        /// </see>
+        public SocialHttpResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
             if (options == null) throw new ArgumentNullException("options");
             if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
             return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/all_pages", options);

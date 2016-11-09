@@ -35,6 +35,11 @@ namespace Skybrud.Siteimprove.Options.Analytics {
         public int FilterId { get; set; }
 
         /// <summary>
+        /// Gets or sets the ID of the page that should be returned. Not all endpoints support this property.
+        /// </summary>
+        public int PageId { get; set; }
+
+        /// <summary>
         /// Gets or sets the period for which to retrieve data.
         /// </summary>
         public string Period { get; set; }
@@ -93,13 +98,14 @@ namespace Skybrud.Siteimprove.Options.Analytics {
             return this;
         }
 
-        public SocialQueryString GetQueryString() {
+        public virtual SocialQueryString GetQueryString() {
             if (SiteId == 0) throw new PropertyNotSetException("SiteId");
             SocialQueryString query = new SocialQueryString();
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
             if (GroupId > 0) query.Add("group_id", GroupId);
             if (FilterId > 0) query.Add("filter_id", FilterId);
+            if (PageId > 0) query.Add("page_id", PageId);
             if (!String.IsNullOrWhiteSpace(Period)) query.Add("period", Period);
             return query;
         }
