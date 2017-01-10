@@ -102,6 +102,9 @@ namespace Skybrud.Siteimprove {
             // Some input validation
             if (String.IsNullOrWhiteSpace(url)) throw new ArgumentNullException("url");
 
+            // Append the scheme and host (if not already specified)
+            if (url.StartsWith("/")) url = "https://api.siteimprove.com" + url;
+
             // Intitialize the request
             SocialHttpRequest request = new SocialHttpRequest {
                 Method = "GET",
