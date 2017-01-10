@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Siteimprove.Exceptions;
+using Skybrud.Essentials.Common;
 using Skybrud.Siteimprove.Options.Analytics;
 using Skybrud.Social.Http;
 

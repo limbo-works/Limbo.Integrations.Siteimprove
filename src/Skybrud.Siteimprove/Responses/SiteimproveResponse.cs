@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json;
 using Skybrud.Siteimprove.Exceptions;
 using Skybrud.Siteimprove.Objects;
-using Skybrud.Social;
 using Skybrud.Social.Http;
 using Skybrud.Social.Json;
 
@@ -65,7 +65,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="json">The JSON string to be parsed.</param>
         /// <returns>Returns an instance of <code>JObject</code> parsed from the specified <code>json</code> string.</returns>
         protected static JObject ParseJsonObject(string json) {
-            return HelpersToBeDeletedWhenWeUpgradeSkybrudSocial.ParseJsonObject(json);
+            return JsonHelpers.ParseJsonObject(json);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="func">A callback function/method used for converting an instance of <code>JObject</code> into an instance of <code>T</code>.</param>
         /// <returns>Returns an instance of <code>T</code> parsed from the specified <code>json</code> string.</returns>
         protected static T ParseJsonObject<T>(string json, Func<JObject, T> func) {
-            return HelpersToBeDeletedWhenWeUpgradeSkybrudSocial.ParseJsonObject(json, func);
+            return JsonHelpers.ParseJsonObject(json, func);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="json">The JSON string to be parsed.</param>
         /// <returns>Returns an instance of <code>JArray</code> parsed from the specified <code>json</code> string.</returns>
         protected static JArray ParseJsonArray(string json) {
-            return HelpersToBeDeletedWhenWeUpgradeSkybrudSocial.ParseJsonArray(json);
+            return JsonHelpers.ParseJsonArray(json);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="func">A callback function/method used for converting an instance of <code>JObject</code> into an instance of <code>T</code>.</param>
         /// <returns>Returns an array of <code>T</code> parsed from the specified <code>json</code> string.</returns>
         protected static T[] ParseJsonArray<T>(string json, Func<JObject, T> func) {
-            return HelpersToBeDeletedWhenWeUpgradeSkybrudSocial.ParseJsonArray(json, func);
+            return JsonHelpers.ParseJsonArray(json, func);
         }
 
         #endregion
