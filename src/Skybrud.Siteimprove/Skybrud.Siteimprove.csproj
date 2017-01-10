@@ -61,7 +61,10 @@
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsContentEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsVisitorsEndpoint.cs" />
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsEndpoint.cs" />
+    <Compile Include="Options\Accessibility\SiteimproveGetAccessibilityGroupsOptions.cs" />
     <Compile Include="Exceptions\SiteimproveHttpException.cs" />
+    <Compile Include="Objects\Accessibility\Groups\AccessibilityGroup.cs" />
+    <Compile Include="Objects\Accessibility\Groups\AccessibilityGroupsList.cs" />
     <Compile Include="Objects\Analytics\Behavior\SiteimproveAnalyticsVisitLengthGraphItem.cs" />
     <Compile Include="Objects\Analytics\Behavior\SiteimproveAnalyticsVisitLengthGraphList.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsContentPageList.cs" />
@@ -89,10 +92,10 @@
     <Compile Include="Endpoints\Raw\SiteimproveSitesRawEndpoint.cs" />
     <Compile Include="Endpoints\SiteimproveSitesEndpoint.cs" />
     <Compile Include="Exceptions\SiteimproveApiException.cs" />
-    <Compile Include="Objects\Accessibility\AccessibilityCollection.cs" />
+    <Compile Include="Objects\Accessibility\AccessibilitySummaryCollection.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityConformanceLevel.cs" />
     <Compile Include="Objects\Accessibility\AccessibilityIssueSummary.cs" />
-    <Compile Include="Objects\Accessibility\AccessibilityResult.cs" />
+    <Compile Include="Objects\Accessibility\AccessibilitySummaryItem.cs" />
     <Compile Include="Objects\Accessibility\AccessibilitySeverity.cs" />
     <Compile Include="Objects\Common\SiteimproveLinksCollection.cs" />
     <Compile Include="Objects\Common\SiteimproveWebLinksCollection.cs" />
@@ -114,6 +117,7 @@
     <Compile Include="Objects\Sites\SiteimproveSite.cs" />
     <Compile Include="Objects\Sites\SiteimproveSiteSummary.cs" />
     <Compile Include="Objects\Sites\SiteimproveSitesCollection.cs" />
+    <Compile Include="Options\Accessibility\SiteimproveGetAccessibilitySummaryOptions.cs" />
     <Compile Include="Options\Analytics\Content\SiteimproveAnalyticsGetAllPagesField.cs" />
     <Compile Include="Options\Analytics\Content\SiteimproveAnalyticsGetAllPagesOptions.cs" />
     <Compile Include="Options\Analytics\SiteimproveAnalyticsGetPeriodOptions.cs" />
@@ -122,6 +126,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\SiteimproveRateLimiting.cs" />
     <Compile Include="Objects\Analytics\Content\SiteimproveAnalyticsPopularPagesList.cs" />
+    <Compile Include="Responses\Accessibility\SiteimproveGetAccessibilitySummeryResponse.cs" />
+    <Compile Include="Responses\Accessibility\SiteimproveGetAccessibilityGroupsResponse.cs" />
     <Compile Include="Responses\Analytics\Content\SiteimproveGetAllPagesResponse.cs" />
     <Compile Include="Responses\Analytics\Content\SiteimproveGetPopularPagesResponse.cs" />
     <Compile Include="Responses\Analytics\Behavior\SiteimproveAnalyticsVisitLengthResponse.cs" />

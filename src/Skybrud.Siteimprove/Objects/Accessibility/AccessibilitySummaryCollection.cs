@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Siteimprove.Objects.Links;
-using Skybrud.Social;
-using Skybrud.Social.Json;
 
 namespace Skybrud.Siteimprove.Objects.Accessibility {
 
-    public class AccessibilityCollection : SocialJsonObject {
+    public class AccessibilitySummaryCollection : SiteimproveObject {
 
-        private Dictionary<string, int> _lookup = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> _lookup = new Dictionary<string, int>();
 
         #region Properties
 
         [JsonProperty("items")]
-        public AccessibilityResult[] Items { get; private set; }
+        public AccessibilitySummaryItem[] Items { get; private set; }
 
         [JsonProperty("total_items")]
         public int TotalItems { get; private set; }
@@ -21,14 +21,11 @@ namespace Skybrud.Siteimprove.Objects.Accessibility {
         [JsonProperty("total_pages")]
         public int TotalPages { get; private set; }
 
-        [JsonProperty("_siteimprove")]
-        public LinksCollection Siteimprove { get; private set; }
-
         #endregion
 
         #region Constructor
 
-        private AccessibilityCollection(JsonObject obj) : base(obj) { }
+        private AccessibilitySummaryCollection(JObject obj) : base(obj) { }
 
         #endregion
 
@@ -55,19 +52,18 @@ namespace Skybrud.Siteimprove.Objects.Accessibility {
 
         #region Static methods
 
-        public static AccessibilityCollection Parse(JsonObject obj) {
+        public static AccessibilitySummaryCollection Parse(JObject obj) {
             
             if (obj == null) return null;
             
-            AccessibilityCollection collection = new AccessibilityCollection(obj) {
-                Items = obj.GetArray("items", AccessibilityResult.Parse),
+            AccessibilitySummaryCollection collection = new AccessibilitySummaryCollection(obj) {
+                Items = obj.GetArray("items", AccessibilitySummaryItem.Parse),
                 TotalItems = obj.GetInt32("total_items"),
-                TotalPages = obj.GetInt32("total_pages"),
-                Siteimprove = obj.GetObject("_siteimprove", LinksCollection.Parse)
+                TotalPages = obj.GetInt32("total_pages")
             };
 
-            foreach (AccessibilityResult result in collection.Items) {
-                collection._lookup.Add(result.ConformanceLevel + "_" + result.Severity, result.IssueCount);
+            foreach (AccessibilitySummaryItem result in collection.Items) {
+                collection._lookup.Add(result.ConformanceLevel + "_" + result.Severity, result.Issues);
             }
 
             return collection;

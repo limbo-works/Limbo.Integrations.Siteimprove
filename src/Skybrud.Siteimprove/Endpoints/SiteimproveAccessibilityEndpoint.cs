@@ -1,6 +1,6 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Raw;
-using Skybrud.Siteimprove.Objects.Accessibility;
-using Skybrud.Siteimprove.Responses;
+using Skybrud.Siteimprove.Options.Accessibility;
+using Skybrud.Siteimprove.Responses.Accessibility;
 
 namespace Skybrud.Siteimprove.Endpoints {
 
@@ -31,13 +31,52 @@ namespace Skybrud.Siteimprove.Endpoints {
         #endregion
 
         #region Methods
-        
+
         /// <summary>
-        /// Gets a overview for accessibility.
+        /// Gets a overview for accessibility for the site with the specified <paramref name="siteId"/>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveResponse<AccessibilityCollection> GetOverview(int siteId) {
-            return SiteimproveHelpers.ParseResponse(Raw.GetOverview(siteId), AccessibilityCollection.Parse);
+        /// <returns>An instance of <see cref="SiteimproveGetAccessibilitySummeryResponse"/> representing the response.</returns>
+        public SiteimproveGetAccessibilitySummeryResponse GetSummary(long siteId) {
+            return SiteimproveGetAccessibilitySummeryResponse.ParseResponse(Raw.GetSummary(siteId));
+        }
+
+        /// <summary>
+        /// Gets a summary about the accessibility for the site matching the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>An instance of <see cref="SiteimproveGetAccessibilitySummeryResponse"/> representing the response.</returns>
+        public SiteimproveGetAccessibilitySummeryResponse GetSummary(SiteimproveGetAccessibilitySummaryOptions options) {
+            return SiteimproveGetAccessibilitySummeryResponse.ParseResponse(Raw.GetSummary(options));
+        }
+
+        /// <summary>
+        /// Gets an overview of groups for accessibility for the site with the specified <paramref name="siteId"/>.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <returns>An instance of <see cref="SiteimproveGetAccessibilityGroupsResponse"/> representing the response.</returns>
+        public SiteimproveGetAccessibilityGroupsResponse GetGroups(long siteId) {
+            return SiteimproveGetAccessibilityGroupsResponse.ParseResponse(Raw.GetGroups(siteId));
+        }
+
+        /// <summary>
+        /// Gets an overview of groups for accessibility for the site with the specified <paramref name="siteId"/>.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <param name="page">The page number to show when more than one page in paged output.</param>
+        /// <param name="pageId">The number of items/records per page in paged output.</param>
+        /// <returns>An instance of <see cref="SiteimproveGetAccessibilityGroupsResponse"/> representing the response.</returns>
+        public SiteimproveGetAccessibilityGroupsResponse GetGroups(long siteId, int page, int pageId) {
+            return SiteimproveGetAccessibilityGroupsResponse.ParseResponse(Raw.GetGroups(siteId, page, pageId));
+        }
+
+        /// <summary>
+        /// Gets an overview of groups for accessibility for the site matching the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>An instance of <see cref="SiteimproveGetAccessibilityGroupsResponse"/> representing the response.</returns>
+        public SiteimproveGetAccessibilityGroupsResponse GetGroups(SiteimproveGetAccessibilityGroupsOptions options) {
+            return SiteimproveGetAccessibilityGroupsResponse.ParseResponse(Raw.GetGroups(options));
         }
 
         #endregion
