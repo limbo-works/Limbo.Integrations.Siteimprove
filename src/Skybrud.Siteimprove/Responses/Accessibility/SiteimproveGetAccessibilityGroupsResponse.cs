@@ -1,5 +1,4 @@
 ﻿using System;
-using Skybrud.Siteimprove.Objects.Accessibility;
 using Skybrud.Siteimprove.Objects.Accessibility.Groups;
 using Skybrud.Social.Http;
 
