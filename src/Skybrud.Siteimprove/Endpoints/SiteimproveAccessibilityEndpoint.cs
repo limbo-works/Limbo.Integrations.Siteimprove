@@ -36,18 +36,18 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// Gets a overview for accessibility for the site with the specified <paramref name="siteId"/>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>An instance of <see cref="SiteimproveGetAccessibilitySummeryResponse"/> representing the response.</returns>
-        public SiteimproveGetAccessibilitySummeryResponse GetSummary(long siteId) {
-            return SiteimproveGetAccessibilitySummeryResponse.ParseResponse(Raw.GetSummary(siteId));
+        /// <returns>An instance of <see cref="SiteimproveGetAccessibilitySummaryResponse"/> representing the response.</returns>
+        public SiteimproveGetAccessibilitySummaryResponse GetSummary(long siteId) {
+            return SiteimproveGetAccessibilitySummaryResponse.ParseResponse(Raw.GetSummary(siteId));
         }
 
         /// <summary>
         /// Gets a summary about the accessibility for the site matching the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>An instance of <see cref="SiteimproveGetAccessibilitySummeryResponse"/> representing the response.</returns>
-        public SiteimproveGetAccessibilitySummeryResponse GetSummary(SiteimproveGetAccessibilitySummaryOptions options) {
-            return SiteimproveGetAccessibilitySummeryResponse.ParseResponse(Raw.GetSummary(options));
+        /// <returns>An instance of <see cref="SiteimproveGetAccessibilitySummaryResponse"/> representing the response.</returns>
+        public SiteimproveGetAccessibilitySummaryResponse GetSummary(SiteimproveGetAccessibilitySummaryOptions options) {
+            return SiteimproveGetAccessibilitySummaryResponse.ParseResponse(Raw.GetSummary(options));
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Raw;
+using Skybrud.Siteimprove.Options.QualityAssurance.BrokenLinks;
+using Skybrud.Siteimprove.Responses.QualityAssurance.BrokenLinks;
 
 namespace Skybrud.Siteimprove.Endpoints {
 
@@ -30,6 +32,22 @@ namespace Skybrud.Siteimprove.Endpoints {
             Service = service;
             BrokenLinks = new SiteimproveBrokenLinksEndpoint(service);
             Spelling = new SiteimproveSpellingEndpoint(service);
+        }
+
+        #endregion
+
+        #region Member methods
+
+        public SiteimproveGetQualityAssuranceSummaryResponse GetSummary(long siteId) {
+            return SiteimproveGetQualityAssuranceSummaryResponse.ParseResponse(Raw.GetSummary(siteId));
+        }
+
+        public SiteimproveGetQualityAssuranceSummaryResponse GetSummary(long siteId, long groupId) {
+            return SiteimproveGetQualityAssuranceSummaryResponse.ParseResponse(Raw.GetSummary(siteId, groupId));
+        }
+
+        public SiteimproveGetQualityAssuranceSummaryResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
+            return SiteimproveGetQualityAssuranceSummaryResponse.ParseResponse(Raw.GetSummary(options));
         }
 
         #endregion

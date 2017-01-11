@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Siteimprove.Objects.Links;
 
 namespace Skybrud.Siteimprove.Objects.Accessibility {
 
@@ -21,11 +20,16 @@ namespace Skybrud.Siteimprove.Objects.Accessibility {
         [JsonProperty("total_pages")]
         public int TotalPages { get; private set; }
 
+        [JsonIgnore]
+        public string WebApp { get; private set; }
+
         #endregion
 
         #region Constructor
 
-        private AccessibilitySummaryCollection(JObject obj) : base(obj) { }
+        private AccessibilitySummaryCollection(JObject obj) : base(obj) {
+            WebApp = obj.GetString("siteimprove.webapp.href");
+        }
 
         #endregion
 

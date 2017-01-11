@@ -4,11 +4,11 @@ using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Responses.Accessibility {
 
-    public class SiteimproveGetAccessibilitySummeryResponse : SiteimproveResponse<AccessibilitySummaryCollection> {
+    public class SiteimproveGetAccessibilitySummaryResponse : SiteimproveResponse<AccessibilitySummaryCollection> {
 
         #region Constructors
 
-        private SiteimproveGetAccessibilitySummeryResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveGetAccessibilitySummaryResponse(SocialHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -23,17 +23,17 @@ namespace Skybrud.Siteimprove.Responses.Accessibility {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>response</code> into an instance of <see cref="SiteimproveGetAccessibilitySummeryResponse"/>.
+        /// Parses the specified <code>response</code> into an instance of <see cref="SiteimproveGetAccessibilitySummaryResponse"/>.
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveGetAccessibilitySummeryResponse"/>.</returns>
-        public static SiteimproveGetAccessibilitySummeryResponse ParseResponse(SocialHttpResponse response) {
+        /// <returns>Returns an instance of <see cref="SiteimproveGetAccessibilitySummaryResponse"/>.</returns>
+        public static SiteimproveGetAccessibilitySummaryResponse ParseResponse(SocialHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");
 
             // Initialize the response object
-            return new SiteimproveGetAccessibilitySummeryResponse(response);
+            return new SiteimproveGetAccessibilitySummaryResponse(response);
 
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Specialized;
+using Skybrud.Essentials.Common;
+using Skybrud.Siteimprove.Options.QualityAssurance.BrokenLinks;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Endpoints.Raw {
