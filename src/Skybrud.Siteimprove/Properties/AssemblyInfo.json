@@ -3,8 +3,8 @@
   "description": "Library for communicating with the Siteimprove API.",
   "company": "Skybrud.dk",
   "product": "Skybrud.Siteimprove",
-  "copyright": "Copyright © 2016",
+  "copyright": "Copyright © 2017",
   "version": "2.0.0.0",
-  "informationalVersion": "2.0.0-beta1",
-  "fileVersion": "0.0.681.6"
+  "informationalVersion": "2.0.0",
+  "fileVersion": "0.0.870.1"
 }
