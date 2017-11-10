@@ -7,11 +7,11 @@ namespace Skybrud.Siteimprove.Objects.Sites {
 
         #region Properties
 
-        public int TotalItems { get; private set; }
+        public int TotalItems { get; }
 
-        public int TotalPages { get; private set; }
+        public int TotalPages { get; }
 
-        public SiteimproveSiteSummary[] Items { get; private set; }
+        public SiteimproveSiteSummary[] Items { get; }
 
         #endregion
 

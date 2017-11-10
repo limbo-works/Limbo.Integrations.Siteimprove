@@ -7,7 +7,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
 
         #region Properties
 
-        public SiteimproveClient Client { get; private set; }
+        public SiteimproveClient Client { get; }
 
         #endregion
 
@@ -22,7 +22,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         #region Methods
 
         public SocialHttpResponse GetSite(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "/sites/" + siteId);
+            return Client.DoHttpGetRequest("/v2/sites/" + siteId);
         }
 
         public SocialHttpResponse GetSites() {
@@ -39,7 +39,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
             if (page > 0) query.Add("page", page + "");
             if (pageSize > 0) query.Add("page_size", pageSize + "");
 
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "/sites", query);
+            return Client.DoHttpGetRequest("/v2/sites", query);
 
         }
 
