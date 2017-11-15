@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Siteimprove.Objects.Content.Pages {
@@ -48,7 +49,7 @@ namespace Skybrud.Siteimprove.Objects.Content.Pages {
             Title = obj.GetString("title");
             Url = obj.GetString("url");
             CmsUrl = obj.GetString("cms_url");
-            SizeBytes = obj.GetInt32("id");
+            SizeBytes = obj.GetInt32("size_bytes");
             Summary = obj.GetObject("summary", SiteimprovePageSummary.Parse);
             WebLinks = obj.GetObject("_siteimprove", SiteimprovePageWebLinkCollection.Parse);
         }
