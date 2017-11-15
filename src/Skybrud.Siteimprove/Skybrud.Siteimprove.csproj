@@ -61,6 +61,8 @@
     <Compile Include="Endpoints\Analytics\SiteimproveAnalyticsEndpoint.cs" />
     <Compile Include="Objects\Accessibility\Pages\PageAccessibilityIssuesItem.cs" />
     <Compile Include="Objects\Accessibility\Pages\PageAccessibilityIssuesCollection.cs" />
+    <Compile Include="Objects\Content\Pages\SiteimprovePageWebLinkItem.cs" />
+    <Compile Include="Objects\Content\Pages\SiteimprovePageWebLinkCollection.cs" />
     <Compile Include="Objects\Content\Pages\SiteimprovePageSummaryPage.cs" />
     <Compile Include="Objects\Content\Pages\SiteimprovePageSummaryQualityAssurance.cs" />
     <Compile Include="Objects\Content\Pages\SiteimprovePageSummarySeo.cs" />

@@ -37,6 +37,8 @@ namespace Skybrud.Siteimprove.Objects.Content.Pages {
         /// </summary>
         public SiteimprovePageSummary Summary { get; private set; }
         
+        public SiteimprovePageWebLinkCollection WebLinks { get; }
+
         #endregion
 
         #region Constructors
@@ -48,6 +50,7 @@ namespace Skybrud.Siteimprove.Objects.Content.Pages {
             CmsUrl = obj.GetString("cms_url");
             SizeBytes = obj.GetInt32("id");
             Summary = obj.GetObject("summary", SiteimprovePageSummary.Parse);
+            WebLinks = obj.GetObject("_siteimprove", SiteimprovePageWebLinkCollection.Parse);
         }
 
         #endregion
