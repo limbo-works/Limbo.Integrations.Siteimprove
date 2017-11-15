@@ -9,11 +9,11 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
 
         #region Properties
 
-        public SiteimproveClient Client { get; private set; }
+        public SiteimproveClient Client { get; }
 
-        public SiteimproveBrokenLinksRawEndpoint BrokenLinks { get; private set; }
+        public SiteimproveBrokenLinksRawEndpoint BrokenLinks { get; }
 
-        public SiteimproveSpellingRawEndpoint Spelling { get; private set; }
+        public SiteimproveSpellingRawEndpoint Spelling { get; }
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         public SocialHttpResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
             if (options == null) throw new ArgumentNullException("options");
             if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest("/v2/sites/" + options.SiteId + "/quality_assurance/overview/summary", options);
+            return Client.DoHttpGetRequest($"/v2/sites/{options.SiteId}/quality_assurance/overview/summary", options);
         }
 
         #endregion

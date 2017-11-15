@@ -1,7 +1,4 @@
-﻿using System;
-using Skybrud.Essentials.Common;
-using Skybrud.Siteimprove.Options.QualityAssurance.BrokenLinks;
-using Skybrud.Social.Http;
+﻿using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Endpoints.Raw {
 
@@ -9,7 +6,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
 
         #region Properties
 
-        public SiteimproveClient Client { get; private set; }
+        public SiteimproveClient Client { get; }
 
         #endregion
 
@@ -27,6 +24,9 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// Gets a overview for broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
+        /// </see>
         public SocialHttpResponse GetOverview(int siteId) {
             return GetOverview(siteId, 0, 0);
         }
@@ -36,6 +36,9 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
+        /// </see>
         public SocialHttpResponse GetOverview(int siteId, int pageSize) {
             return GetOverview(siteId, 0, pageSize);
         }
@@ -46,11 +49,14 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
+        /// </see>
         public SocialHttpResponse GetOverview(int siteId, int page, int pageSize) {
             SocialQueryString query = new SocialQueryString();
             if (page > 0) query.Add("page", page);
             if (pageSize > 0) query.Add("page_size", pageSize);
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "sites/" + siteId + "/quality_assurance/broken_links", query);
+            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/links/broken_links", query);
         }
 
         /// <summary>
@@ -58,7 +64,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         public SocialHttpResponse GetPages(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "sites/" + siteId + "/quality_assurance/broken_links/pages");
+            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/pages");
         }
 
         /// <summary>
@@ -66,7 +72,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         public SocialHttpResponse GetLinks(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "sites/" + siteId + "/quality_assurance/broken_links/links");
+            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
         }
 
         /// <summary>
@@ -75,7 +81,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="linkId">The ID of the link.</param>
         public SocialHttpResponse GetPagesFromLink(int siteId, int linkId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "sites/" + siteId + "/quality_assurance/broken_links/links/" + linkId + "/pages");
+            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/links/" + linkId + "/pages");
         }
 
         /// <summary>
@@ -84,7 +90,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageId">The ID of the page.</param>
         public SocialHttpResponse GetLinksFromPage(int siteId, int pageId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "sites/" + siteId + "/quality_assurance/broken_links/links");
+            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
         }
 
         #endregion

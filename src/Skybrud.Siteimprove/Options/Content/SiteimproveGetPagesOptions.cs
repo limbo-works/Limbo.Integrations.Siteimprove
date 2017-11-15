@@ -2,7 +2,7 @@
 using Skybrud.Social.Http;
 using Skybrud.Social.Interfaces;
 
-namespace Skybrud.Siteimprove.Options.Pages {
+namespace Skybrud.Siteimprove.Options.Content {
     
     public class SiteimproveGetPagesOptions : IGetOptions {
 

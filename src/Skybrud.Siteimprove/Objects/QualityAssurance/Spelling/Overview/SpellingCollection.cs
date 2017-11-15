@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Skybrud.Social;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Siteimprove.Objects.QualityAssurance.Spelling.Overview {
     
-    public class SpellingCollection : SocialJsonObject {
+    public class SpellingCollection : SiteimproveObject {
 
         #region Properties
 
@@ -27,26 +27,25 @@ namespace Skybrud.Siteimprove.Objects.QualityAssurance.Spelling.Overview {
 
         #region Constructor
 
-        private SpellingCollection(JsonObject obj) : base(obj) { }
+        private SpellingCollection(JObject obj) : base(obj) {
+            Items = obj.GetArrayItems("items", SpellingResult.Parse);
+            TotalItems = obj.GetInt32("total_items");
+            TotalPages = obj.GetInt32("total_pages");
+            Links = obj.GetObject("_links", LinkCollection.Parse);
+            Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse);
+        }
 
         #endregion
 
         #region Static methods
 
-        public static SpellingCollection Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new SpellingCollection(obj) {
-                Items = obj.GetArray("items", SpellingResult.Parse),
-                TotalItems = obj.GetInt32("total_items"),
-                TotalPages = obj.GetInt32("total_pages"),
-                Links = obj.GetObject("_links", LinkCollection.Parse),
-                Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse)
-            };
+        public static SpellingCollection Parse(JObject obj) {
+            return obj == null ? null : new SpellingCollection(obj);
         }
 
         #endregion
 
-        public class LinkCollection : SocialJsonObject {
+        public class LinkCollection : SiteimproveObject {
 
             #region Properties
 
@@ -60,25 +59,24 @@ namespace Skybrud.Siteimprove.Objects.QualityAssurance.Spelling.Overview {
 
             #region Constructor
 
-            private LinkCollection(JsonObject obj) : base(obj) { }
+            private LinkCollection(JObject obj) : base(obj) {
+                Previous = obj.GetString("prev");
+                Next = obj.GetString("next");
+            }
 
             #endregion
 
             #region Static methods
 
-            public static LinkCollection Parse(JsonObject obj) {
-                if (obj == null) return null;
-                return new LinkCollection(obj) {
-                    Previous = obj.GetString("prev"),
-                    Next = obj.GetString("next")
-                };
+            public static LinkCollection Parse(JObject obj) {
+                return obj == null ? null : new LinkCollection(obj);
             }
 
             #endregion
 
         }
 
-        public class SiteimproveLinkCollection : SocialJsonObject {
+        public class SiteimproveLinkCollection : SiteimproveObject {
 
             #region Properties
 
@@ -89,17 +87,16 @@ namespace Skybrud.Siteimprove.Objects.QualityAssurance.Spelling.Overview {
 
             #region Constructor
 
-            private SiteimproveLinkCollection(JsonObject obj) : base(obj) { }
+            private SiteimproveLinkCollection(JObject obj) : base(obj) {
+                WebApp = obj.GetString("webapp");
+            }
 
             #endregion
 
             #region Static methods
 
-            public static SiteimproveLinkCollection Parse(JsonObject obj) {
-                if (obj == null) return null;
-                return new SiteimproveLinkCollection(obj) {
-                    WebApp = obj.GetString("webapp")
-                };
+            public static SiteimproveLinkCollection Parse(JObject obj) {
+                return obj == null ? null : new SiteimproveLinkCollection(obj);
             }
 
             #endregion

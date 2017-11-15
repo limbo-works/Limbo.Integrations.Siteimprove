@@ -20,7 +20,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// The Siteimprove API enforces rate limiting. See the API documentation for further information.
         /// </summary>
         /// <see cref="http://developer.siteimprove.com/v1/api-guidelines/" />
-        public SiteimproveRateLimiting RateLimiting { get; private set; }
+        public SiteimproveRateLimiting RateLimiting { get; }
 
         #endregion
 
@@ -31,11 +31,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         protected SiteimproveResponse(SocialHttpResponse response) : base(response) {
-            RateLimiting = new SiteimproveRateLimiting {
-                Limit = Int32.Parse(response.Headers["X-Rate-Limit"]),
-                Remaining = Int32.Parse(response.Headers["X-Rate-Remaining"]),
-                Reset = Int32.Parse(response.Headers["X-Rate-Reset"].Split(' ')[0])
-            };
+            RateLimiting = new SiteimproveRateLimiting(response);
         }
 
         #endregion
@@ -43,7 +39,7 @@ namespace Skybrud.Siteimprove.Responses {
         #region Static methods
 
         /// <summary>
-        /// Validates the specified <code>response</code>.
+        /// Validates the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be validated.</param>
         public static void ValidateResponse(SocialHttpResponse response) {
@@ -65,7 +61,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="json">The JSON string to be parsed.</param>
         /// <returns>Returns an instance of <code>JObject</code> parsed from the specified <code>json</code> string.</returns>
         protected static JObject ParseJsonObject(string json) {
-            return JsonHelpers.ParseJsonObject(json);
+            return JsonUtils.ParseJsonObject(json);
         }
 
         /// <summary>
@@ -76,7 +72,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="func">A callback function/method used for converting an instance of <code>JObject</code> into an instance of <code>T</code>.</param>
         /// <returns>Returns an instance of <code>T</code> parsed from the specified <code>json</code> string.</returns>
         protected static T ParseJsonObject<T>(string json, Func<JObject, T> func) {
-            return JsonHelpers.ParseJsonObject(json, func);
+            return JsonUtils.ParseJsonObject(json, func);
         }
 
         /// <summary>
@@ -85,7 +81,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="json">The JSON string to be parsed.</param>
         /// <returns>Returns an instance of <code>JArray</code> parsed from the specified <code>json</code> string.</returns>
         protected static JArray ParseJsonArray(string json) {
-            return JsonHelpers.ParseJsonArray(json);
+            return JsonUtils.ParseJsonArray(json);
         }
 
         /// <summary>
@@ -95,7 +91,7 @@ namespace Skybrud.Siteimprove.Responses {
         /// <param name="func">A callback function/method used for converting an instance of <code>JObject</code> into an instance of <code>T</code>.</param>
         /// <returns>Returns an array of <code>T</code> parsed from the specified <code>json</code> string.</returns>
         protected static T[] ParseJsonArray<T>(string json, Func<JObject, T> func) {
-            return JsonHelpers.ParseJsonArray(json, func);
+            return JsonUtils.ParseJsonArray(json, func);
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Raw;
 using Skybrud.Siteimprove.Options.QualityAssurance.BrokenLinks;
+using Skybrud.Siteimprove.Responses.QualityAssurance;
 using Skybrud.Siteimprove.Responses.QualityAssurance.BrokenLinks;
 
 namespace Skybrud.Siteimprove.Endpoints {
@@ -11,18 +12,16 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveQualityAssuranceRawEndpoint Raw {
-            get { return Service.Client.QualityAssurance; }
-        }
+        public SiteimproveQualityAssuranceRawEndpoint Raw => Service.Client.QualityAssurance;
 
-        public SiteimproveBrokenLinksEndpoint BrokenLinks { get; private set; }
+        public SiteimproveBrokenLinksEndpoint BrokenLinks { get; }
 
-        public SiteimproveSpellingEndpoint Spelling { get; private set; }
+        public SiteimproveSpellingEndpoint Spelling { get; }
 
         #endregion
 

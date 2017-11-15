@@ -7,21 +7,21 @@ namespace Skybrud.Siteimprove.Objects.QualityAssurance {
 
         #region Properties
 
-        public int BrokenLinks { get; private set; }
+        public int BrokenLinks { get; }
 
-        public int ClicksOnBrokenLinks { get; private set; }
+        public int ClicksOnBrokenLinks { get; }
 
-        public int Misspellings { get; private set; }
+        public int Misspellings { get; }
 
-        public int Pages { get; private set; }
+        public int Pages { get; }
 
-        public int PagesAffectedByBrokenLinks { get; private set; }
+        public int PagesAffectedByBrokenLinks { get; }
 
-        public int PagesAffectedByMisspellings { get; private set; }
+        public int PagesAffectedByMisspellings { get; }
 
-        public int PotentialMisspellings { get; private set; }
+        public int PotentialMisspellings { get; }
 
-        public string WebApp { get; private set; }
+        public string WebApp { get; }
 
         #endregion
 

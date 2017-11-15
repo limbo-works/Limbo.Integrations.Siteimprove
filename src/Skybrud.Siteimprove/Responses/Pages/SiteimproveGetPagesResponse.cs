@@ -1,5 +1,6 @@
 ﻿using System;
-using Skybrud.Siteimprove.Objects.Pages;
+using Skybrud.Siteimprove.Objects.Content;
+using Skybrud.Siteimprove.Objects.Content.Pages;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Siteimprove.Responses.Pages {

@@ -2,7 +2,7 @@
 using Skybrud.Siteimprove.Objects.QualityAssurance;
 using Skybrud.Social.Http;
 
-namespace Skybrud.Siteimprove.Responses.QualityAssurance.BrokenLinks {
+namespace Skybrud.Siteimprove.Responses.QualityAssurance {
     
     public class SiteimproveGetQualityAssuranceSummaryResponse : SiteimproveResponse<QualityAssuranceSummary> {
 
@@ -23,7 +23,7 @@ namespace Skybrud.Siteimprove.Responses.QualityAssurance.BrokenLinks {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>response</code> into an instance of <see cref="SiteimproveGetQualityAssuranceSummaryResponse"/>.
+        /// Parses the specified <paramref name="response"/> into an instance of <see cref="SiteimproveGetQualityAssuranceSummaryResponse"/>.
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveGetQualityAssuranceSummaryResponse"/>.</returns>

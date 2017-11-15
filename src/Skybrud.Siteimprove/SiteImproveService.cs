@@ -14,7 +14,7 @@ namespace Skybrud.Siteimprove {
 
         public SiteimproveSitesEndpoint Sites { get; private set; }
 
-        public SiteimprovePagesEndpoint Pages { get; private set; }
+        public SiteimproveContentEndpoint Content { get; private set; }
 
         public SiteimproveAccessibilityEndpoint Accessibility { get; private set; }
 
@@ -28,7 +28,7 @@ namespace Skybrud.Siteimprove {
 
         private SiteimproveService() {
             Sites = new SiteimproveSitesEndpoint(this);
-            Pages = new SiteimprovePagesEndpoint(this);
+            Content = new SiteimproveContentEndpoint(this);
             Accessibility = new SiteimproveAccessibilityEndpoint(this);
             Analytics = new SiteimproveAnalyticsEndpoint(this);
             QualityAssurance = new SiteimproveQualityAssuranceEndpoint(this);

@@ -6,7 +6,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
 
         #region Properties
 
-        public SiteimproveClient Client { get; private set; }
+        public SiteimproveClient Client { get; }
 
         #endregion
 
@@ -47,7 +47,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
             SocialQueryString query = new SocialQueryString();
             if (page > 0) query.Add("page", page);
             if (pageSize > 0) query.Add("page_size", pageSize);
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrl + "sites/" + siteId + "/quality_assurance/spelling", query);
+            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/spelling/history", query);
         }
 
         #endregion

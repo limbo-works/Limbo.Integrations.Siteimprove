@@ -12,14 +12,12 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveSitesRawEndpoint Raw {
-            get { return Service.Client.Sites; }
-        }
+        public SiteimproveSitesRawEndpoint Raw => Service.Client.Sites;
 
         #endregion
 

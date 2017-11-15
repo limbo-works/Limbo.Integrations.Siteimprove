@@ -1,6 +1,7 @@
 ﻿using Skybrud.Siteimprove.Endpoints.Raw;
 using Skybrud.Siteimprove.Objects.QualityAssurance.Spelling.Overview;
 using Skybrud.Siteimprove.Responses;
+using Skybrud.Siteimprove.Responses.QualityAssurance.Spelling;
 
 namespace Skybrud.Siteimprove.Endpoints {
 
@@ -11,14 +12,12 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveSpellingRawEndpoint Raw {
-            get { return Service.Client.QualityAssurance.Spelling; }
-        }
+        public SiteimproveSpellingRawEndpoint Raw => Service.Client.QualityAssurance.Spelling;
 
         #endregion
 
@@ -56,7 +55,7 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
         public SiteimproveResponse<SpellingCollection> GetOverview(int siteId, int page, int pageSize) {
-            return SiteimproveHelpers.ParseResponse(Raw.GetOverview(siteId, page, pageSize), SpellingCollection.Parse);
+            return SiteimproveGetSpellingResponse.ParseResponse(Raw.GetOverview(siteId, page, pageSize));
         }
 
         #endregion

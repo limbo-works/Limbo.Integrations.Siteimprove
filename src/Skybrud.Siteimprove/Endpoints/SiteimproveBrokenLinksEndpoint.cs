@@ -1,7 +1,6 @@
 ﻿using System;
 using Skybrud.Siteimprove.Endpoints.Raw;
 using Skybrud.Siteimprove.Objects.QualityAssurance.BrokenLinks.Overview;
-using Skybrud.Siteimprove.Options.QualityAssurance.BrokenLinks;
 using Skybrud.Siteimprove.Responses;
 using Skybrud.Siteimprove.Responses.QualityAssurance.BrokenLinks;
 using Skybrud.Social.Http;
@@ -15,14 +14,12 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveBrokenLinksRawEndpoint Raw {
-            get { return Service.Client.QualityAssurance.BrokenLinks; }
-        }
+        public SiteimproveBrokenLinksRawEndpoint Raw => Service.Client.QualityAssurance.BrokenLinks;
 
         #endregion
 
@@ -60,7 +57,7 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
         public SiteimproveResponse<BrokenLinksCollection> GetOverview(int siteId, int page, int pageSize) {
-            return SiteimproveHelpers.ParseResponse(Raw.GetOverview(siteId, page, pageSize), BrokenLinksCollection.Parse);
+            return SiteimproveGetBrokenLinksResponse.ParseResponse(Raw.GetOverview(siteId, page, pageSize));
         }
 
         /// <summary>
