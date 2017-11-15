@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions.JObject;
+using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Siteimprove.Objects.Content.Pages {
     
@@ -38,4 +38,5 @@ namespace Skybrud.Siteimprove.Objects.Content.Pages {
         #endregion
 
     }
+
 }

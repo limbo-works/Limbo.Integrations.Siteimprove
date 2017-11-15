@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions.JObject;
+using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Siteimprove.Objects.Content.Pages {
     
@@ -35,8 +35,8 @@ namespace Skybrud.Siteimprove.Objects.Content.Pages {
         /// <summary>
         /// Gets a summary of data for the page.
         /// </summary>
-        public SiteimprovePageSummary Summary { get; private set; }
-        
+        public SiteimprovePageSummary Summary { get; }
+
         public SiteimprovePageWebLinkCollection WebLinks { get; }
 
         #endregion

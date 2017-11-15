@@ -11,15 +11,6 @@ namespace Skybrud.Siteimprove.Objects.QualityAssurance.BrokenLinks.Overview {
 
         #region Properties
 
-
-
-
-
-
-
-
-
-
         /// <summary>
         /// Gets the amount of broken links.
         /// </summary>
