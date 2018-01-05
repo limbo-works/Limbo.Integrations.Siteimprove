@@ -9,7 +9,7 @@ namespace Skybrud.Siteimprove.Objects.Sites {
         #region Properties
         
         [JsonProperty("id")]
-        public int Id { get; private set; }
+        public long Id { get; private set; }
         
         [JsonProperty("site_name")]
         public string Name { get; private set; }
@@ -34,7 +34,7 @@ namespace Skybrud.Siteimprove.Objects.Sites {
         #region Constructor
 
         protected SiteimproveSiteSummary(JObject obj) : base(obj) {
-            Id = obj.GetInt32("id");
+            Id = obj.GetInt64("id");
             Name = obj.GetString("site_name");
             Url = obj.GetString("url");
             Pages = obj.GetInt32("pages");
