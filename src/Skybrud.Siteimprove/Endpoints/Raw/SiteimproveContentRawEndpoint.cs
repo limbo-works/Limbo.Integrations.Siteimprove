@@ -32,7 +32,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Content/get_sites_site_id_content_pages_page_id</cref>
         /// </see>
-        public SocialHttpResponse GetPage(int siteId, long pageId) {
+        public SocialHttpResponse GetPage(long siteId, long pageId) {
             if (siteId <= 0) throw new ArgumentException("Argument siteId must be specified", "siteId");
             if (pageId <= 0) throw new ArgumentException("Argument pageId must be specified", "pageId");
             return Client.DoHttpGetRequest($"/v2/sites/{siteId}/content/pages/{pageId}");
@@ -46,7 +46,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Content/get_sites_site_id_content_pages</cref>
         /// </see>
-        public SocialHttpResponse GetPages(int siteId) {
+        public SocialHttpResponse GetPages(long siteId) {
             return GetPages(siteId, 0, 0);
         }
 
@@ -60,7 +60,7 @@ namespace Skybrud.Siteimprove.Endpoints.Raw {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Content/get_sites_site_id_content_pages</cref>
         /// </see>
-        public SocialHttpResponse GetPages(int siteId, int page, int pageSize) {
+        public SocialHttpResponse GetPages(long siteId, int page, int pageSize) {
             return GetPages(new SiteimproveGetPagesOptions {
                 SiteId = siteId,
                 Page = page,

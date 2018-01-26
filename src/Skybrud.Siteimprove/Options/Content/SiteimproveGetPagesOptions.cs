@@ -11,7 +11,7 @@ namespace Skybrud.Siteimprove.Options.Content {
         /// <summary>
         /// Gets or sets the ID of the site.
         /// </summary>
-        public int SiteId { get; set; }
+        public long SiteId { get; set; }
 
         /// <summary>
         /// Gets or sets the page to retrive. If set to <code>0</code> (default), the parameter will not be send to the

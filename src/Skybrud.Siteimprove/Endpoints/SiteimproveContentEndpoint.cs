@@ -36,7 +36,7 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageId">The ID of the page.</param>
         /// <returns>An instance of <see cref="SiteimproveGetPageResponse"/> representing the response.</returns>
-        public SiteimproveGetPageResponse GetPage(int siteId, long pageId) {
+        public SiteimproveGetPageResponse GetPage(long siteId, long pageId) {
             return SiteimproveGetPageResponse.ParseResponse(Raw.GetPage(siteId, pageId));
         }
 
@@ -45,7 +45,7 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>An instance of <see cref="SiteimproveGetPagesResponse"/> representing the response.</returns>
-        public SiteimproveGetPagesResponse GetPages(int siteId) {
+        public SiteimproveGetPagesResponse GetPages(long siteId) {
             return SiteimproveGetPagesResponse.ParseResponse(Raw.GetPages(siteId));
         }
 
@@ -56,7 +56,7 @@ namespace Skybrud.Siteimprove.Endpoints {
         /// <param name="page">The page to retrieve.</param>
         /// <param name="pageSize">The number of item on each page.</param>
         /// <returns>An instance of <see cref="SiteimproveGetPagesResponse"/> representing the response.</returns>
-        public SiteimproveGetPagesResponse GetPages(int siteId, int page, int pageSize) {
+        public SiteimproveGetPagesResponse GetPages(long siteId, int page, int pageSize) {
             return SiteimproveGetPagesResponse.ParseResponse(Raw.GetPages(siteId, page, pageSize));
         }
 

@@ -12,7 +12,7 @@ namespace Skybrud.Siteimprove.Options.Analytics {
         /// <summary>
         /// Gets or sets the ID of the site.
         /// </summary>
-        public int SiteId { get; set; }
+        public long SiteId { get; set; }
 
         /// <summary>
         /// Gets or sets the page number to show when more than one page in paged output.
@@ -57,7 +57,7 @@ namespace Skybrud.Siteimprove.Options.Analytics {
         /// Initializes a new instance with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveAnalyticsGetPeriodOptions(int siteId) {
+        public SiteimproveAnalyticsGetPeriodOptions(long siteId) {
             SiteId = siteId;
         }
 
@@ -67,7 +67,7 @@ namespace Skybrud.Siteimprove.Options.Analytics {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items per page.</param>
-        public SiteimproveAnalyticsGetPeriodOptions(int siteId, int page, int pageSize) {
+        public SiteimproveAnalyticsGetPeriodOptions(long siteId, int page, int pageSize) {
             SiteId = siteId;
             Page = page;
             PageSize = pageSize;
