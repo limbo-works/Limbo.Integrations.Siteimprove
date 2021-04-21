@@ -1,10 +1,11 @@
 ﻿using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks {
 
-    public class SiteimproveGetQualityAssuranceSummaryOptions : IGetOptions {
+    public class SiteimproveGetQualityAssuranceSummaryOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -48,16 +49,25 @@ namespace Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks 
         #endregion
 
         #region Member methods
-
-        public SocialQueryString GetQueryString() {
-            if (SiteId == 0) throw new PropertyNotSetException("SiteId");
-            SocialQueryString query = new SocialQueryString();
+        
+        public IHttpRequest GetRequest() {
+            
+            if (SiteId == 0) throw new PropertyNotSetException(nameof(SiteId));
+            
+            IHttpQueryString query = new HttpQueryString();
+            
+            // TODO: Is this necessary? The site ID is already a part of the URL
             query.Add("site_id", SiteId);
+            
             if (GroupId > 0) query.Add("group_id", GroupId);
-            return query;
+
+            // Initialize a new request
+            return HttpRequest.Get($"/v2/sites/{SiteId}/quality_assurance/overview/summary", query);
+
         }
 
         #endregion
+
 
     }
 

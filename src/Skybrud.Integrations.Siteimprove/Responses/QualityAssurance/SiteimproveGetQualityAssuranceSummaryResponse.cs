@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.QualityAssurance;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance {
     
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance {
 
         #region Constructors
 
-        private SiteimproveGetQualityAssuranceSummaryResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveGetQualityAssuranceSummaryResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveGetQualityAssuranceSummaryResponse"/>.</returns>
-        public static SiteimproveGetQualityAssuranceSummaryResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveGetQualityAssuranceSummaryResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");

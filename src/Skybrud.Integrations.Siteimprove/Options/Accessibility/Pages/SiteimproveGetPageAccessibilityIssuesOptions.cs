@@ -1,10 +1,11 @@
-﻿using System;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
+﻿using Skybrud.Essentials.Common;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Integrations.Siteimprove.Options.Accessibility.Pages {
     
-    public class SiteimproveGetPageAccessibilityIssuesOptions : IGetOptions {
+    public class SiteimproveGetPageAccessibilityIssuesOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -40,12 +41,20 @@ namespace Skybrud.Integrations.Siteimprove.Options.Accessibility.Pages {
 
         #region Member methods
 
-        public SocialQueryString GetQueryString() {
-            SocialQueryString query = new SocialQueryString();
+        public IHttpRequest GetRequest() {
+
+            if (SiteId == 0) throw new PropertyNotSetException(nameof(SiteId));
+            if (PageId == 0) throw new PropertyNotSetException(nameof(PageId));
+
+            // Construct the query string
+            IHttpQueryString query = new HttpQueryString();
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
-            if (!String.IsNullOrWhiteSpace(Query)) query.Add("query", Query);
-            return query;
+            if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", Query);
+
+            // Initialize a new request
+            return HttpRequest.Get($"/v2/sites/{SiteId}/accessibility/pages/{PageId}/issues", query);
+
         }
 
         #endregion

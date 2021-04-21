@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Net;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Exceptions {
 
     public class SiteimproveHttpException : Exception {
 
-        public SocialHttpResponse Response { get; private set; }
+        public IHttpResponse Response { get; }
 
-        public HttpStatusCode StatusCode { get; private set; }
+        public HttpStatusCode StatusCode { get; }
 
-        public string Type { get; private set; }
-
-        public SiteimproveHttpException(SocialHttpResponse response) : base("Invalid response received from the Siteimprove API (Status: " + ((int) response.StatusCode) + ")") {
+        public SiteimproveHttpException(IHttpResponse response) : base($"Invalid response received from the Siteimprove API (Status: {(int) response.StatusCode})") {
             Response = response;
             StatusCode = response.StatusCode;
         }

@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.Accessibility.Pages;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Accessibility.Pages {
 
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Accessibility.Pages {
 
         #region Constructors
 
-        private SiteimproveGetPageAccessibilityIssuesResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveGetPageAccessibilityIssuesResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Accessibility.Pages {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveGetPageAccessibilityIssuesResponse"/>.</returns>
-        public static SiteimproveGetPageAccessibilityIssuesResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveGetPageAccessibilityIssuesResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");

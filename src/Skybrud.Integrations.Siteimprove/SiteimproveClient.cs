@@ -2,14 +2,14 @@
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Net;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Client;
 using Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw;
 using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
 
 namespace Skybrud.Integrations.Siteimprove {
     
-    public class SiteimproveClient {
+    public class SiteimproveClient : HttpClient {
 
         public const string ApiUrl = "https://api.siteimprove.com/v1/";
         public const string ApiUrlV2 = "https://api.siteimprove.com/v2/";
@@ -69,64 +69,18 @@ namespace Skybrud.Integrations.Siteimprove {
         #endregion
 
         #region Member methods
-
-        /// <summary>
-        /// Make a HTTP GET request to the specified URL.
-        /// </summary>
-        /// <param name="url">The URL of the request.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse DoHttpGetRequest(string url) {
-            return DoHttpGetRequest(url, default(NameValueCollection));
-        }
-
-        /// <summary>
-        /// Make a HTTP GET request to the specified URL.
-        /// </summary>
-        /// <param name="url">The URL of the request.</param>
-        /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse DoHttpGetRequest(string url, IGetOptions options) {
-            if (String.IsNullOrWhiteSpace(url)) throw new ArgumentNullException("url");
-            if (options == null) throw new ArgumentNullException("options");
-            return DoHttpGetRequest(url, options.GetQueryString());
-        }
-
-        /// <summary>
-        /// Make a HTTP GET request to the specified URL.
-        /// </summary>
-        /// <param name="url">The URL of the request.</param>
-        /// <param name="query">The query string of the request.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse DoHttpGetRequest(string url, NameValueCollection query) {
-
-            // Some input validation
-            if (String.IsNullOrWhiteSpace(url)) throw new ArgumentNullException("url");
+        
+        protected override void PrepareHttpRequest(IHttpRequest request) {
 
             // Append the scheme and host (if not already specified)
-            if (url.StartsWith("/")) url = "https://api.siteimprove.com" + url;
+            if (request.Url.StartsWith("/")) request.Url = "https://api.siteimprove.com" + request.Url;
 
-            // Intitialize the request
-            SocialHttpRequest request = new SocialHttpRequest {
-                Method = "GET",
-                Url = url,
-                Accept = "application/json",
-                QueryString = query,
-                Credentials = Crendentials
-            };
+            // Append the accept header
+            if (string.IsNullOrWhiteSpace(request.Accept)) request.Accept = "application/json";
 
-            // Make the call to the API
-            return request.GetResponse();
+            // Set the credentials
+            if (Crendentials != null) request.Credentials = Crendentials;
 
-        }
-
-        /// <summary>
-        /// Make a HTTP GET request to the specified URL.
-        /// </summary>
-        /// <param name="url">The URL of the request.</param>
-        /// <param name="query">The query string of the request.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse DoHttpGetRequest(string url, SocialQueryString query) {
-            return DoHttpGetRequest(url, query == null ? null : query.NameValueCollection);
         }
 
         #endregion

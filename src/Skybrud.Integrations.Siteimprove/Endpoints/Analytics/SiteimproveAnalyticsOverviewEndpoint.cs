@@ -1,5 +1,5 @@
 ﻿using Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw;
-using Skybrud.Integrations.Siteimprove.Options.Analytics;
+using Skybrud.Integrations.Siteimprove.Options.Analytics.Overview;
 using Skybrud.Integrations.Siteimprove.Responses.Analytics.Overview;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
@@ -52,7 +52,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetHistoryResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetHistoryResponse GetHistory(SiteimproveAnalyticsGetPeriodOptions options) {
+        public SiteimproveAnalyticsGetHistoryResponse GetHistory(SiteimproveGetHistoryOptions options) {
             return SiteimproveAnalyticsGetHistoryResponse.ParseResponse(Raw.GetHistory(options));
         }
 
@@ -70,7 +70,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetSummaryResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetSummaryResponse GetSummary(SiteimproveAnalyticsGetPeriodOptions options) {
+        public SiteimproveAnalyticsGetSummaryResponse GetSummary(SiteimproveGetSummaryOverviewOptions options) {
             return SiteimproveAnalyticsGetSummaryResponse.ParseResponse(Raw.GetSummary(options));
         }
 

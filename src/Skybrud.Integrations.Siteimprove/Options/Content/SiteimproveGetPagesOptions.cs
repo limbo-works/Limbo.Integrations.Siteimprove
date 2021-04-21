@@ -1,10 +1,11 @@
-﻿using System;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
+﻿using Skybrud.Essentials.Common;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Integrations.Siteimprove.Options.Content {
     
-    public class SiteimproveGetPagesOptions : IGetOptions {
+    public class SiteimproveGetPagesOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -35,12 +36,18 @@ namespace Skybrud.Integrations.Siteimprove.Options.Content {
 
         #region Member methods
 
-        public SocialQueryString GetQueryString() {
-            SocialQueryString query = new SocialQueryString();
+        public IHttpRequest GetRequest() {
+
+            if (SiteId == 0) throw new PropertyNotSetException(nameof(SiteId));
+
+            // Construct the query string
+            IHttpQueryString query = new HttpQueryString();
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
-            if (!String.IsNullOrEmpty(Url)) query.Add("url", Url);
-            return query;
+
+            // Initialize a new request
+            return HttpRequest.Get($"/v2/sites/{SiteId}/content/pages", query);
+
         }
 
         #endregion

@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.Content.Pages;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Pages {
     
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Pages {
 
         #region Constructors
 
-        private SiteimproveGetPagesResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveGetPagesResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Pages {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveGetPagesResponse"/>.</returns>
-        public static SiteimproveGetPagesResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveGetPagesResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");

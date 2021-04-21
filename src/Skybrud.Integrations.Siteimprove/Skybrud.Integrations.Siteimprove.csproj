@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.14" />
-    <PackageReference Include="Skybrud.Social" Version="0.9.6" />
   </ItemGroup>
 
   <ItemGroup>

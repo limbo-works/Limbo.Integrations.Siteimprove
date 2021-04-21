@@ -1,7 +1,6 @@
 ﻿using System;
-using Skybrud.Essentials.Common;
-using Skybrud.Integrations.Siteimprove.Options.Analytics;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
+using Skybrud.Integrations.Siteimprove.Options.Analytics.Behavior;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
     
@@ -30,20 +29,19 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
         /// Gets a list with historical data for the average duration a user spends on the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetVisitLengthHistory(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/behavior/visit_length/history");
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetVisitLengthHistory(int siteId) {
+            return GetVisitLengthHistory(new SiteimproveGetVisitLengthHistoryOptions(siteId));
         }
 
         /// <summary>
         /// Gets a list with historical data for the average duration a user spends on the site matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetVisitLengthHistory(SiteimproveAnalyticsGetPeriodOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/behavior/visit_length/history", options);
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetVisitLengthHistory(SiteimproveGetVisitLengthHistoryOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
         #endregion

@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Integrations.Siteimprove.Models.Common.Aggregations;
-using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Content {
     

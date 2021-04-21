@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
 
@@ -24,7 +25,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// Gets a overview for misspellings and potential misspellings.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SocialHttpResponse GetOverview(int siteId) {
+        public IHttpResponse GetOverview(int siteId) {
             return GetOverview(siteId, 0, 0);
         }
 
@@ -33,7 +34,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SocialHttpResponse GetOverview(int siteId, int pageSize) {
+        public IHttpResponse GetOverview(int siteId, int pageSize) {
             return GetOverview(siteId, 0, pageSize);
         }
 
@@ -43,11 +44,11 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SocialHttpResponse GetOverview(int siteId, int page, int pageSize) {
-            SocialQueryString query = new SocialQueryString();
+        public IHttpResponse GetOverview(int siteId, int page, int pageSize) {
+            IHttpQueryString query = new HttpQueryString();
             if (page > 0) query.Add("page", page);
             if (pageSize > 0) query.Add("page_size", pageSize);
-            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/spelling/history", query);
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/spelling/history", query);
         }
 
         #endregion

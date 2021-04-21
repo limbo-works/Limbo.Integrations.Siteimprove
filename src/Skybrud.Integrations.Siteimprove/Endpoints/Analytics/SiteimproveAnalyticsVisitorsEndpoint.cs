@@ -1,5 +1,5 @@
 ﻿using Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw;
-using Skybrud.Integrations.Siteimprove.Options.Analytics;
+using Skybrud.Integrations.Siteimprove.Options.Analytics.Visitors;
 using Skybrud.Integrations.Siteimprove.Responses.Analytics.Visitors;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
@@ -50,7 +50,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
             return SiteimproveGetDevicesResponse.ParseResponse(Raw.GetDevices(siteId, page, pageSize, groupId, filterId, period));
         }
 
-        public SiteimproveGetDevicesResponse GetDevices(SiteimproveAnalyticsGetPeriodOptions options) {
+        public SiteimproveGetDevicesResponse GetDevices(SiteimproveGetDevicesOptions options) {
             return SiteimproveGetDevicesResponse.ParseResponse(Raw.GetDevices(options));
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Models {
     
@@ -11,15 +10,11 @@ namespace Skybrud.Integrations.Siteimprove.Models {
 
         public int Reset { get; internal set; }
 
-        public SiteimproveRateLimiting(SocialHttpResponse response) {
+        public SiteimproveRateLimiting(IHttpResponse response) {
 
-            int limit;
-            int remaining;
-            int reset;
-
-            Int32.TryParse(response.Headers["X-Rate-Limit"], out limit);
-            Int32.TryParse(response.Headers["X-Rate-Remaining"], out remaining);
-            Int32.TryParse(response.Headers["X-Rate-Reset"], out reset);
+            int.TryParse(response.Headers["X-Rate-Limit"], out int limit);
+            int.TryParse(response.Headers["X-Rate-Remaining"], out int remaining);
+            int.TryParse(response.Headers["X-Rate-Reset"], out int reset);
 
             Limit = limit;
             Remaining = remaining;

@@ -1,7 +1,6 @@
 ﻿using System;
-using Skybrud.Essentials.Common;
-using Skybrud.Integrations.Siteimprove.Options.Analytics;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
+using Skybrud.Integrations.Siteimprove.Options.Analytics.Overview;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
     
@@ -30,40 +29,38 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
         /// Gets a list of historical data points showing the most common statistics for the site with specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetHistory(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/overview/history");
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetHistory(int siteId) {
+            return GetHistory(new SiteimproveGetHistoryOptions(siteId));
         }
 
         /// <summary>
         /// Gets a list of historical data points showing the most common statistics for the matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetHistory(SiteimproveAnalyticsGetPeriodOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/overview/history", options);
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetHistory(SiteimproveGetHistoryOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
         
         /// <summary>
         /// Gets a summary with the most common statistics for the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetSummary(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/overview/summary");
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetSummary(int siteId) {
+            return GetSummary(new SiteimproveGetSummaryOverviewOptions(siteId));
         }
 
         /// <summary>
         /// Gets a summary with the most common statistics for the site matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetSummary(SiteimproveAnalyticsGetPeriodOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/overview/summary", options);
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetSummary(SiteimproveGetSummaryOverviewOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
         #endregion

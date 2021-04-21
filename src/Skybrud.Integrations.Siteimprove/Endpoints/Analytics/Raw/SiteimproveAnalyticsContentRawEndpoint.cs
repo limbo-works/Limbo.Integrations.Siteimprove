@@ -1,8 +1,6 @@
 ﻿using System;
-using Skybrud.Essentials.Common;
-using Skybrud.Integrations.Siteimprove.Options.Analytics;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Options.Analytics.Content;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
     
@@ -31,65 +29,62 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
         /// Gets a list of the least popular pages for the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetLeastPopularPages(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/content/least_popular_pages");
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetLeastPopularPages(int siteId) {
+            return GetLeastPopularPages(new SiteimproveGetLeastPopularPagesOptions(siteId));
         }
 
         /// <summary>
         /// Gets a list of the least popular pages for the site and pages matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetLeastPopularPages(SiteimproveAnalyticsGetPeriodOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/least_popular_pages", options);
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetLeastPopularPages(SiteimproveGetLeastPopularPagesOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
         /// <summary>
         /// Gets a list of the most popular pages for the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetMostPopularPages(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/content/most_popular_pages");
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetMostPopularPages(int siteId) {
+            return GetMostPopularPages(new SiteimproveGetMostPopularPagesOptions(siteId));
         }
 
         /// <summary>
         /// Gets a list of the most popular pages for the site and pages matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
-        public SocialHttpResponse GetMostPopularPages(SiteimproveAnalyticsGetPeriodOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/most_popular_pages", options);
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        public IHttpResponse GetMostPopularPages(SiteimproveGetMostPopularPagesOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
+        /// <summary>
+        /// Getsa list of pages of the site with the specified <paramref name="siteId"/>.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Analytics/get_sites_site_id_analytics_content_all_pages</cref>
         /// </see>
-        public SocialHttpResponse GetAllPages(int siteId) {
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + siteId + "/analytics/content/all_pages");
+        public IHttpResponse GetAllPages(int siteId) {
+            return GetAllPages(new SiteimproveAnalyticsGetAllPagesOptions(siteId));
         }
 
+        /// <summary>
+        /// Getsa list of pages of the site matching the specified <paramref name="options"/>..
+        /// </summary>
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Analytics/get_sites_site_id_analytics_content_all_pages</cref>
         /// </see>
-        public SocialHttpResponse GetAllPages(SiteimproveAnalyticsGetPeriodOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/all_pages", options);
-        }
-
-        /// <see>
-        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Analytics/get_sites_site_id_analytics_content_all_pages</cref>
-        /// </see>
-        public SocialHttpResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/content/all_pages", options);
+        public IHttpResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
         #endregion

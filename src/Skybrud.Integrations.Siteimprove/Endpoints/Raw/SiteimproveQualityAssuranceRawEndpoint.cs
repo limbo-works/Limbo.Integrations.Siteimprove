@@ -1,7 +1,6 @@
 ﻿using System;
-using Skybrud.Essentials.Common;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
 
@@ -29,18 +28,17 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
 
         #region Member methods
 
-        public SocialHttpResponse GetSummary(long siteId) {
+        public IHttpResponse GetSummary(long siteId) {
             return GetSummary(new SiteimproveGetQualityAssuranceSummaryOptions(siteId));
         }
 
-        public SocialHttpResponse GetSummary(long siteId, long groupId) {
+        public IHttpResponse GetSummary(long siteId, long groupId) {
             return GetSummary(new SiteimproveGetQualityAssuranceSummaryOptions(siteId, groupId));
         }
 
-        public SocialHttpResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest($"/v2/sites/{options.SiteId}/quality_assurance/overview/summary", options);
+        public IHttpResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
         #endregion

@@ -1,5 +1,5 @@
 ﻿using Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw;
-using Skybrud.Integrations.Siteimprove.Options.Analytics;
+using Skybrud.Integrations.Siteimprove.Options.Analytics.Behavior;
 using Skybrud.Integrations.Siteimprove.Responses.Analytics.Behavior;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
@@ -52,7 +52,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsVisitLengthResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(SiteimproveAnalyticsGetPeriodOptions options) {
+        public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(SiteimproveGetVisitLengthHistoryOptions options) {
             return SiteimproveAnalyticsVisitLengthResponse.ParseResponse(Raw.GetVisitLengthHistory(options));
         }
 

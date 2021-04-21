@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.Sites;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Sites {
     
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Sites {
 
         #region Constructors
 
-        private SiteimproveGetSiteResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveGetSiteResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Sites {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveGetSiteResponse"/>.</returns>
-        public static SiteimproveGetSiteResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveGetSiteResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");

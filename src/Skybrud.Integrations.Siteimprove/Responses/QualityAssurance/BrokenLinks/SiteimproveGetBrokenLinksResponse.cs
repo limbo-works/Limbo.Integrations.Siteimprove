@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLinks {
     
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLink
 
         #region Constructors
 
-        private SiteimproveGetBrokenLinksResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveGetBrokenLinksResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLink
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>An instance of <see cref="SiteimproveGetBrokenLinksResponse"/>.</returns>
-        public static SiteimproveGetBrokenLinksResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveGetBrokenLinksResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");

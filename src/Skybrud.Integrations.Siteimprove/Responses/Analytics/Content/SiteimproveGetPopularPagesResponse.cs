@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.Analytics.Content;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Content {
 
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Content {
 
         #region Constructors
 
-        private SiteimproveAnalyticsGetPopularPagesResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveAnalyticsGetPopularPagesResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Content {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/>.</returns>
-        public static SiteimproveAnalyticsGetPopularPagesResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveAnalyticsGetPopularPagesResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");

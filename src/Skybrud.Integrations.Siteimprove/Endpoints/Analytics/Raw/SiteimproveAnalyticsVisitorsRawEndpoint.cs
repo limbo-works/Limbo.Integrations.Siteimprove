@@ -1,7 +1,6 @@
 ﻿using System;
-using Skybrud.Essentials.Common;
-using Skybrud.Integrations.Siteimprove.Options.Analytics;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
+using Skybrud.Integrations.Siteimprove.Options.Analytics.Visitors;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
     
@@ -24,16 +23,16 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
 
         #endregion
 
-        public SocialHttpResponse GetDevices(int siteId) {
+        public IHttpResponse GetDevices(int siteId) {
             return GetDevices(siteId, 0, 0, 0, 0, null);
         }
 
-        public SocialHttpResponse GetDevices(int siteId, int page, int pageSize, string period) {
-            return GetDevices(siteId, 0, 0, 0, 0, null);
+        public IHttpResponse GetDevices(int siteId, int page, int pageSize, string period) {
+            return GetDevices(siteId, page, pageSize, 0, 0, period);
         }
 
-        public SocialHttpResponse GetDevices(int siteId, int page, int pageSize, int groupId, int filterId, string period) {
-            return GetDevices(new SiteimproveAnalyticsGetPeriodOptions {
+        public IHttpResponse GetDevices(int siteId, int page, int pageSize, int groupId, int filterId, string period) {
+            return GetDevices(new SiteimproveGetDevicesOptions {
                 SiteId = siteId,
                 Page = page,
                 PageSize = pageSize,
@@ -43,10 +42,9 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw {
             });
         }
 
-        public SocialHttpResponse GetDevices(SiteimproveAnalyticsGetPeriodOptions options) {
-            if (options == null) throw new ArgumentNullException("options");
-            if (options.SiteId == 0) throw new PropertyNotSetException("options.SiteId");
-            return Client.DoHttpGetRequest(SiteimproveClient.ApiUrlV2 + "sites/" + options.SiteId + "/analytics/visitors/devices", options);
+        public IHttpResponse GetDevices(SiteimproveGetDevicesOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
     }

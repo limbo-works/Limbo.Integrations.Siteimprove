@@ -1,13 +1,14 @@
 ﻿using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Integrations.Siteimprove.Options.Accessibility {
     
     /// <see>
     ///     <cref>https://api.siteimprove.com/v2/documentation#!/Accessibility/get_sites_site_id_accessibility_overview_summary</cref>
     /// </see>
-    public class SiteimproveGetAccessibilitySummaryOptions : IGetOptions {
+    public class SiteimproveGetAccessibilitySummaryOptions : IHttpRequestOptions {
 
         #region Properties
 
@@ -64,14 +65,19 @@ namespace Skybrud.Integrations.Siteimprove.Options.Accessibility {
 
         #region Member methods
 
-        public SocialQueryString GetQueryString() {
-            if (SiteId == 0) throw new PropertyNotSetException("SiteId");
-            SocialQueryString query = new SocialQueryString();
-            query.Add("site_id", SiteId);
+        public IHttpRequest GetRequest() {
+
+            if (SiteId == 0) throw new PropertyNotSetException(nameof(SiteId));
+
+            // Construct the query string
+            IHttpQueryString query = new HttpQueryString();
             if (GroupId > 0) query.Add("group_id", GroupId);
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
-            return query;
+
+            // Initialize a new request
+            return HttpRequest.Get($"/v2/sites/{SiteId}/accessibility/overview/summary", query);
+
         }
 
         #endregion

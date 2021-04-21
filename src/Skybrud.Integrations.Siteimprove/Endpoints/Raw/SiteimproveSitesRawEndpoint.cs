@@ -1,5 +1,5 @@
 ﻿using System.Collections.Specialized;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
 
@@ -21,25 +21,25 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
 
         #region Methods
 
-        public SocialHttpResponse GetSite(int siteId) {
-            return Client.DoHttpGetRequest("/v2/sites/" + siteId);
+        public IHttpResponse GetSite(int siteId) {
+            return Client.Get("/v2/sites/" + siteId);
         }
 
-        public SocialHttpResponse GetSites() {
+        public IHttpResponse GetSites() {
             return GetSites(0, 0);
         }
 
-        public SocialHttpResponse GetSites(int pageSize) {
+        public IHttpResponse GetSites(int pageSize) {
             return GetSites(0, pageSize);
         }
 
-        public SocialHttpResponse GetSites(int page, int pageSize) {
+        public IHttpResponse GetSites(int page, int pageSize) {
 
             NameValueCollection query = new NameValueCollection();
             if (page > 0) query.Add("page", page + "");
             if (pageSize > 0) query.Add("page_size", pageSize + "");
 
-            return Client.DoHttpGetRequest("/v2/sites", query);
+            return Client.Get("/v2/sites", query);
 
         }
 

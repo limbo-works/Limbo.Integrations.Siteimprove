@@ -1,11 +1,12 @@
 ﻿using System;
 using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Integrations.Siteimprove.Options.Analytics {
     
-    public class SiteimproveAnalyticsGetPeriodOptions : IGetOptions {
+    public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOptions {
 
         #region Properties
 
@@ -51,13 +52,13 @@ namespace Skybrud.Integrations.Siteimprove.Options.Analytics {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        public SiteimproveAnalyticsGetPeriodOptions() { }
+        protected SiteimproveAnalyticsGetPeriodOptionsNope() { }
 
         /// <summary>
         /// Initializes a new instance with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveAnalyticsGetPeriodOptions(long siteId) {
+        protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId) {
             SiteId = siteId;
         }
 
@@ -67,7 +68,7 @@ namespace Skybrud.Integrations.Siteimprove.Options.Analytics {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items per page.</param>
-        public SiteimproveAnalyticsGetPeriodOptions(long siteId, int page, int pageSize) {
+        protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId, int page, int pageSize) {
             SiteId = siteId;
             Page = page;
             PageSize = pageSize;
@@ -82,7 +83,7 @@ namespace Skybrud.Integrations.Siteimprove.Options.Analytics {
         /// </summary>
         /// <param name="day">The day.</param>
         /// <returns>Returns the options instance for method chaining.</returns>
-        public SiteimproveAnalyticsGetPeriodOptions SetPeriod(DateTime day) {
+        public SiteimproveAnalyticsGetPeriodOptionsNope SetPeriod(DateTime day) {
             Period = day.ToString("yyyyMMdd");
             return this;
         }
@@ -93,22 +94,28 @@ namespace Skybrud.Integrations.Siteimprove.Options.Analytics {
         /// <param name="from">The start date of the period.</param>
         /// <param name="to">The end date of the period.</param>
         /// <returns>Returns the options instance for method chaining.</returns>
-        public SiteimproveAnalyticsGetPeriodOptions SetPeriod(DateTime from, DateTime to) {
+        public SiteimproveAnalyticsGetPeriodOptionsNope SetPeriod(DateTime from, DateTime to) {
             Period = from.ToString("yyyyMMdd") + "_" + to.ToString("yyyyMMdd");
             return this;
         }
 
-        public virtual SocialQueryString GetQueryString() {
-            if (SiteId == 0) throw new PropertyNotSetException("SiteId");
-            SocialQueryString query = new SocialQueryString();
+
+        protected virtual IHttpQueryString GetQueryString() {
+            
+            IHttpQueryString query = new HttpQueryString();
+            
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
             if (GroupId > 0) query.Add("group_id", GroupId);
             if (FilterId > 0) query.Add("filter_id", FilterId);
             if (PageId > 0) query.Add("page_id", PageId);
-            if (!String.IsNullOrWhiteSpace(Period)) query.Add("period", Period);
+            if (!string.IsNullOrWhiteSpace(Period)) query.Add("period", Period);
+            
             return query;
+
         }
+
+        public abstract IHttpRequest GetRequest();
 
         #endregion
 

@@ -1,9 +1,9 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
 using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
 using Skybrud.Integrations.Siteimprove.Responses;
 using Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLinks;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints {
 
@@ -64,7 +64,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// Gets a list of pages with broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SocialHttpResponse GetPages(int siteId) {
+        public IHttpResponse GetPages(int siteId) {
             throw new NotImplementedException();
         }
 
@@ -72,7 +72,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// Gets a list of broken links on the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SocialHttpResponse GetLinks(int siteId) {
+        public IHttpResponse GetLinks(int siteId) {
             throw new NotImplementedException();
         }
 
@@ -81,7 +81,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="linkId">The ID of the link.</param>
-        public SocialHttpResponse GetPagesFromLink(int siteId, int linkId) {
+        public IHttpResponse GetPagesFromLink(int siteId, int linkId) {
             throw new NotImplementedException();
         }
 
@@ -90,7 +90,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageId">The ID of the page.</param>
-        public SocialHttpResponse GetLinksFromPage(int siteId, int pageId) {
+        public IHttpResponse GetLinksFromPage(int siteId, int pageId) {
             throw new NotImplementedException();
         }
 

@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
 
@@ -27,7 +28,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
         /// </see>
-        public SocialHttpResponse GetOverview(int siteId) {
+        public IHttpResponse GetOverview(int siteId) {
             return GetOverview(siteId, 0, 0);
         }
 
@@ -39,7 +40,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
         /// </see>
-        public SocialHttpResponse GetOverview(int siteId, int pageSize) {
+        public IHttpResponse GetOverview(int siteId, int pageSize) {
             return GetOverview(siteId, 0, pageSize);
         }
 
@@ -52,27 +53,27 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
         /// </see>
-        public SocialHttpResponse GetOverview(int siteId, int page, int pageSize) {
-            SocialQueryString query = new SocialQueryString();
+        public IHttpResponse GetOverview(int siteId, int page, int pageSize) {
+            IHttpQueryString query = new HttpQueryString();
             if (page > 0) query.Add("page", page);
             if (pageSize > 0) query.Add("page_size", pageSize);
-            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/links/broken_links", query);
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/links/broken_links", query);
         }
 
         /// <summary>
         /// Gets a list of pages with broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SocialHttpResponse GetPages(int siteId) {
-            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/pages");
+        public IHttpResponse GetPages(int siteId) {
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/pages");
         }
 
         /// <summary>
         /// Gets a list of broken links on the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SocialHttpResponse GetLinks(int siteId) {
-            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
+        public IHttpResponse GetLinks(int siteId) {
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
         }
 
         /// <summary>
@@ -80,8 +81,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="linkId">The ID of the link.</param>
-        public SocialHttpResponse GetPagesFromLink(int siteId, int linkId) {
-            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/links/" + linkId + "/pages");
+        public IHttpResponse GetPagesFromLink(int siteId, int linkId) {
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/links/" + linkId + "/pages");
         }
 
         /// <summary>
@@ -89,8 +90,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageId">The ID of the page.</param>
-        public SocialHttpResponse GetLinksFromPage(int siteId, int pageId) {
-            return Client.DoHttpGetRequest($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
+        public IHttpResponse GetLinksFromPage(int siteId, int pageId) {
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
         }
 
         #endregion

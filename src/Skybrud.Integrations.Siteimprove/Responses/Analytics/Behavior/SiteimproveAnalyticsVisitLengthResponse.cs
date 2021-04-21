@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.Analytics.Behavior;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Behavior {
 
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Behavior {
 
         #region Constructors
 
-        private SiteimproveAnalyticsVisitLengthResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveAnalyticsVisitLengthResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Behavior {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsVisitLengthResponse"/>.</returns>
-        public static SiteimproveAnalyticsVisitLengthResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveAnalyticsVisitLengthResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");

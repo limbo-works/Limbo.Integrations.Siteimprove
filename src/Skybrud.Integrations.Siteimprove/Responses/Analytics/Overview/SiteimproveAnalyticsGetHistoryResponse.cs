@@ -1,6 +1,6 @@
 ﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Models.Analytics.Overview;
-using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Overview {
 
@@ -8,7 +8,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Overview {
 
         #region Constructors
 
-        private SiteimproveAnalyticsGetHistoryResponse(SocialHttpResponse response) : base(response) {
+        private SiteimproveAnalyticsGetHistoryResponse(IHttpResponse response) : base(response) {
 
             // Validate the response
             ValidateResponse(response);
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Overview {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetHistoryResponse"/>.</returns>
-        public static SiteimproveAnalyticsGetHistoryResponse ParseResponse(SocialHttpResponse response) {
+        public static SiteimproveAnalyticsGetHistoryResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException("response");
