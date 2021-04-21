@@ -1,0 +1,42 @@
+using Newtonsoft.Json.Linq;
+using Skybrud.Integrations.Siteimprove.Objects.Common.Aggregations;
+using Skybrud.Social.Json.Extensions.JObject;
+
+namespace Skybrud.Integrations.Siteimprove.Objects.Analytics.Content {
+    
+    public class SiteimproveAnalyticsContentPageListAggregations : SiteimproveObject {
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the total amount of page views across the entire result set.
+        /// </summary>
+        public SiteimproveAnalyticsSumAggregation PageViews { get; private set; }
+
+        /// <summary>
+        /// Gets the total amount of visits across the entire result set.
+        /// </summary>
+        public SiteimproveAnalyticsSumAggregation Visits { get; private set; }
+
+        #endregion
+
+        #region Constructors
+
+        private SiteimproveAnalyticsContentPageListAggregations(JObject obj) : base(obj) {
+            PageViews = obj.GetObject("page_views", SiteimproveAnalyticsSumAggregation.Parse);
+            Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse);
+        }
+
+        #endregion
+
+        #region Static methods
+
+        public static SiteimproveAnalyticsContentPageListAggregations Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveAnalyticsContentPageListAggregations(obj);
+        }
+
+        #endregion
+
+    }
+
+}
