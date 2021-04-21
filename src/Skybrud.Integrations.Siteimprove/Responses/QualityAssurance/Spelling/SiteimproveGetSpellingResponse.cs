@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Integrations.Siteimprove.Objects.QualityAssurance.Spelling.Overview;
+using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overview;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.Spelling {

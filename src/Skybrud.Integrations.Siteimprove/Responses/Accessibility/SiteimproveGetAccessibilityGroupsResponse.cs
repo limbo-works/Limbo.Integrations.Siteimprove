@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Integrations.Siteimprove.Objects.Accessibility.Groups;
+using Skybrud.Integrations.Siteimprove.Models.Accessibility.Groups;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Accessibility {

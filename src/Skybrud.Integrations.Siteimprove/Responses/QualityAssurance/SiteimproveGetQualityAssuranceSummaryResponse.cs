@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Integrations.Siteimprove.Objects.QualityAssurance;
+using Skybrud.Integrations.Siteimprove.Models.QualityAssurance;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance {

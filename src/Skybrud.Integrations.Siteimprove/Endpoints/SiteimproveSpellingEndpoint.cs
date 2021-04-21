@@ -1,5 +1,5 @@
 ﻿using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Objects.QualityAssurance.Spelling.Overview;
+using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overview;
 using Skybrud.Integrations.Siteimprove.Responses;
 using Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.Spelling;
 

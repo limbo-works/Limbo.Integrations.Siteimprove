@@ -1,5 +1,5 @@
 ﻿using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Objects.Sites;
+using Skybrud.Integrations.Siteimprove.Models.Sites;
 using Skybrud.Integrations.Siteimprove.Responses;
 using Skybrud.Integrations.Siteimprove.Responses.Sites;
 

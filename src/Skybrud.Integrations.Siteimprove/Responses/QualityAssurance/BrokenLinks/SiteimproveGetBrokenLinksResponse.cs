@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Integrations.Siteimprove.Objects.QualityAssurance.BrokenLinks.Overview;
+using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLinks {

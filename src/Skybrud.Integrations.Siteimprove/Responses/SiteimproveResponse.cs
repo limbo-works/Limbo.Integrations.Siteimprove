@@ -3,7 +3,7 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
 using Skybrud.Integrations.Siteimprove.Exceptions;
-using Skybrud.Integrations.Siteimprove.Objects;
+using Skybrud.Integrations.Siteimprove.Models;
 using Skybrud.Social.Http;
 using Skybrud.Social.Json;
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Integrations.Siteimprove.Objects.Analytics.Overview;
+using Skybrud.Integrations.Siteimprove.Models.Analytics.Overview;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Responses.Analytics.Overview {

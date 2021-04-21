@@ -1,6 +1,6 @@
 ﻿using System;
 using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Objects.QualityAssurance.BrokenLinks.Overview;
+using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
 using Skybrud.Integrations.Siteimprove.Responses;
 using Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLinks;
 using Skybrud.Social.Http;
