@@ -1,12 +1,9 @@
-﻿using System;
-using Skybrud.Essentials.Http;
-using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overview;
+﻿using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overview;
 using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.Spelling;
 using Skybrud.Integrations.Siteimprove.Responses;
 using Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.Spelling;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
 
     public class SiteimproveSpellingEndpoint {
 

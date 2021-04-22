@@ -1,8 +1,7 @@
-﻿using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Options.Content;
+﻿using Skybrud.Integrations.Siteimprove.Options.Content;
 using Skybrud.Integrations.Siteimprove.Responses.Pages;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.Content {
 
     public class SiteimproveContentEndpoint {
 

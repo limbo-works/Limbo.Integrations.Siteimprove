@@ -1,5 +1,4 @@
-﻿using Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw;
-using Skybrud.Integrations.Siteimprove.Options.Analytics.Content;
+﻿using Skybrud.Integrations.Siteimprove.Options.Analytics.Content;
 using Skybrud.Integrations.Siteimprove.Responses.Analytics.Content;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {

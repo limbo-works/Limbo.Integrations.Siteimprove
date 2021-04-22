@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Net;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Client;
-using Skybrud.Integrations.Siteimprove.Endpoints.Analytics.Raw;
-using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
+using Skybrud.Integrations.Siteimprove.Endpoints.Accessibility;
+using Skybrud.Integrations.Siteimprove.Endpoints.Analytics;
+using Skybrud.Integrations.Siteimprove.Endpoints.Content;
+using Skybrud.Integrations.Siteimprove.Endpoints.General;
+using Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance;
 
 namespace Skybrud.Integrations.Siteimprove {
     

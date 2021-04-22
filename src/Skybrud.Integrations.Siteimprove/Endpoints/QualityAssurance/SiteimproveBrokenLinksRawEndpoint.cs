@@ -1,33 +1,22 @@
 ﻿using System;
 using Skybrud.Essentials.Http;
-using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
-using Skybrud.Integrations.Siteimprove.Responses;
-using Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLinks;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
 
-    public class SiteimproveBrokenLinksEndpoint {
+    public class SiteimproveBrokenLinksRawEndpoint {
 
         #region Properties
 
-        /// <summary>
-        /// A reference to the Siteimprove service.
-        /// </summary>
-        public SiteimproveService Service { get; }
-
-        /// <summary>
-        /// A reference to the raw endpoint.
-        /// </summary>
-        public SiteimproveBrokenLinksRawEndpoint Raw => Service.Client.QualityAssurance.BrokenLinks;
+        public SiteimproveClient Client { get; }
 
         #endregion
 
-        #region Constructors
+        #region Constructor
 
-        internal SiteimproveBrokenLinksEndpoint(SiteimproveService service) {
-            Service = service;
+        internal SiteimproveBrokenLinksRawEndpoint(SiteimproveClient client) {
+            Client = client;
         }
 
         #endregion
@@ -38,7 +27,10 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// Gets a overview for broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveResponse<BrokenLinksCollection> GetOverview(int siteId) {
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
+        /// </see>
+        public IHttpResponse GetOverview(int siteId) {
             return GetOverview(siteId, 0, 0);
         }
 
@@ -47,7 +39,10 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<BrokenLinksCollection> GetOverview(int siteId, int pageSize) {
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
+        /// </see>
+        public IHttpResponse GetOverview(int siteId, int pageSize) {
             return GetOverview(siteId, 0, pageSize);
         }
 
@@ -57,20 +52,26 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<BrokenLinksCollection> GetOverview(int siteId, int page, int pageSize) {
-            return SiteimproveGetBrokenLinksResponse.ParseResponse(Raw.GetOverview(siteId, page, pageSize));
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_broken_links</cref>
+        /// </see>
+        public IHttpResponse GetOverview(int siteId, int page, int pageSize) {
+            IHttpQueryString query = new HttpQueryString();
+            if (page > 0) query.Add("page", page);
+            if (pageSize > 0) query.Add("page_size", pageSize);
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/links/broken_links", query);
         }
 
         /// <summary>
         /// Gets a list of pages with broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SiteimprovePageWithBrokenLinksListResponse"/> representing the response.</returns>
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
         /// </see>
-        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(int siteId) {
-            return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(siteId));
+        public IHttpResponse GetPagesWithBrokenLinks(int siteId) {
+            return GetPagesWithBrokenLinks(new SiteimproveGetPagesWithBrokenLinksOptions(siteId));
         }
 
         /// <summary>
@@ -79,32 +80,33 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items per page.</param>
-        /// <returns>Returns an instance of <see cref="SiteimprovePageWithBrokenLinksListResponse"/> representing the response.</returns>
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
         /// </see>
-        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(int siteId, int page, int pageSize) {
-            return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(siteId, page, pageSize));
+        public IHttpResponse GetPagesWithBrokenLinks(int siteId, int page, int pageSize) {
+            return GetPagesWithBrokenLinks(new SiteimproveGetPagesWithBrokenLinksOptions(siteId, page, pageSize));
         }
 
         /// <summary>
         /// Gets a list of pages with broken links.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SiteimprovePageWithBrokenLinksListResponse"/> representing the response.</returns>
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
         /// </see>
-        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(SiteimproveGetPagesWithBrokenLinksOptions options) {
-            return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(options));
+        public IHttpResponse GetPagesWithBrokenLinks(SiteimproveGetPagesWithBrokenLinksOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
-
+        
         /// <summary>
         /// Gets a list of broken links on the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         public IHttpResponse GetLinks(int siteId) {
-            throw new NotImplementedException();
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="linkId">The ID of the link.</param>
         public IHttpResponse GetPagesFromLink(int siteId, int linkId) {
-            throw new NotImplementedException();
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/links/" + linkId + "/pages");
         }
 
         /// <summary>
@@ -122,7 +124,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageId">The ID of the page.</param>
         public IHttpResponse GetLinksFromPage(int siteId, int pageId) {
-            throw new NotImplementedException();
+            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/links");
         }
 
         #endregion

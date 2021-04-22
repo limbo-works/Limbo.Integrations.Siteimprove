@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Options.Accessibility;
 using Skybrud.Integrations.Siteimprove.Options.Accessibility.Pages;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.Accessibility {
 
     public class SiteimproveAccessibilityRawEndpoint {
 

@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.Spelling;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
 
     public class SiteimproveSpellingRawEndpoint {
 

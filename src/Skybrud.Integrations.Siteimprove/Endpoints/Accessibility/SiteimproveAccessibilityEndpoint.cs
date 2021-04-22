@@ -1,10 +1,9 @@
-﻿using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Options.Accessibility;
+﻿using Skybrud.Integrations.Siteimprove.Options.Accessibility;
 using Skybrud.Integrations.Siteimprove.Options.Accessibility.Pages;
 using Skybrud.Integrations.Siteimprove.Responses.Accessibility;
 using Skybrud.Integrations.Siteimprove.Responses.Accessibility.Pages;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.Accessibility {
 
     public class SiteimproveAccessibilityEndpoint {
 

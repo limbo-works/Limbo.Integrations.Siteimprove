@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using Skybrud.Essentials.Http;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.General {
 
     public class SiteimproveSitesRawEndpoint {
 

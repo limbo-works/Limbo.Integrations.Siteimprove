@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
 
     public class SiteimproveQualityAssuranceRawEndpoint {
 

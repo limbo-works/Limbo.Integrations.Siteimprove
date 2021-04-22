@@ -1,5 +1,9 @@
 ﻿using Skybrud.Integrations.Siteimprove.Endpoints;
+using Skybrud.Integrations.Siteimprove.Endpoints.Accessibility;
 using Skybrud.Integrations.Siteimprove.Endpoints.Analytics;
+using Skybrud.Integrations.Siteimprove.Endpoints.Content;
+using Skybrud.Integrations.Siteimprove.Endpoints.General;
+using Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance;
 
 namespace Skybrud.Integrations.Siteimprove {
     

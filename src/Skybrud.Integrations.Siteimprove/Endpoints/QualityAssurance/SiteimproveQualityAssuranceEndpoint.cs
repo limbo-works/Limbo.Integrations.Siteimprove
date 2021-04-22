@@ -1,8 +1,7 @@
-﻿using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
-using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
+﻿using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
 using Skybrud.Integrations.Siteimprove.Responses.QualityAssurance;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
 
     public class SiteimproveQualityAssuranceEndpoint {
 

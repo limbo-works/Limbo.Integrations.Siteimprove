@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Options.Content;
 
-namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
+namespace Skybrud.Integrations.Siteimprove.Endpoints.Content {
 
     public class SiteimproveContentRawEndpoint {
 
