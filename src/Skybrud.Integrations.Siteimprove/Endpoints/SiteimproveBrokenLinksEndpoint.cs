@@ -2,6 +2,7 @@
 using Skybrud.Essentials.Http;
 using Skybrud.Integrations.Siteimprove.Endpoints.Raw;
 using Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
+using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
 using Skybrud.Integrations.Siteimprove.Responses;
 using Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLinks;
 
@@ -64,8 +65,38 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints {
         /// Gets a list of pages with broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public IHttpResponse GetPages(int siteId) {
-            throw new NotImplementedException();
+        /// <returns>Returns an instance of <see cref="SiteimprovePageWithBrokenLinksListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
+        /// </see>
+        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(int siteId) {
+            return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(siteId));
+        }
+
+        /// <summary>
+        /// Gets a list of pages with broken links.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <param name="page">The page that should be returned.</param>
+        /// <param name="pageSize">The maximum amount of items per page.</param>
+        /// <returns>Returns an instance of <see cref="SiteimprovePageWithBrokenLinksListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
+        /// </see>
+        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(int siteId, int page, int pageSize) {
+            return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(siteId, page, pageSize));
+        }
+
+        /// <summary>
+        /// Gets a list of pages with broken links.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="SiteimprovePageWithBrokenLinksListResponse"/> representing the response.</returns>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
+        /// </see>
+        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(SiteimproveGetPagesWithBrokenLinksOptions options) {
+            return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(options));
         }
 
         /// <summary>

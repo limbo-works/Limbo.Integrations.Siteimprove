@@ -55,7 +55,7 @@ namespace Skybrud.Integrations.Siteimprove.Options.Analytics {
         protected SiteimproveAnalyticsGetPeriodOptionsNope() { }
 
         /// <summary>
-        /// Initializes a new instance with the specified <code>siteId</code>.
+        /// Initializes a new instance with the specified <paramref name="siteId"/>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId) {
@@ -63,7 +63,7 @@ namespace Skybrud.Integrations.Siteimprove.Options.Analytics {
         }
 
         /// <summary>
-        /// Initializes a new instance with the specified <code>siteId</code>, <code>page</code> and <code>pageSize</code>.
+        /// Initializes a new instance with the specified <paramref name="siteId"/>, <paramref name="page"/> and <paramref name="pageSize"/>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>

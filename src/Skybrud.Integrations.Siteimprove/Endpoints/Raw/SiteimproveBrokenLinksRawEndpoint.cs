@@ -1,5 +1,7 @@
-﻿using Skybrud.Essentials.Http;
+﻿using System;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
+using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
 
@@ -64,10 +66,41 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Raw {
         /// Gets a list of pages with broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public IHttpResponse GetPages(int siteId) {
-            return Client.Get($"/v2/sites/{siteId}/quality_assurance/broken_links/pages");
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
+        /// </see>
+        public IHttpResponse GetPagesWithBrokenLinks(int siteId) {
+            return GetPagesWithBrokenLinks(new SiteimproveGetPagesWithBrokenLinksOptions(siteId));
         }
 
+        /// <summary>
+        /// Gets a list of pages with broken links.
+        /// </summary>
+        /// <param name="siteId">The ID of the site.</param>
+        /// <param name="page">The page that should be returned.</param>
+        /// <param name="pageSize">The maximum amount of items per page.</param>
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
+        /// </see>
+        public IHttpResponse GetPagesWithBrokenLinks(int siteId, int page, int pageSize) {
+            return GetPagesWithBrokenLinks(new SiteimproveGetPagesWithBrokenLinksOptions(siteId, page, pageSize));
+        }
+
+        /// <summary>
+        /// Gets a list of pages with broken links.
+        /// </summary>
+        /// <param name="options">The options for the call to the API.</param>
+        /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
+        /// </see>
+        public IHttpResponse GetPagesWithBrokenLinks(SiteimproveGetPagesWithBrokenLinksOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
+        }
+        
         /// <summary>
         /// Gets a list of broken links on the site with the specified <code>siteId</code>.
         /// </summary>
