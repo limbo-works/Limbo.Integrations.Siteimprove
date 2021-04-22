@@ -4,36 +4,36 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Integrations.Siteimprove.Models.Sites {
     
-    public class SiteimproveSiteSummary : SiteimproveObject {
+    public class SiteimproveSiteItem : SiteimproveObject {
 
         #region Properties
         
         [JsonProperty("id")]
-        public long Id { get; private set; }
+        public long Id { get; }
         
         [JsonProperty("site_name")]
-        public string Name { get; private set; }
+        public string Name { get; }
         
         [JsonProperty("url")]
-        public string Url { get; private set; }
+        public string Url { get; }
         
         [JsonProperty("pages")]
-        public int Pages { get; private set; }
-        
+        public int Pages { get; }
+
         [JsonProperty("policies")]
-        public int Policies { get; private set; }
+        public int Policies { get; }
 
         [JsonProperty("product")]
-        public string[] Product { get; private set; }
+        public string[] Product { get; }
 
         [JsonProperty("visits")]
-        public int Visits { get; private set; }
+        public int Visits { get; }
 
         #endregion
 
         #region Constructor
 
-        protected SiteimproveSiteSummary(JObject obj) : base(obj) {
+        protected SiteimproveSiteItem(JObject obj) : base(obj) {
             Id = obj.GetInt64("id");
             Name = obj.GetString("site_name");
             Url = obj.GetString("url");
@@ -47,8 +47,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.Sites {
 
         #region Static methods
 
-        public static SiteimproveSiteSummary Parse(JObject obj) {
-            return obj == null ? null : new SiteimproveSiteSummary(obj);
+        public static SiteimproveSiteItem Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveSiteItem(obj);
         }
 
         #endregion

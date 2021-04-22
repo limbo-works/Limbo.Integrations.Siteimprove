@@ -37,8 +37,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// Gets a overview for broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveResponse<BrokenLinksCollection> GetOverview(int siteId) {
-            return GetOverview(siteId, 0, 0);
+        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(int siteId) {
+            return new SiteimproveBrokenLinksResponse(Raw.GetOverview(siteId));
         }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<BrokenLinksCollection> GetOverview(int siteId, int pageSize) {
-            return GetOverview(siteId, 0, pageSize);
+        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(int siteId, int pageSize) {
+            return new SiteimproveBrokenLinksResponse(Raw.GetOverview(siteId, pageSize));
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<BrokenLinksCollection> GetOverview(int siteId, int page, int pageSize) {
-            return SiteimproveGetBrokenLinksResponse.ParseResponse(Raw.GetOverview(siteId, page, pageSize));
+        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(int siteId, int page, int pageSize) {
+            return new SiteimproveBrokenLinksResponse(Raw.GetOverview(siteId, page, pageSize));
         }
 
         /// <summary>

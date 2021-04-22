@@ -10,17 +10,17 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Behavior {
         /// <summary>
         /// Gets the items on the current page.
         /// </summary>
-        public SiteimproveAnalyticsVisitLengthGraphItem[] Items { get; private set; }
+        public SiteimproveAnalyticsVisitLengthGraphItem[] Items { get; }
 
         /// <summary>
         /// Gets the total amount of items matching the options sent to the API.
         /// </summary>
-        public int TotalItems { get; private set; }
+        public int TotalItems { get; }
 
         /// <summary>
         /// Gets the total amount of pages matching the options sent to the API.
         /// </summary>
-        public int TotalPages { get; private set; }
+        public int TotalPages { get; }
 
         #endregion
 

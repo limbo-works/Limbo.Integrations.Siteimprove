@@ -10,42 +10,42 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Content {
         /// <summary>
         /// Gets the ID of the page.
         /// </summary>
-        public int Id { get; private set; }
+        public int Id { get; }
 
         /// <summary>
         /// Gets the title of the page.
         /// </summary>
-        public string Title { get; private set; }
+        public string Title { get; }
 
         /// <summary>
         /// Gets the URL of the page.
         /// </summary>
-        public string Url { get; private set; }
+        public string Url { get; }
 
         /// <summary>
         /// Gets the bounce rate is an indication of how many visitors only perform a single page view.
         /// </summary>
-        public float BounceRate { get; private set; }
+        public float BounceRate { get; }
 
         /// <summary>
         /// Gets the average amount of page views per visit.
         /// </summary>
-        public float AveragePageViewsPerVisit { get; private set; }
+        public float AveragePageViewsPerVisit { get; }
 
         /// <summary>
         /// Gets the number of page views registered for the page.
         /// </summary>
-        public int PageViews { get; private set; }
+        public int PageViews { get; }
 
         /// <summary>
         /// Gets the number of visits registered for the page.
         /// </summary>
-        public int Visits { get; private set; }
+        public int Visits { get; }
 
         /// <summary>
         /// Gets whether the page has an integration with Quality Assurance.
         /// </summary>
-        public bool HasIntegration { get; private set; }
+        public bool HasIntegration { get; }
 
         #endregion
 

@@ -3,44 +3,44 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Visitors {
    
-    public class SiteimproveAnalyticsDevicesList : SiteimproveObject {
+    public class SiteimproveAnalyticsDeviceList : SiteimproveObject {
 
         #region Properties
 
         /// <summary>
         /// Gets the items (devices) on the current page.
         /// </summary>
-        public SiteimproveAnalyticsDevice[] Items { get; private set; }
+        public SiteimproveAnalyticsDevice[] Items { get; }
 
         /// <summary>
         /// Gets the total amount of items matching the options sent to the API.
         /// </summary>
-        public int TotalItems { get; private set; }
+        public int TotalItems { get; }
 
         /// <summary>
         /// Gets the total amount of pages matching the options sent to the API.
         /// </summary>
-        public int TotalPages { get; private set; }
+        public int TotalPages { get; }
         
-        public SiteimproveAnalyticsDevicesListAggregations Aggregations { get; private set; }
+        public SiteimproveAnalyticsDeviceListAggregations Aggregations { get; }
 
         #endregion
 
         #region Constructors
 
-        private SiteimproveAnalyticsDevicesList(JObject obj) : base(obj) {
+        private SiteimproveAnalyticsDeviceList(JObject obj) : base(obj) {
             Items = obj.GetArray("items", SiteimproveAnalyticsDevice.Parse);
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
-            Aggregations = obj.GetObject("aggregations", SiteimproveAnalyticsDevicesListAggregations.Parse);
+            Aggregations = obj.GetObject("aggregations", SiteimproveAnalyticsDeviceListAggregations.Parse);
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveAnalyticsDevicesList Parse(JObject obj) {
-            return obj == null ? null : new SiteimproveAnalyticsDevicesList(obj);
+        public static SiteimproveAnalyticsDeviceList Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveAnalyticsDeviceList(obj);
         }
 
         #endregion

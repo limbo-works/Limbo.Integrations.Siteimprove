@@ -10,32 +10,32 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Overview {
         /// <summary>
         /// Gets the bounce rate registered for the site.
         /// </summary>
-        public float BounceRate { get; private set; }
+        public float BounceRate { get; }
 
         /// <summary>
         /// Gets the amount of new visitors registered for the site.
         /// </summary>
-        public int NewVisitors { get; private set; }
+        public int NewVisitors { get; }
 
         /// <summary>
         /// Gets the number of page views registered for the site.
         /// </summary>
-        public int PageViews { get; private set; }
+        public int PageViews { get; }
 
         /// <summary>
         /// Gets the amount of returning registered for the site.
         /// </summary>
-        public int ReturningVisitors { get; private set; }
+        public int ReturningVisitors { get; }
 
         /// <summary>
         /// Gets the number of visits registered for the site.
         /// </summary>
-        public int Visits { get; private set; }
+        public int Visits { get; }
 
         /// <summary>
         /// Gets the number of visits registered for the site.
         /// </summary>
-        public int UniqueVisitors { get; private set; }
+        public int UniqueVisitors { get; }
 
         #endregion
 

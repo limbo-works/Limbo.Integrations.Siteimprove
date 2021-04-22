@@ -4,11 +4,11 @@ namespace Skybrud.Integrations.Siteimprove.Models {
     
     public class SiteimproveRateLimiting {
 
-        public int Limit { get; internal set; }
+        public int Limit { get; }
 
-        public int Remaining { get; internal set; }
+        public int Remaining { get; }
 
-        public int Reset { get; internal set; }
+        public int Reset { get; }
 
         public SiteimproveRateLimiting(IHttpResponse response) {
 

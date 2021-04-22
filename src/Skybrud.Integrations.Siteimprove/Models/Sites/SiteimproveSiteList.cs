@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Integrations.Siteimprove.Models.Sites {
     
-    public class SiteimproveSitesCollection : SiteimproveObject {
+    public class SiteimproveSiteList : SiteimproveObject {
 
         #region Properties
 
@@ -11,14 +11,14 @@ namespace Skybrud.Integrations.Siteimprove.Models.Sites {
 
         public int TotalPages { get; }
 
-        public SiteimproveSiteSummary[] Items { get; }
+        public SiteimproveSiteItem[] Items { get; }
 
         #endregion
 
         #region Constructors
 
-        private SiteimproveSitesCollection(JObject obj) : base(obj) {
-            Items = obj.GetArray("items", SiteimproveSiteSummary.Parse);
+        private SiteimproveSiteList(JObject obj) : base(obj) {
+            Items = obj.GetArray("items", SiteimproveSiteItem.Parse);
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
         }
@@ -27,8 +27,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.Sites {
 
         #region Static methods
 
-        public static SiteimproveSitesCollection Parse(JObject obj) {
-            return obj == null ? null : new SiteimproveSitesCollection(obj);
+        public static SiteimproveSiteList Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveSiteList(obj);
         }
 
         #endregion

@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Integrations.Siteimprove.Models.Accessibility {
-    
-    public class SiteimproveAccessibilitySummaryItem : SiteimproveObject {
+namespace Skybrud.Integrations.Siteimprove.Models.Accessibility.Pages {
+
+    /// <summary>
+    /// Class representing an accessibility issue.
+    /// </summary>
+    public class SiteimproveAccessibilityPageIssuesItem : SiteimproveObject {
 
         #region Properties
 
@@ -17,7 +20,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.Accessibility {
 
         #region Constructor
 
-        private SiteimproveAccessibilitySummaryItem(JObject obj) : base(obj) {
+        private SiteimproveAccessibilityPageIssuesItem(JObject obj) : base(obj) {
             ConformanceLevel = obj.GetEnum<SiteimproveAccessibilityConformanceLevel>("conformance_level");
             Issues = obj.GetInt32("issues");
             Severity = obj.GetEnum<SiteimproveAccessibilitySeverity>("severity");
@@ -27,8 +30,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.Accessibility {
 
         #region Static methods
 
-        public static SiteimproveAccessibilitySummaryItem Parse(JObject obj) {
-            return obj == null ? null : new SiteimproveAccessibilitySummaryItem(obj);
+        public static SiteimproveAccessibilityPageIssuesItem Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveAccessibilityPageIssuesItem(obj);
         }
 
         #endregion

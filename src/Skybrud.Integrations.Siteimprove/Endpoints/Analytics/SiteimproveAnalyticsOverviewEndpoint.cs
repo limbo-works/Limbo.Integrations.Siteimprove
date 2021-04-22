@@ -10,19 +10,17 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// <summary>
         /// Gets a reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// Gets a reference to the parent Analytics service.
         /// </summary>
-        public SiteimproveAnalyticsEndpoint Analytics { get; private set; }
+        public SiteimproveAnalyticsEndpoint Analytics { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveAnalyticsOverviewRawEndpoint Raw {
-            get { return Service.Client.Analytics.Overview; }
-        }
+        public SiteimproveAnalyticsOverviewRawEndpoint Raw => Service.Client.Analytics.Overview;
 
         #endregion
 
@@ -41,36 +39,36 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// Gets a list of historical data points showing the most common statistics for the site with specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetHistoryResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetHistoryResponse GetHistory(int siteId) {
-            return SiteimproveAnalyticsGetHistoryResponse.ParseResponse(Raw.GetHistory(siteId));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsHistoryResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsHistoryResponse GetHistory(int siteId) {
+            return new SiteimproveAnalyticsHistoryResponse(Raw.GetHistory(siteId));
         }
 
         /// <summary>
         /// Gets a list of historical data points showing the most common statistics for the matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetHistoryResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetHistoryResponse GetHistory(SiteimproveGetHistoryOptions options) {
-            return SiteimproveAnalyticsGetHistoryResponse.ParseResponse(Raw.GetHistory(options));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsHistoryResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsHistoryResponse GetHistory(SiteimproveGetHistoryOptions options) {
+            return new SiteimproveAnalyticsHistoryResponse(Raw.GetHistory(options));
         }
 
         /// <summary>
         /// Gets a summary with the most common statistics for the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetSummaryResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetSummaryResponse GetSummary(int siteId) {
-            return SiteimproveAnalyticsGetSummaryResponse.ParseResponse(Raw.GetSummary(siteId));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsSummaryResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsSummaryResponse GetSummary(int siteId) {
+            return new SiteimproveAnalyticsSummaryResponse(Raw.GetSummary(siteId));
         }
 
         /// <summary>
         /// Gets a summary with the most common statistics for the site matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetSummaryResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetSummaryResponse GetSummary(SiteimproveGetSummaryOverviewOptions options) {
-            return SiteimproveAnalyticsGetSummaryResponse.ParseResponse(Raw.GetSummary(options));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsSummaryResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsSummaryResponse GetSummary(SiteimproveGetSummaryOverviewOptions options) {
+            return new SiteimproveAnalyticsSummaryResponse(Raw.GetSummary(options));
         }
 
         #endregion

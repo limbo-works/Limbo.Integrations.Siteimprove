@@ -1,9 +1,9 @@
-﻿using Skybrud.Integrations.Siteimprove.Endpoints;
-using Skybrud.Integrations.Siteimprove.Endpoints.Accessibility;
+﻿using Skybrud.Integrations.Siteimprove.Endpoints.Accessibility;
 using Skybrud.Integrations.Siteimprove.Endpoints.Analytics;
 using Skybrud.Integrations.Siteimprove.Endpoints.Content;
 using Skybrud.Integrations.Siteimprove.Endpoints.General;
 using Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance;
+using Skybrud.Integrations.Siteimprove.Http;
 
 namespace Skybrud.Integrations.Siteimprove {
     
@@ -14,17 +14,17 @@ namespace Skybrud.Integrations.Siteimprove {
         /// <summary>
         /// Gets a reference to the underlying client used for the raw communication.
         /// </summary>
-        public SiteimproveClient Client { get; private set; }
+        public SiteimproveHttpClient Client { get; private set; }
 
-        public SiteimproveSitesEndpoint Sites { get; private set; }
+        public SiteimproveSitesEndpoint Sites { get; }
 
-        public SiteimproveContentEndpoint Content { get; private set; }
+        public SiteimproveContentEndpoint Content { get; }
 
-        public SiteimproveAccessibilityEndpoint Accessibility { get; private set; }
+        public SiteimproveAccessibilityEndpoint Accessibility { get; }
 
-        public SiteimproveAnalyticsEndpoint Analytics { get; private set; }
+        public SiteimproveAnalyticsEndpoint Analytics { get; }
 
-        public SiteimproveQualityAssuranceEndpoint QualityAssurance { get; private set; }
+        public SiteimproveQualityAssuranceEndpoint QualityAssurance { get; }
         
         #endregion
 
@@ -43,31 +43,31 @@ namespace Skybrud.Integrations.Siteimprove {
         #region Static methods
 
         /// <summary>
-        /// Initialize a new instance of <see cref="SiteimproveClient"/> based on values from the app settings.
+        /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> based on values from the app settings.
         /// </summary>
         public static SiteimproveService CreateFromConfig() {
             return new SiteimproveService {
-                Client = SiteimproveClient.CreateFromConfig()
+                Client = SiteimproveHttpClient.CreateFromConfig()
             };
         }
 
         /// <summary>
-        /// Initialize a new instance of <see cref="SiteimproveClient"/> from the specified client.
+        /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> from the specified client.
         /// </summary>
         /// <param name="client">The raw client to be used.</param>
-        public static SiteimproveService CreateFromClient(SiteimproveClient client) {
+        public static SiteimproveService CreateFromClient(SiteimproveHttpClient client) {
             return new SiteimproveService {
                 Client = client
             };
         }
 
         /// <summary>
-        /// Initialize a new instance of <see cref="SiteimproveClient"/> from the specified username and password.
+        /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> from the specified username and password.
         /// </summary>
         /// <param name="username">The username of the Siteimprove account.</param>
         /// <param name="password">The password of the Siteimprove account.</param>
         public static SiteimproveService CreateFromCredentials(string username, string password) {
-            return CreateFromClient(SiteimproveClient.CreateFromCredentials(username, password));
+            return CreateFromClient(SiteimproveHttpClient.CreateFromCredentials(username, password));
         }
 
         #endregion

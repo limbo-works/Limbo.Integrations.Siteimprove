@@ -1,6 +1,6 @@
 ﻿namespace Skybrud.Integrations.Siteimprove.Models.Accessibility {
 
-    public class AccessibilityIssueSummary {
+    public class SiteimproveAccessibilityIssueSummary {
 
         public int Errors { get; internal set; }
 

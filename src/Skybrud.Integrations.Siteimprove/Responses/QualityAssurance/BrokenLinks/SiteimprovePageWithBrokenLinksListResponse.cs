@@ -10,7 +10,6 @@ namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLink
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         public SiteimprovePageWithBrokenLinksListResponse(IHttpResponse response) : base(response) {
-            ValidateResponse(response);
             Body = ParseJsonObject(response.Body, SiteimprovePageWithBrokenLinksList.Parse);
         }
 

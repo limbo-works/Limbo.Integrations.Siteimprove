@@ -1,5 +1,6 @@
 ﻿using System;
 using Skybrud.Essentials.Http;
+using Skybrud.Integrations.Siteimprove.Http;
 using Skybrud.Integrations.Siteimprove.Options.Analytics.Visitors;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
@@ -8,15 +9,15 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
 
         #region Properties
 
-        public SiteimproveClient Client { get; private set; }
+        public SiteimproveHttpClient Client { get; }
 
-        public SiteimproveAnalyticsRawEndpoint Analytics { get; private set; }
+        public SiteimproveAnalyticsRawEndpoint Analytics { get; }
 
         #endregion
 
         #region Constructor
 
-        internal SiteimproveAnalyticsVisitorsRawEndpoint(SiteimproveClient client, SiteimproveAnalyticsRawEndpoint analytics) {
+        internal SiteimproveAnalyticsVisitorsRawEndpoint(SiteimproveHttpClient client, SiteimproveAnalyticsRawEndpoint analytics) {
             Client = client;
             Analytics = analytics;
         }

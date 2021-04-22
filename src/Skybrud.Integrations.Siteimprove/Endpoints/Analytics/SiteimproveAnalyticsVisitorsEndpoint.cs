@@ -10,19 +10,17 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// Gets a reference to the parent Analytics service.
         /// </summary>
-        public SiteimproveAnalyticsEndpoint Analytics { get; private set; }
+        public SiteimproveAnalyticsEndpoint Analytics { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveAnalyticsVisitorsRawEndpoint Raw {
-            get { return Service.Client.Analytics.Visitors; }
-        }
+        public SiteimproveAnalyticsVisitorsRawEndpoint Raw => Service.Client.Analytics.Visitors;
 
         #endregion
 
@@ -37,20 +35,20 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
 
         #region Member methods
 
-        public SiteimproveGetDevicesResponse GetDevices(int siteId) {
-            return SiteimproveGetDevicesResponse.ParseResponse(Raw.GetDevices(siteId));
+        public SiteimproveAnalyticsDeviceListResponse GetDevices(int siteId) {
+            return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId));
         }
 
-        public SiteimproveGetDevicesResponse GetDevices(int siteId, int page, int pageSize, string period) {
-            return SiteimproveGetDevicesResponse.ParseResponse(Raw.GetDevices(siteId, page, pageSize, period));
+        public SiteimproveAnalyticsDeviceListResponse GetDevices(int siteId, int page, int pageSize, string period) {
+            return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId, page, pageSize, period));
         }
 
-        public SiteimproveGetDevicesResponse GetDevices(int siteId, int page, int pageSize, int groupId, int filterId, string period) {
-            return SiteimproveGetDevicesResponse.ParseResponse(Raw.GetDevices(siteId, page, pageSize, groupId, filterId, period));
+        public SiteimproveAnalyticsDeviceListResponse GetDevices(int siteId, int page, int pageSize, int groupId, int filterId, string period) {
+            return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId, page, pageSize, groupId, filterId, period));
         }
 
-        public SiteimproveGetDevicesResponse GetDevices(SiteimproveGetDevicesOptions options) {
-            return SiteimproveGetDevicesResponse.ParseResponse(Raw.GetDevices(options));
+        public SiteimproveAnalyticsDeviceListResponse GetDevices(SiteimproveGetDevicesOptions options) {
+            return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(options));
         }
 
         #endregion

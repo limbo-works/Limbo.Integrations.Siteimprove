@@ -1,9 +1,9 @@
 ﻿namespace Skybrud.Integrations.Siteimprove.Models.Accessibility {
 
-    public enum AccessibilityConformanceLevel {
+    public enum SiteimproveAccessibilityConformanceLevel {
         A,
-        AA,
-        AAA
+        Aa,
+        Aaa
     }
 
 }

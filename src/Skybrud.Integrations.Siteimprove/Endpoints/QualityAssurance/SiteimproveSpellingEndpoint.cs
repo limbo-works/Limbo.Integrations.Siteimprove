@@ -35,8 +35,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// Gets a overview for misspellings and potential misspellings.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveResponse<SpellingCollection> GetOverview(int siteId) {
-            return GetOverview(siteId, 0, 0);
+        public SiteimproveResponse<SiteimproveSpellingResultList> GetOverview(int siteId) {
+            return new SiteimproveSpellingResultListResponse(Raw.GetOverview(siteId));
         }
 
         /// <summary>
@@ -44,8 +44,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<SpellingCollection> GetOverview(int siteId, int pageSize) {
-            return GetOverview(siteId, 0, pageSize);
+        public SiteimproveResponse<SiteimproveSpellingResultList> GetOverview(int siteId, int pageSize) {
+            return new SiteimproveSpellingResultListResponse(Raw.GetOverview(siteId, pageSize));
         }
 
         /// <summary>
@@ -54,8 +54,8 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<SpellingCollection> GetOverview(int siteId, int page, int pageSize) {
-            return SiteimproveGetSpellingResponse.ParseResponse(Raw.GetOverview(siteId, page, pageSize));
+        public SiteimproveResponse<SiteimproveSpellingResultList> GetOverview(int siteId, int page, int pageSize) {
+            return new SiteimproveSpellingResultListResponse(Raw.GetOverview(siteId, page, pageSize));
         }
 
         /// <summary>

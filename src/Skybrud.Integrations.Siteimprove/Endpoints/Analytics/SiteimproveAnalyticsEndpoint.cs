@@ -7,22 +7,20 @@
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveAnalyticsRawEndpoint Raw {
-            get { return Service.Client.Analytics; }
-        }
+        public SiteimproveAnalyticsRawEndpoint Raw => Service.Client.Analytics;
 
-        public SiteimproveAnalyticsBehaviorEndpoint Behavior { get; private set; }
+        public SiteimproveAnalyticsBehaviorEndpoint Behavior { get; }
 
-        public SiteimproveAnalyticsContentEndpoint Content { get; private set; }
+        public SiteimproveAnalyticsContentEndpoint Content { get; }
 
-        public SiteimproveAnalyticsOverviewEndpoint Overview { get; private set; }
+        public SiteimproveAnalyticsOverviewEndpoint Overview { get; }
 
-        public SiteimproveAnalyticsVisitorsEndpoint Visitors { get; private set; }
+        public SiteimproveAnalyticsVisitorsEndpoint Visitors { get; }
 
         #endregion
 

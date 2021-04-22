@@ -8,32 +8,29 @@ using Skybrud.Integrations.Siteimprove.Endpoints.Content;
 using Skybrud.Integrations.Siteimprove.Endpoints.General;
 using Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance;
 
-namespace Skybrud.Integrations.Siteimprove {
+namespace Skybrud.Integrations.Siteimprove.Http {
     
-    public class SiteimproveClient : HttpClient {
-
-        public const string ApiUrl = "https://api.siteimprove.com/v1/";
-        public const string ApiUrlV2 = "https://api.siteimprove.com/v2/";
+    public class SiteimproveHttpClient : HttpClient {
 
         #region Properties
 
         public NetworkCredential Crendentials { get; private set; }
 
-        public SiteimproveSitesRawEndpoint Sites { get; private set; }
+        public SiteimproveSitesRawEndpoint Sites { get; }
         
-        public SiteimproveContentRawEndpoint Content { get; private set; }
+        public SiteimproveContentRawEndpoint Content { get; }
         
-        public SiteimproveAnalyticsRawEndpoint Analytics { get; private set; }
+        public SiteimproveAnalyticsRawEndpoint Analytics { get; }
         
-        public SiteimproveAccessibilityRawEndpoint Accessibility { get; private set; }
+        public SiteimproveAccessibilityRawEndpoint Accessibility { get; }
         
-        public SiteimproveQualityAssuranceRawEndpoint QualityAssurance { get; private set; }
+        public SiteimproveQualityAssuranceRawEndpoint QualityAssurance { get; }
 
         #endregion
 
         #region Constructor
 
-        private SiteimproveClient() {
+        private SiteimproveHttpClient() {
             Sites = new SiteimproveSitesRawEndpoint(this);
             Content = new SiteimproveContentRawEndpoint(this);
             Accessibility = new SiteimproveAccessibilityRawEndpoint(this);
@@ -46,23 +43,23 @@ namespace Skybrud.Integrations.Siteimprove {
         #region Static methods
 
         /// <summary>
-        /// Initialize a new instance of <see cref="SiteimproveClient"/> based on values from the app settings.
+        /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> based on values from the app settings.
         /// </summary>
-        public static SiteimproveClient CreateFromConfig() {
+        public static SiteimproveHttpClient CreateFromConfig() {
             string username = ConfigurationManager.AppSettings["SiteimproveUsername"];
             string password = ConfigurationManager.AppSettings["SiteimprovePassword"];
-            return new SiteimproveClient {
+            return new SiteimproveHttpClient {
                 Crendentials = new NetworkCredential(username, password)
             };
         }
 
         /// <summary>
-        /// Initialize a new instance of <see cref="SiteimproveClient"/> from the specified username and password.
+        /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> from the specified username and password.
         /// </summary>
         /// <param name="username">The username of the Siteimprove account.</param>
         /// <param name="password">The password of the Siteimprove account.</param>
-        public static SiteimproveClient CreateFromCredentials(string username, string password) {
-            return new SiteimproveClient {
+        public static SiteimproveHttpClient CreateFromCredentials(string username, string password) {
+            return new SiteimproveHttpClient {
                 Crendentials = new NetworkCredential(username, password)
             };
         }

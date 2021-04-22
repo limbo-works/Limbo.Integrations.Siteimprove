@@ -10,19 +10,17 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// <summary>
         /// Gets a reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// Gets a reference to the parent Analytics service.
         /// </summary>
-        public SiteimproveAnalyticsEndpoint Analytics { get; private set; }
+        public SiteimproveAnalyticsEndpoint Analytics { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveAnalyticsContentRawEndpoint Raw {
-            get { return Service.Client.Analytics.Content; }
-        }
+        public SiteimproveAnalyticsContentRawEndpoint Raw => Service.Client.Analytics.Content;
 
         #endregion
 
@@ -41,54 +39,54 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// Gets a list of the least popular pages for the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetPopularPagesResponse GetLeastPopularPages(int siteId) {
-            return SiteimproveAnalyticsGetPopularPagesResponse.ParseResponse(Raw.GetLeastPopularPages(siteId));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPopularPageListResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsPopularPageListResponse GetLeastPopularPages(int siteId) {
+            return new SiteimproveAnalyticsPopularPageListResponse(Raw.GetLeastPopularPages(siteId));
         }
 
         /// <summary>
         /// Gets a list of the least popular pages for the site and pages matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetPopularPagesResponse GetLeastPopularPages(SiteimproveGetLeastPopularPagesOptions options) {
-            return SiteimproveAnalyticsGetPopularPagesResponse.ParseResponse(Raw.GetLeastPopularPages(options));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPopularPageListResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsPopularPageListResponse GetLeastPopularPages(SiteimproveGetLeastPopularPagesOptions options) {
+            return new SiteimproveAnalyticsPopularPageListResponse(Raw.GetLeastPopularPages(options));
         }
 
         /// <summary>
         /// Gets a list of the most popular pages for the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetPopularPagesResponse GetMostPopularPages(int siteId) {
-            return SiteimproveAnalyticsGetPopularPagesResponse.ParseResponse(Raw.GetMostPopularPages(siteId));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPopularPageListResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsPopularPageListResponse GetMostPopularPages(int siteId) {
+            return new SiteimproveAnalyticsPopularPageListResponse(Raw.GetMostPopularPages(siteId));
         }
 
         /// <summary>
         /// Gets a list of the most popular pages for the site and pages matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsGetPopularPagesResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsGetPopularPagesResponse GetMostPopularPages(SiteimproveGetMostPopularPagesOptions options) {
-            return SiteimproveAnalyticsGetPopularPagesResponse.ParseResponse(Raw.GetMostPopularPages(options));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPopularPageListResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsPopularPageListResponse GetMostPopularPages(SiteimproveGetMostPopularPagesOptions options) {
+            return new SiteimproveAnalyticsPopularPageListResponse(Raw.GetMostPopularPages(options));
         }
 
         /// <summary>
         /// Gets a list of all content pages for the site with the specified <code>siteId</code>. 
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveGetAllPagesResponse"/> representing the response.</returns>
-        public SiteimproveGetAllPagesResponse GetAllPages(int siteId) {
-            return SiteimproveGetAllPagesResponse.ParseResponse(Raw.GetAllPages(siteId));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPageListResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsPageListResponse GetAllPages(int siteId) {
+            return new SiteimproveAnalyticsPageListResponse(Raw.GetAllPages(siteId));
         }
 
         /// <summary>
         /// Gets a list of all content pages for the site matching the specified <code>options</code>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>Returns an instance of <see cref="SiteimproveGetAllPagesResponse"/> representing the response.</returns>
-        public SiteimproveGetAllPagesResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
-            return SiteimproveGetAllPagesResponse.ParseResponse(Raw.GetAllPages(options));
+        /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPageListResponse"/> representing the response.</returns>
+        public SiteimproveAnalyticsPageListResponse GetAllPages(SiteimproveAnalyticsGetAllPagesOptions options) {
+            return new SiteimproveAnalyticsPageListResponse(Raw.GetAllPages(options));
         }
 
         #endregion

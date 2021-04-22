@@ -3,31 +3,31 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Integrations.Siteimprove.Models.Accessibility.Groups {
     
-    public class AccessibilityGroupItem : SiteimproveObject {
+    public class SiteimproveAccessibilityGroupItem : SiteimproveObject {
 
         #region Properties
 
-        public long Id { get; private set; }
+        public long Id { get; }
 
-        public int AIssues { get; private set; }
+        public int AIssues { get; }
 
-        public int AaIssues { get; private set; }
+        public int AaIssues { get; }
 
-        public int AaaIssues { get; private set; }
+        public int AaaIssues { get; }
 
-        public string GroupName { get; private set; }
+        public string GroupName { get; }
 
-        public int Pages { get; private set; }
+        public int Pages { get; }
 
-        public int PdfIssues { get; private set; }
+        public int PdfIssues { get; }
 
-        public int Users { get; private set; }
+        public int Users { get; }
 
         #endregion
 
         #region Constructors
 
-        private AccessibilityGroupItem(JObject obj) : base(obj) {
+        private SiteimproveAccessibilityGroupItem(JObject obj) : base(obj) {
             Id = obj.GetInt64("id");
             AIssues = obj.GetInt32("a_issues");
             AaIssues = obj.GetInt32("aa_issues");
@@ -42,8 +42,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.Accessibility.Groups {
 
         #region Static methods
 
-        public static AccessibilityGroupItem Parse(JObject obj) {
-            return obj == null ? null : new AccessibilityGroupItem(obj);
+        public static SiteimproveAccessibilityGroupItem Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveAccessibilityGroupItem(obj);
         }
 
         #endregion

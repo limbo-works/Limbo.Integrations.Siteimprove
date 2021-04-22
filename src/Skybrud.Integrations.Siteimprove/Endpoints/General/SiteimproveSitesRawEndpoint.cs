@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using Skybrud.Essentials.Http;
+using Skybrud.Integrations.Siteimprove.Http;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.General {
 
@@ -7,13 +8,13 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.General {
 
         #region Properties
 
-        public SiteimproveClient Client { get; }
+        public SiteimproveHttpClient Client { get; }
 
         #endregion
 
         #region Constructor
 
-        internal SiteimproveSitesRawEndpoint(SiteimproveClient client) {
+        internal SiteimproveSitesRawEndpoint(SiteimproveHttpClient client) {
             Client = client;
         }
 

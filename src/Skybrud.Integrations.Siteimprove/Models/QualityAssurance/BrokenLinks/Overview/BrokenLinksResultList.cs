@@ -4,12 +4,12 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview {
 
-    public class BrokenLinksCollection : SiteimproveObject {
+    public class SiteimproveBrokenLinksResultList : SiteimproveObject {
 
         #region Properties
 
         [JsonProperty("items")]
-        public BrokenLinksResult[] Items { get; }
+        public SiteimproveBrokenLinksResult[] Items { get; }
 
         [JsonProperty("total_items")]
         public int TotalItems { get; }
@@ -27,8 +27,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
         #region Constructors
 
-        private BrokenLinksCollection(JObject obj) : base(obj) {
-            Items = obj.GetArrayItems("items", BrokenLinksResult.Parse);
+        private SiteimproveBrokenLinksResultList(JObject obj) : base(obj) {
+            Items = obj.GetArrayItems("items", SiteimproveBrokenLinksResult.Parse);
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
             Links = obj.GetObject("_links", LinkCollection.Parse);
@@ -39,13 +39,13 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
         #region Static methods
 
-        public static BrokenLinksCollection Parse(JObject obj) {
-            return obj == null ? null : new BrokenLinksCollection(obj);
+        public static SiteimproveBrokenLinksResultList Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveBrokenLinksResultList(obj);
         }
 
         #endregion
 
-        public class LinkCollection : SiteimproveObject {
+        public class SiteimproveLinkCollection : SiteimproveObject {
 
             #region Properties
 
@@ -59,7 +59,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
             #region Constructors
 
-            private LinkCollection(JObject obj) : base(obj) {
+            private SiteimproveLinkCollection(JObject obj) : base(obj) {
                 Previous = obj.GetString("prev");
                 Next = obj.GetString("next");
             }
@@ -68,15 +68,15 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
             #region Static methods
 
-            public static LinkCollection Parse(JObject obj) {
-                return obj == null ? null : new LinkCollection(obj);
+            public static SiteimproveLinkCollection Parse(JObject obj) {
+                return obj == null ? null : new SiteimproveLinkCollection(obj);
             }
 
             #endregion
 
         }
 
-        public class SiteimproveLinkCollection : SiteimproveObject {
+        public class LinkCollection : SiteimproveObject {
 
             #region Properties
 
@@ -87,7 +87,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
             #region Constructors
 
-            private SiteimproveLinkCollection(JObject obj) : base(obj) {
+            private LinkCollection(JObject obj) : base(obj) {
                 WebApp = obj.GetString("webapp");
             }
 
@@ -95,8 +95,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
             #region Static methods
 
-            public static SiteimproveLinkCollection Parse(JObject obj) {
-                return obj == null ? null : new SiteimproveLinkCollection(obj);
+            public static LinkCollection Parse(JObject obj) {
+                return obj == null ? null : new LinkCollection(obj);
             }
 
             #endregion

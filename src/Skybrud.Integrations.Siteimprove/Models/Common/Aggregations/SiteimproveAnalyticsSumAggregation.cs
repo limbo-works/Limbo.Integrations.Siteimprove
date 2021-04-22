@@ -7,7 +7,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.Common.Aggregations {
 
         #region Properties
             
-        public int Sum { get; private set; }
+        public int Sum { get; }
 
         #endregion
 

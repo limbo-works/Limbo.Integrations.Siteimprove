@@ -1,6 +1,7 @@
 ﻿using System;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
+using Skybrud.Integrations.Siteimprove.Http;
 using Skybrud.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
 
 namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
@@ -9,13 +10,13 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
 
         #region Properties
 
-        public SiteimproveClient Client { get; }
+        public SiteimproveHttpClient Client { get; }
 
         #endregion
 
         #region Constructor
 
-        internal SiteimproveBrokenLinksRawEndpoint(SiteimproveClient client) {
+        internal SiteimproveBrokenLinksRawEndpoint(SiteimproveHttpClient client) {
             Client = client;
         }
 

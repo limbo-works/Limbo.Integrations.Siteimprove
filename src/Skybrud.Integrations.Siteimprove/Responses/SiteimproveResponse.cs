@@ -1,8 +1,5 @@
-﻿using System;
-using System.Net;
-using Newtonsoft.Json.Linq;
+﻿using System.Net;
 using Skybrud.Essentials.Http;
-using Skybrud.Essentials.Json;
 using Skybrud.Integrations.Siteimprove.Exceptions;
 using Skybrud.Integrations.Siteimprove.Models;
 
@@ -26,27 +23,15 @@ namespace Skybrud.Integrations.Siteimprove.Responses {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <code>response</code>.
+        /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         protected SiteimproveResponse(IHttpResponse response) : base(response) {
-            RateLimiting = new SiteimproveRateLimiting(response);
-        }
-
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Validates the specified <paramref name="response"/>.
-        /// </summary>
-        /// <param name="response">The response to be validated.</param>
-        public static void ValidateResponse(IHttpResponse response) {
-
-            // Skip error checking if the server responds with an OK status code
-            if (response.StatusCode == HttpStatusCode.OK) return;
             
-            throw new SiteimproveHttpException(response);
+            // Throw an exception if the statuis code is not 200 OK
+            if (response.StatusCode != HttpStatusCode.OK) throw new SiteimproveHttpException(response);
+
+            RateLimiting = new SiteimproveRateLimiting(response);
 
         }
 
@@ -71,7 +56,7 @@ namespace Skybrud.Integrations.Siteimprove.Responses {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <code>response</code>.
+        /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         protected SiteimproveResponse(IHttpResponse response) : base(response) { }

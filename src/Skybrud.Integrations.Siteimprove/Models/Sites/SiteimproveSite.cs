@@ -2,7 +2,7 @@
 
 namespace Skybrud.Integrations.Siteimprove.Models.Sites {
     
-    public class SiteimproveSite : SiteimproveSiteSummary {
+    public class SiteimproveSite : SiteimproveSiteItem {
 
         #region Constructors
 

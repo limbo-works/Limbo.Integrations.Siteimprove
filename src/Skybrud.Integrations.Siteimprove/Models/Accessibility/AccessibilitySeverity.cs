@@ -1,6 +1,6 @@
 ﻿namespace Skybrud.Integrations.Siteimprove.Models.Accessibility {
     
-    public enum AccessibilitySeverity {
+    public enum SiteimproveAccessibilitySeverity {
         Error,
         Warning,
         Review

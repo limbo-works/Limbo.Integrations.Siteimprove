@@ -4,17 +4,17 @@ using Skybrud.Integrations.Siteimprove.Models.Common.Aggregations;
 
 namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Visitors {
     
-    public class SiteimproveAnalyticsDevicesListAggregations : SiteimproveObject {
+    public class SiteimproveAnalyticsDeviceListAggregations : SiteimproveObject {
 
         #region Properties
             
-        public SiteimproveAnalyticsSumAggregation Visits { get; private set; }
+        public SiteimproveAnalyticsSumAggregation Visits { get; }
 
         #endregion
 
         #region Constructors
 
-        private SiteimproveAnalyticsDevicesListAggregations(JObject obj) : base(obj) {
+        private SiteimproveAnalyticsDeviceListAggregations(JObject obj) : base(obj) {
             Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse);
         }
 
@@ -22,8 +22,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Visitors {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsDevicesListAggregations Parse(JObject obj) {
-            return obj == null ? null : new SiteimproveAnalyticsDevicesListAggregations(obj);
+        public static SiteimproveAnalyticsDeviceListAggregations Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveAnalyticsDeviceListAggregations(obj);
         }
 
         #endregion

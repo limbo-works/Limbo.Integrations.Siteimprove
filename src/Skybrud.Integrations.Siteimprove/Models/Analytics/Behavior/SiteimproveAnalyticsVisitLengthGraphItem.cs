@@ -8,11 +8,11 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Behavior {
 
         #region Properties
 
-        public DateTime Timestamp { get; private set; }
+        public DateTime Timestamp { get; }
 
-        public float VisitDurationAverageInMinutes { get; private set; }
+        public float VisitDurationAverageInMinutes { get; }
 
-        public TimeSpan VisitDurationAverage { get; private set; }
+        public TimeSpan VisitDurationAverage { get; }
 
         #endregion
 

@@ -10,7 +10,6 @@ namespace Skybrud.Integrations.Siteimprove.Responses.QualityAssurance.Spelling {
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         public SiteimprovePageWithSpellingErrorsListResponse(IHttpResponse response) : base(response) {
-            ValidateResponse(response);
             Body = ParseJsonObject(response.Body, SiteimprovePageWithSpellingErrorsList.Parse);
         }
 

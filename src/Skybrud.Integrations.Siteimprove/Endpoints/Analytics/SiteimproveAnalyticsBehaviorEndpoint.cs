@@ -10,19 +10,17 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// <summary>
         /// Gets a reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; private set; }
+        public SiteimproveService Service { get; }
 
         /// <summary>
         /// Gets a reference to the parent Analytics service.
         /// </summary>
-        public SiteimproveAnalyticsEndpoint Analytics { get; private set; }
+        public SiteimproveAnalyticsEndpoint Analytics { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SiteimproveAnalyticsBehaviorRawEndpoint Raw {
-            get { return Service.Client.Analytics.Behavior; }
-        }
+        public SiteimproveAnalyticsBehaviorRawEndpoint Raw => Service.Client.Analytics.Behavior;
 
         #endregion
 
@@ -43,7 +41,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsVisitLengthResponse"/> representing the response.</returns>
         public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(int siteId) {
-            return SiteimproveAnalyticsVisitLengthResponse.ParseResponse(Raw.GetVisitLengthHistory(siteId));
+            return new SiteimproveAnalyticsVisitLengthResponse(Raw.GetVisitLengthHistory(siteId));
         }
 
         /// <summary>
@@ -52,7 +50,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// <param name="options">The options for the call to the API.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsVisitLengthResponse"/> representing the response.</returns>
         public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(SiteimproveGetVisitLengthHistoryOptions options) {
-            return SiteimproveAnalyticsVisitLengthResponse.ParseResponse(Raw.GetVisitLengthHistory(options));
+            return new SiteimproveAnalyticsVisitLengthResponse(Raw.GetVisitLengthHistory(options));
         }
 
         #endregion

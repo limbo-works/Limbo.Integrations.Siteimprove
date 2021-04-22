@@ -11,12 +11,12 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Content {
         /// <summary>
         /// Gets the total amount of page views across the entire result set.
         /// </summary>
-        public SiteimproveAnalyticsSumAggregation PageViews { get; private set; }
+        public SiteimproveAnalyticsSumAggregation PageViews { get; }
 
         /// <summary>
         /// Gets the total amount of visits across the entire result set.
         /// </summary>
-        public SiteimproveAnalyticsSumAggregation Visits { get; private set; }
+        public SiteimproveAnalyticsSumAggregation Visits { get; }
 
         #endregion
 

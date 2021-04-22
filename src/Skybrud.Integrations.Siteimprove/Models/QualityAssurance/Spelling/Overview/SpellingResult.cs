@@ -7,7 +7,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Over
     /// <summary>
     /// Describes the amount of broken links a specified time.
     /// </summary>
-    public class SpellingResult : SiteimproveObject {
+    public class SiteimproveSpellingResult : SiteimproveObject {
 
         #region Properties
 
@@ -30,7 +30,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Over
 
         #region Constructor
 
-        private SpellingResult(JObject obj) : base(obj) {
+        private SiteimproveSpellingResult(JObject obj) : base(obj) {
             Timestamp = obj.GetDateTime("timestamp");
             Misspellings = obj.GetInt32("misspellings");
             PotentialMisspellings = obj.GetInt32("potential_misspellings");
@@ -40,8 +40,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Over
 
         #region Static methods
 
-        public static SpellingResult Parse(JObject obj) {
-            return obj == null ? null : new SpellingResult(obj);
+        public static SiteimproveSpellingResult Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveSpellingResult(obj);
         }
 
         #endregion

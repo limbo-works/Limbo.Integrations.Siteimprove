@@ -1,5 +1,6 @@
 ﻿using System;
 using Skybrud.Essentials.Http;
+using Skybrud.Integrations.Siteimprove.Http;
 using Skybrud.Integrations.Siteimprove.Options.Accessibility;
 using Skybrud.Integrations.Siteimprove.Options.Accessibility.Pages;
 
@@ -9,13 +10,13 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Accessibility {
 
         #region Properties
 
-        public SiteimproveClient Client { get; }
+        public SiteimproveHttpClient Client { get; }
 
         #endregion
 
         #region Constructor
 
-        internal SiteimproveAccessibilityRawEndpoint(SiteimproveClient client) {
+        internal SiteimproveAccessibilityRawEndpoint(SiteimproveHttpClient client) {
             Client = client;
         }
 

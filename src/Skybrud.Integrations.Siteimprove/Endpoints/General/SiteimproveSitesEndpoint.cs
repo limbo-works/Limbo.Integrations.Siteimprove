@@ -31,19 +31,19 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.General {
         #region Methods
 
         public SiteimproveResponse<SiteimproveSite> GetSite(int siteId) {
-            return SiteimproveGetSiteResponse.ParseResponse(Raw.GetSite(siteId));
+            return new SiteimproveSiteResponse(Raw.GetSite(siteId));
         }
 
-        public SiteimproveGetSitesResponse GetSites() {
+        public SiteimproveSiteListResponse GetSites() {
             return GetSites(0, 0);
         }
 
-        public SiteimproveGetSitesResponse GetSites(int pageSize) {
+        public SiteimproveSiteListResponse GetSites(int pageSize) {
             return GetSites(0, pageSize);
         }
 
-        public SiteimproveGetSitesResponse GetSites(int page, int pageSize) {
-            return SiteimproveGetSitesResponse.ParseResponse(Raw.GetSites(page, pageSize));
+        public SiteimproveSiteListResponse GetSites(int page, int pageSize) {
+            return new SiteimproveSiteListResponse(Raw.GetSites(page, pageSize));
         }
 
         #endregion

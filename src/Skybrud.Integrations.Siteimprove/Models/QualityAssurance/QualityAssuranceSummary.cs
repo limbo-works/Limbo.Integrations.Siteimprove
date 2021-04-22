@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance {
     
-    public class QualityAssuranceSummary : SiteimproveObject {
+    public class SiteimproveQualityAssuranceSummary : SiteimproveObject {
 
         #region Properties
 
@@ -27,7 +27,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance {
 
         #region Constructor
 
-        private QualityAssuranceSummary(JObject obj) : base(obj) {
+        private SiteimproveQualityAssuranceSummary(JObject obj) : base(obj) {
             BrokenLinks = obj.GetInt32("broken_links");
             ClicksOnBrokenLinks = obj.GetInt32("clicks_on_broken_links");
             Misspellings = obj.GetInt32("misspellings");
@@ -42,8 +42,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance {
 
         #region Static methods
 
-        public static QualityAssuranceSummary Parse(JObject obj) {
-            return obj == null ? null : new QualityAssuranceSummary(obj);
+        public static SiteimproveQualityAssuranceSummary Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveQualityAssuranceSummary(obj);
         }
 
         #endregion

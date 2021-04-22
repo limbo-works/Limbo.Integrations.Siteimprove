@@ -10,14 +10,14 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Visitors {
         /// <summary>
         /// Gets the number of visits registered for the page.
         /// </summary>
-        public int Visits { get; private set; }
+        public int Visits { get; }
 
         /// <summary>
         /// Gets the bounce rate is an indication of how many visitors only perform a single page view.
         /// </summary>
-        public float BounceRate { get; private set; }
+        public float BounceRate { get; }
 
-        public string DeviceType { get; private set; }
+        public string DeviceType { get; }
 
         #endregion
 

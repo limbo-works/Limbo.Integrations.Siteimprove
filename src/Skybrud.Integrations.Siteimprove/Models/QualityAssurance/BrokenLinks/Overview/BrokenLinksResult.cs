@@ -7,7 +7,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
     /// <summary>
     /// Describes the amount of broken links a specified time.
     /// </summary>
-    public class BrokenLinksResult : SiteimproveObject {
+    public class SiteimproveBrokenLinksResult : SiteimproveObject {
 
         #region Properties
 
@@ -30,7 +30,7 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
         #region Constructor
 
-        private BrokenLinksResult(JObject obj) : base(obj) {
+        private SiteimproveBrokenLinksResult(JObject obj) : base(obj) {
             BrokenLinkCount = obj.GetInt32("broken_link_count");
             PageCount = obj.GetInt32("page_count");
             Timestamp = obj.GetDateTime("timestamp");
@@ -40,8 +40,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.O
 
         #region Static methods
 
-        public static BrokenLinksResult Parse(JObject obj) {
-            return obj == null ? null : new BrokenLinksResult(obj);
+        public static SiteimproveBrokenLinksResult Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveBrokenLinksResult(obj);
         }
 
         #endregion

@@ -35,16 +35,16 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
 
         #region Member methods
 
-        public SiteimproveGetQualityAssuranceSummaryResponse GetSummary(long siteId) {
-            return SiteimproveGetQualityAssuranceSummaryResponse.ParseResponse(Raw.GetSummary(siteId));
+        public SiteimproveQualityAssuranceSummaryResponse GetSummary(long siteId) {
+            return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(siteId));
         }
 
-        public SiteimproveGetQualityAssuranceSummaryResponse GetSummary(long siteId, long groupId) {
-            return SiteimproveGetQualityAssuranceSummaryResponse.ParseResponse(Raw.GetSummary(siteId, groupId));
+        public SiteimproveQualityAssuranceSummaryResponse GetSummary(long siteId, long groupId) {
+            return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(siteId, groupId));
         }
 
-        public SiteimproveGetQualityAssuranceSummaryResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
-            return SiteimproveGetQualityAssuranceSummaryResponse.ParseResponse(Raw.GetSummary(options));
+        public SiteimproveQualityAssuranceSummaryResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
+            return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(options));
         }
 
         #endregion

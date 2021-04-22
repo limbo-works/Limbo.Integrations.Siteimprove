@@ -12,13 +12,9 @@ namespace Skybrud.Integrations.Siteimprove.Models.Common {
         #region Properties
 
 
-        public Dictionary<string, SiteimproveLinksCollection> Collections {
-            get { return _collections; }
-        }
+        public Dictionary<string, SiteimproveLinksCollection> Collections => _collections;
 
-        public Dictionary<string, string> Links {
-            get { return _links; }
-        }
+        public Dictionary<string, string> Links => _links;
 
         #endregion
 

@@ -4,31 +4,31 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overview {
     
-    public class SpellingCollection : SiteimproveObject {
+    public class SiteimproveSpellingResultList : SiteimproveObject {
 
         #region Properties
 
         [JsonProperty("items")]
-        public SpellingResult[] Items { get; private set; }
+        public SiteimproveSpellingResult[] Items { get; }
 
         [JsonProperty("total_items")]
-        public int TotalItems { get; private set; }
+        public int TotalItems { get; }
 
         [JsonProperty("total_pages")]
-        public int TotalPages { get; private set; }
+        public int TotalPages { get; }
 
         [JsonProperty("_links")]
-        public LinkCollection Links { get; private set; }
+        public LinkCollection Links { get; }
 
         [JsonProperty("_siteimprove")]
-        public SiteimproveLinkCollection Siteimprove { get; private set; }
+        public SiteimproveLinkCollection Siteimprove { get; }
 
         #endregion
 
         #region Constructor
 
-        private SpellingCollection(JObject obj) : base(obj) {
-            Items = obj.GetArrayItems("items", SpellingResult.Parse);
+        private SiteimproveSpellingResultList(JObject obj) : base(obj) {
+            Items = obj.GetArrayItems("items", SiteimproveSpellingResult.Parse);
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
             Links = obj.GetObject("_links", LinkCollection.Parse);
@@ -39,8 +39,8 @@ namespace Skybrud.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Over
 
         #region Static methods
 
-        public static SpellingCollection Parse(JObject obj) {
-            return obj == null ? null : new SpellingCollection(obj);
+        public static SiteimproveSpellingResultList Parse(JObject obj) {
+            return obj == null ? null : new SiteimproveSpellingResultList(obj);
         }
 
         #endregion

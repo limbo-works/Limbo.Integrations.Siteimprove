@@ -11,37 +11,35 @@ namespace Skybrud.Integrations.Siteimprove.Models.Analytics.Overview {
         /// <summary>
         /// Gets the bounce rate is an indication of how many visitors only perform a single page view.
         /// </summary>
-        public float BounceRate { get; private set; }
+        public float BounceRate { get; }
 
-        public DateTime Timestamp { get; private set; }
+        public DateTime Timestamp { get; }
 
         /// <summary>
         /// Gets the number of visits registered.
         /// </summary>
-        public int Visits { get; private set; }
+        public int Visits { get; }
 
         /// <summary>
         /// Gets the number of page views registered.
         /// </summary>
-        public int PageViews { get; private set; }
+        public int PageViews { get; }
 
         /// <summary>
         /// Gets the number of returning visitors registered.
         /// </summary>
-        public int ReturningVisitors { get; private set; }
+        public int ReturningVisitors { get; }
 
         /// <summary>
         /// Gets the number of unique vistors registered.
         /// </summary>
-        public int UniqueVisitors { get; private set; }
+        public int UniqueVisitors { get; }
 
         /// <summary>
         /// Gets the number of new visitors registered. This property isn't returned by the Siteimprove API, but
         /// calculated from <see cref="UniqueVisitors"/> minus <see cref="ReturningVisitors"/>.
         /// </summary>
-        public int NewVisitors {
-            get { return UniqueVisitors - ReturningVisitors; }
-        }
+        public int NewVisitors => UniqueVisitors - ReturningVisitors;
 
         #endregion
 
