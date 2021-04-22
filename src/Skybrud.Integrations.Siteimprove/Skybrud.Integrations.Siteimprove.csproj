@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Skybrud.Integrations.BorgerDk</PackageId>
+    <PackageId>Skybrud.Integrations.Siteimprove</PackageId>
     <PackageTags>Skybrud, Siteimprove, API</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/skybrud/Skybrud.Integrations.Siteimprove</PackageProjectUrl>
