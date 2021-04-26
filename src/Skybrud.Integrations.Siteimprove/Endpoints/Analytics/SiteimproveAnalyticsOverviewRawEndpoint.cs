@@ -31,7 +31,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-        public IHttpResponse GetHistory(int siteId) {
+        public IHttpResponse GetHistory(long siteId) {
             return GetHistory(new SiteimproveGetHistoryOptions(siteId));
         }
 
@@ -50,7 +50,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>Returns an instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-        public IHttpResponse GetSummary(int siteId) {
+        public IHttpResponse GetSummary(long siteId) {
             return GetSummary(new SiteimproveGetSummaryOverviewOptions(siteId));
         }
 

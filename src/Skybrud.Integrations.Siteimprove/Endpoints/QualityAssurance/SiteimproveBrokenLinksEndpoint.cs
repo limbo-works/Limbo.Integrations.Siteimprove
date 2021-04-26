@@ -37,7 +37,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// Gets a overview for broken links.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(int siteId) {
+        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(long siteId) {
             return new SiteimproveBrokenLinksResponse(Raw.GetOverview(siteId));
         }
 
@@ -46,7 +46,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(int siteId, int pageSize) {
+        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(long siteId, int pageSize) {
             return new SiteimproveBrokenLinksResponse(Raw.GetOverview(siteId, pageSize));
         }
 
@@ -56,7 +56,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(int siteId, int page, int pageSize) {
+        public SiteimproveResponse<SiteimproveBrokenLinksResultList> GetOverview(long siteId, int page, int pageSize) {
             return new SiteimproveBrokenLinksResponse(Raw.GetOverview(siteId, page, pageSize));
         }
 
@@ -68,7 +68,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
         /// </see>
-        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(int siteId) {
+        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(long siteId) {
             return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(siteId));
         }
 
@@ -82,7 +82,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_links_pages_with_broken_links</cref>
         /// </see>
-        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(int siteId, int page, int pageSize) {
+        public SiteimprovePageWithBrokenLinksListResponse GetPagesWithBrokenLinks(long siteId, int page, int pageSize) {
             return new SiteimprovePageWithBrokenLinksListResponse(Raw.GetPagesWithBrokenLinks(siteId, page, pageSize));
         }
 
@@ -102,7 +102,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// Gets a list of broken links on the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public IHttpResponse GetLinks(int siteId) {
+        public IHttpResponse GetLinks(long siteId) {
             throw new NotImplementedException();
         }
 
@@ -111,7 +111,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="linkId">The ID of the link.</param>
-        public IHttpResponse GetPagesFromLink(int siteId, int linkId) {
+        public IHttpResponse GetPagesFromLink(long siteId, int linkId) {
             throw new NotImplementedException();
         }
 
@@ -120,7 +120,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageId">The ID of the page.</param>
-        public IHttpResponse GetLinksFromPage(int siteId, int pageId) {
+        public IHttpResponse GetLinksFromPage(long siteId, int pageId) {
             throw new NotImplementedException();
         }
 

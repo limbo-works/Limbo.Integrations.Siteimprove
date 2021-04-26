@@ -40,7 +40,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPopularPageListResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsPopularPageListResponse GetLeastPopularPages(int siteId) {
+        public SiteimproveAnalyticsPopularPageListResponse GetLeastPopularPages(long siteId) {
             return new SiteimproveAnalyticsPopularPageListResponse(Raw.GetLeastPopularPages(siteId));
         }
 
@@ -76,7 +76,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPageListResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsPageListResponse GetAllPages(int siteId) {
+        public SiteimproveAnalyticsPageListResponse GetAllPages(long siteId) {
             return new SiteimproveAnalyticsPageListResponse(Raw.GetAllPages(siteId));
         }
 

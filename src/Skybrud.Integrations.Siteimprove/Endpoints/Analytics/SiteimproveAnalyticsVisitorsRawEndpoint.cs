@@ -24,15 +24,15 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
 
         #endregion
 
-        public IHttpResponse GetDevices(int siteId) {
+        public IHttpResponse GetDevices(long siteId) {
             return GetDevices(siteId, 0, 0, 0, 0, null);
         }
 
-        public IHttpResponse GetDevices(int siteId, int page, int pageSize, string period) {
+        public IHttpResponse GetDevices(long siteId, int page, int pageSize, string period) {
             return GetDevices(siteId, page, pageSize, 0, 0, period);
         }
 
-        public IHttpResponse GetDevices(int siteId, int page, int pageSize, int groupId, int filterId, string period) {
+        public IHttpResponse GetDevices(long siteId, int page, int pageSize, int groupId, int filterId, string period) {
             return GetDevices(new SiteimproveGetDevicesOptions {
                 SiteId = siteId,
                 Page = page,

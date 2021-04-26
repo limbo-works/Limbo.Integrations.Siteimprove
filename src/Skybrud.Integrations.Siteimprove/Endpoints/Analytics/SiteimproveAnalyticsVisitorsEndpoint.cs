@@ -35,15 +35,15 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
 
         #region Member methods
 
-        public SiteimproveAnalyticsDeviceListResponse GetDevices(int siteId) {
+        public SiteimproveAnalyticsDeviceListResponse GetDevices(long siteId) {
             return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId));
         }
 
-        public SiteimproveAnalyticsDeviceListResponse GetDevices(int siteId, int page, int pageSize, string period) {
+        public SiteimproveAnalyticsDeviceListResponse GetDevices(long siteId, int page, int pageSize, string period) {
             return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId, page, pageSize, period));
         }
 
-        public SiteimproveAnalyticsDeviceListResponse GetDevices(int siteId, int page, int pageSize, int groupId, int filterId, string period) {
+        public SiteimproveAnalyticsDeviceListResponse GetDevices(long siteId, int page, int pageSize, int groupId, int filterId, string period) {
             return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId, page, pageSize, groupId, filterId, period));
         }
 

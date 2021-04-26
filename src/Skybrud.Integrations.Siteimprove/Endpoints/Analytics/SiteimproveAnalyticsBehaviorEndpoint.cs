@@ -40,7 +40,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.Analytics {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsVisitLengthResponse"/> representing the response.</returns>
-        public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(int siteId) {
+        public SiteimproveAnalyticsVisitLengthResponse GetVisitLengthHistory(long siteId) {
             return new SiteimproveAnalyticsVisitLengthResponse(Raw.GetVisitLengthHistory(siteId));
         }
 

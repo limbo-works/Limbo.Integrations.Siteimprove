@@ -28,7 +28,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// Gets a overview for misspellings and potential misspellings.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
-        public IHttpResponse GetOverview(int siteId) {
+        public IHttpResponse GetOverview(long siteId) {
             return GetOverview(siteId, 0, 0);
         }
 
@@ -37,7 +37,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public IHttpResponse GetOverview(int siteId, int pageSize) {
+        public IHttpResponse GetOverview(long siteId, int pageSize) {
             return GetOverview(siteId, 0, pageSize);
         }
 
@@ -47,7 +47,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items that should be returned on each page.</param>
-        public IHttpResponse GetOverview(int siteId, int page, int pageSize) {
+        public IHttpResponse GetOverview(long siteId, int page, int pageSize) {
             IHttpQueryString query = new HttpQueryString();
             if (page > 0) query.Add("page", page);
             if (pageSize > 0) query.Add("page_size", pageSize);
@@ -62,7 +62,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_spelling_pages</cref>
         /// </see>
-        public IHttpResponse GetPages(int siteId) {
+        public IHttpResponse GetPages(long siteId) {
             return GetPages(new SiteimproveGetPagesWithSpellingErrorsOptions(siteId));
         }
 
@@ -76,7 +76,7 @@ namespace Skybrud.Integrations.Siteimprove.Endpoints.QualityAssurance {
         /// <see>
         ///     <cref>https://api.siteimprove.com/v2/documentation#!/Quality_Assurance/get_sites_site_id_quality_assurance_spelling_pages</cref>
         /// </see>
-        public IHttpResponse GetPages(int siteId, int page, int pageSize) {
+        public IHttpResponse GetPages(long siteId, int page, int pageSize) {
             return GetPages(new SiteimproveGetPagesWithSpellingErrorsOptions(siteId, page, pageSize));
         }
 
