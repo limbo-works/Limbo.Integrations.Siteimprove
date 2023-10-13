@@ -11,7 +11,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.General {
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; }
+        public SiteimproveHttpService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
@@ -22,7 +22,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.General {
 
         #region Constructors
 
-        internal SiteimproveSitesEndpoint(SiteimproveService service) {
+        internal SiteimproveSitesEndpoint(SiteimproveHttpService service) {
             Service = service;
         }
 

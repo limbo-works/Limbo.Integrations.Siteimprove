@@ -10,7 +10,7 @@ namespace Limbo.Integrations.Siteimprove {
     /// <summary>
     /// Class working as an entry point to making requests to the various endpoints of the Siteimprove API.
     /// </summary>
-    public class SiteimproveService {
+    public class SiteimproveHttpService {
 
         #region Properties
 
@@ -48,7 +48,7 @@ namespace Limbo.Integrations.Siteimprove {
 
         #region Constructor
 
-        private SiteimproveService() {
+        private SiteimproveHttpService() {
             Sites = new SiteimproveSitesEndpoint(this);
             Content = new SiteimproveContentEndpoint(this);
             Accessibility = new SiteimproveAccessibilityEndpoint(this);
@@ -63,8 +63,8 @@ namespace Limbo.Integrations.Siteimprove {
         /// <summary>
         /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> based on values from the app settings.
         /// </summary>
-        public static SiteimproveService CreateFromConfig() {
-            return new SiteimproveService {
+        public static SiteimproveHttpService CreateFromConfig() {
+            return new SiteimproveHttpService {
                 Client = SiteimproveHttpClient.CreateFromConfig()
             };
         }
@@ -73,8 +73,8 @@ namespace Limbo.Integrations.Siteimprove {
         /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> from the specified client.
         /// </summary>
         /// <param name="client">The raw client to be used.</param>
-        public static SiteimproveService CreateFromClient(SiteimproveHttpClient client) {
-            return new SiteimproveService {
+        public static SiteimproveHttpService CreateFromClient(SiteimproveHttpClient client) {
+            return new SiteimproveHttpService {
                 Client = client
             };
         }
@@ -84,7 +84,7 @@ namespace Limbo.Integrations.Siteimprove {
         /// </summary>
         /// <param name="username">The username of the Siteimprove account.</param>
         /// <param name="password">The password of the Siteimprove account.</param>
-        public static SiteimproveService CreateFromCredentials(string username, string password) {
+        public static SiteimproveHttpService CreateFromCredentials(string username, string password) {
             return CreateFromClient(SiteimproveHttpClient.CreateFromCredentials(username, password));
         }
 

@@ -12,7 +12,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Accessibility {
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; }
+        public SiteimproveHttpService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
@@ -23,7 +23,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Accessibility {
 
         #region Constructors
 
-        internal SiteimproveAccessibilityEndpoint(SiteimproveService service) {
+        internal SiteimproveAccessibilityEndpoint(SiteimproveHttpService service) {
             Service = service;
         }
 

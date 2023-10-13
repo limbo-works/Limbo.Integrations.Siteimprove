@@ -10,7 +10,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
         /// <summary>
         /// Gets a reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; }
+        public SiteimproveHttpService Service { get; }
 
         /// <summary>
         /// Gets a reference to the parent Analytics service.
@@ -26,7 +26,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
 
         #region Constructors
 
-        internal SiteimproveAnalyticsOverviewEndpoint(SiteimproveService service, SiteimproveAnalyticsEndpoint analytics) {
+        internal SiteimproveAnalyticsOverviewEndpoint(SiteimproveHttpService service, SiteimproveAnalyticsEndpoint analytics) {
             Service = service;
             Analytics = analytics;
         }

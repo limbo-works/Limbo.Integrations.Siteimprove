@@ -7,7 +7,7 @@
         /// <summary>
         /// A reference to the Siteimprove service.
         /// </summary>
-        public SiteimproveService Service { get; }
+        public SiteimproveHttpService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
@@ -26,7 +26,7 @@
 
         #region Constructors
 
-        internal SiteimproveAnalyticsEndpoint(SiteimproveService service) {
+        internal SiteimproveAnalyticsEndpoint(SiteimproveHttpService service) {
             Service = service;
             Behavior = new SiteimproveAnalyticsBehaviorEndpoint(service, this);
             Content = new SiteimproveAnalyticsContentEndpoint(service, this);
