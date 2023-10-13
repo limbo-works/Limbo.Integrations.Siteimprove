@@ -64,17 +64,6 @@ namespace Limbo.Integrations.Siteimprove.Http {
         #region Static methods
 
         /// <summary>
-        /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> based on values from the app settings.
-        /// </summary>
-        public static SiteimproveHttpClient CreateFromConfig() {
-            string username = ConfigurationManager.AppSettings["SiteimproveUsername"];
-            string password = ConfigurationManager.AppSettings["SiteimprovePassword"];
-            return new SiteimproveHttpClient {
-                Crendentials = new NetworkCredential(username, password)
-            };
-        }
-
-        /// <summary>
         /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> from the specified username and password.
         /// </summary>
         /// <param name="username">The username of the Siteimprove account.</param>

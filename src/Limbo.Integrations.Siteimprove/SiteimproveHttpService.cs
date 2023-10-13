@@ -61,15 +61,6 @@ namespace Limbo.Integrations.Siteimprove {
         #region Static methods
 
         /// <summary>
-        /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> based on values from the app settings.
-        /// </summary>
-        public static SiteimproveHttpService CreateFromConfig() {
-            return new SiteimproveHttpService {
-                Client = SiteimproveHttpClient.CreateFromConfig()
-            };
-        }
-
-        /// <summary>
         /// Initialize a new instance of <see cref="SiteimproveHttpClient"/> from the specified client.
         /// </summary>
         /// <param name="client">The raw client to be used.</param>

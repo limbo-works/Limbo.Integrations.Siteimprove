@@ -1,6 +1,6 @@
-﻿using System.Collections.Specialized;
-using Limbo.Integrations.Siteimprove.Http;
+﻿using Limbo.Integrations.Siteimprove.Http;
 using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Collections;
 
 namespace Limbo.Integrations.Siteimprove.Endpoints.General {
 
@@ -23,7 +23,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.General {
         #region Methods
 
         public IHttpResponse GetSite(int siteId) {
-            return Client.Get("/v2/sites/" + siteId);
+            return Client.Get($"/v2/sites/{siteId}");
         }
 
         public IHttpResponse GetSites() {
@@ -36,9 +36,9 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.General {
 
         public IHttpResponse GetSites(int page, int pageSize) {
 
-            NameValueCollection query = new NameValueCollection();
-            if (page > 0) query.Add("page", page + "");
-            if (pageSize > 0) query.Add("page_size", pageSize + "");
+            IHttpQueryString query = new HttpQueryString();
+            if (page > 0) query.Add("page", page);
+            if (pageSize > 0) query.Add("page_size", pageSize);
 
             return Client.Get("/v2/sites", query);
 

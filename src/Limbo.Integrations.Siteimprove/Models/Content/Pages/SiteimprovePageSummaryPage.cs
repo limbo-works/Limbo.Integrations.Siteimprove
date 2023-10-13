@@ -26,17 +26,17 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
         /// <summary>
         /// Gets a timestamp for when the page was first seen.
         /// </summary>
-        public EssentialsDateTime FirstSeen { get; }
+        public EssentialsTime FirstSeen { get; }
 
         /// <summary>
         /// Gets a timestamp for when a change was last detected on the page.
         /// </summary>
-        public EssentialsDateTime LastChanged { get; }
+        public EssentialsTime LastChanged { get; }
 
         /// <summary>
         /// Gets a timestamp for when the page was last seen.
         /// </summary>
-        public EssentialsDateTime LastSeen { get; }
+        public EssentialsTime LastSeen { get; }
 
         #endregion
 
@@ -46,9 +46,9 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
             CheckAllowed = obj.GetBoolean("check_allowed");
             CheckPaused = obj.GetBoolean("check_paused");
             CheckingNow = obj.GetBoolean("checking_now");
-            FirstSeen = obj.GetString("first_seen", EssentialsDateTime.Parse);
-            LastChanged = obj.GetString("last_changed", EssentialsDateTime.Parse);
-            LastSeen = obj.GetString("last_seen", EssentialsDateTime.Parse);
+            FirstSeen = obj.GetString("first_seen", EssentialsTime.Parse);
+            LastChanged = obj.GetString("last_changed", EssentialsTime.Parse);
+            LastSeen = obj.GetString("last_seen", EssentialsTime.Parse);
         }
 
         #endregion
