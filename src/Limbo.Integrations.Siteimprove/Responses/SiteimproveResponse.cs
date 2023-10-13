@@ -27,7 +27,7 @@ namespace Limbo.Integrations.Siteimprove.Responses {
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         protected SiteimproveResponse(IHttpResponse response) : base(response) {
-            
+
             // Throw an exception if the statuis code is not 200 OK
             if (response.StatusCode != HttpStatusCode.OK) throw new SiteimproveHttpException(response);
 

@@ -4,7 +4,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Limbo.Integrations.Siteimprove.Options.Analytics {
-    
+
     public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOptions {
 
         #region Properties
@@ -100,16 +100,16 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics {
 
 
         protected virtual IHttpQueryString GetQueryString() {
-            
+
             IHttpQueryString query = new HttpQueryString();
-            
+
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
             if (GroupId > 0) query.Add("group_id", GroupId);
             if (FilterId > 0) query.Add("filter_id", FilterId);
             if (PageId > 0) query.Add("page_id", PageId);
             if (!string.IsNullOrWhiteSpace(Period)) query.Add("period", Period);
-            
+
             return query;
 
         }

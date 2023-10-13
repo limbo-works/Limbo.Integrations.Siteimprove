@@ -17,7 +17,7 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Ove
         public int BrokenLinkCount { get; }
 
         /// <summary>
-        /// Gets the amount of pages 
+        /// Gets the amount of pages
         /// </summary>
         public int PageCount { get; }
 

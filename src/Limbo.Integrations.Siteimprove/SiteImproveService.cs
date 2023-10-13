@@ -7,6 +7,9 @@ using Limbo.Integrations.Siteimprove.Http;
 
 namespace Limbo.Integrations.Siteimprove {
 
+    /// <summary>
+    /// Class working as an entry point to making requests to the various endpoints of the Siteimprove API.
+    /// </summary>
     public class SiteimproveService {
 
         #region Properties
@@ -16,14 +19,29 @@ namespace Limbo.Integrations.Siteimprove {
         /// </summary>
         public SiteimproveHttpClient Client { get; private set; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>Sites</strong> endpoint.
+        /// </summary>
         public SiteimproveSitesEndpoint Sites { get; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>Content</strong> endpoint.
+        /// </summary>
         public SiteimproveContentEndpoint Content { get; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>Accessibility</strong> endpoint.
+        /// </summary>
         public SiteimproveAccessibilityEndpoint Accessibility { get; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>Analytics</strong> endpoint.
+        /// </summary>
         public SiteimproveAnalyticsEndpoint Analytics { get; }
 
+        /// <summary>
+        /// Gets a reference to the <strong>Quality Assurance</strong> endpoint.
+        /// </summary>
         public SiteimproveQualityAssuranceEndpoint QualityAssurance { get; }
 
         #endregion

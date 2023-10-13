@@ -94,7 +94,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Accessibility {
         public IHttpResponse GetPageIssues(long siteId, long pageId, int page, int pageSize) {
             return GetPageIssues(new SiteimproveGetPageAccessibilityIssuesOptions(siteId, pageId, page, pageSize));
         }
-        
+
         /// <summary>
         /// Gets the number of issues within a conformance level * severity set.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Accessibility {
             if (options == null) throw new ArgumentNullException(nameof(options));
             return Client.GetResponse(options);
         }
-        
+
         #endregion
 
     }

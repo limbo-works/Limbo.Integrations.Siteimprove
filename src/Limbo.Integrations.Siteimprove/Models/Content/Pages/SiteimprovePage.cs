@@ -2,11 +2,11 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
-    
+
     public class SiteimprovePage : SiteimproveObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the ID of the page.
         /// </summary>

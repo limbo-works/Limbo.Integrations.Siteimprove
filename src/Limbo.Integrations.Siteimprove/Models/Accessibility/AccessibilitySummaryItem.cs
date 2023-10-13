@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Accessibility {
-    
+
     public class SiteimproveAccessibilitySummaryItem : SiteimproveObject {
 
         #region Properties

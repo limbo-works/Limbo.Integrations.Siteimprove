@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overview {
-    
+
     public class SiteimproveSpellingResultList : SiteimproveObject {
 
         #region Properties

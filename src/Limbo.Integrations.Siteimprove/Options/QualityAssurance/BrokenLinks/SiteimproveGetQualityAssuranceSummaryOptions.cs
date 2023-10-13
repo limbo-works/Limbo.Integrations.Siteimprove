@@ -49,16 +49,16 @@ namespace Limbo.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks {
         #endregion
 
         #region Member methods
-        
+
         public IHttpRequest GetRequest() {
-            
+
             if (SiteId == 0) throw new PropertyNotSetException(nameof(SiteId));
-            
+
             IHttpQueryString query = new HttpQueryString();
-            
+
             // TODO: Is this necessary? The site ID is already a part of the URL
             query.Add("site_id", SiteId);
-            
+
             if (GroupId > 0) query.Add("group_id", GroupId);
 
             // Initialize a new request

@@ -4,7 +4,7 @@ using Limbo.Integrations.Siteimprove.Options.Analytics.Visitors;
 using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
-    
+
     public class SiteimproveAnalyticsVisitorsRawEndpoint {
 
         #region Properties

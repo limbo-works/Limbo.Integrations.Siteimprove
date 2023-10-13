@@ -3,11 +3,11 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
-    
+
     public class SiteimproveAnalyticsDeviceListAggregations : SiteimproveObject {
 
         #region Properties
-            
+
         public SiteimproveAnalyticsSumAggregation Visits { get; }
 
         #endregion

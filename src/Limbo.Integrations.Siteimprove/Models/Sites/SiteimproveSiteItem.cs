@@ -3,20 +3,20 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Sites {
-    
+
     public class SiteimproveSiteItem : SiteimproveObject {
 
         #region Properties
-        
+
         [JsonProperty("id")]
         public long Id { get; }
-        
+
         [JsonProperty("site_name")]
         public string Name { get; }
-        
+
         [JsonProperty("url")]
         public string Url { get; }
-        
+
         [JsonProperty("pages")]
         public int Pages { get; }
 

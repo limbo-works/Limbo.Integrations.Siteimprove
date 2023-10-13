@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Responses.QualityAssurance.Spelling {
-    
+
     public class SiteimprovePageWithSpellingErrorsListResponse : SiteimproveResponse<SiteimprovePageWithSpellingErrorsList> {
 
         /// <summary>

@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
-    
+
     public class SiteimproveAnalyticsContentPageListAggregations : SiteimproveObject {
 
         #region Properties

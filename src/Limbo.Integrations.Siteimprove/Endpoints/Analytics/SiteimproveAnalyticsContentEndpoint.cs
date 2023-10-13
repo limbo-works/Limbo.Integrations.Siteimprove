@@ -72,7 +72,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
         }
 
         /// <summary>
-        /// Gets a list of all content pages for the site with the specified <code>siteId</code>. 
+        /// Gets a list of all content pages for the site with the specified <code>siteId</code>.
         /// </summary>
         /// <param name="siteId">The ID of the site.</param>
         /// <returns>Returns an instance of <see cref="SiteimproveAnalyticsPageListResponse"/> representing the response.</returns>

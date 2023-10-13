@@ -4,14 +4,30 @@ using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Exceptions {
 
-    public class SiteimproveApiException : Exception {
+    /// <summary>
+    /// Class representing an exception/error returned by the Sitemprove API.
+    /// </summary>
+    public class SiteimproveApiException : SiteimproveException {
 
+        /// <summary>
+        /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
+        /// </summary>
         public IHttpResponse Response { get; }
 
+        /// <summary>
+        /// Gets the status code of the underlying HTTP request.
+        /// </summary>
         public HttpStatusCode StatusCode { get; }
 
+        /// <summary>
+        /// Gets the type of the 
+        /// </summary>
         public string Type { get; }
 
+        /// <summary>
+        /// Initializes a new exception based on the specified <paramref name="response"/>.
+        /// </summary>
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         public SiteimproveApiException(IHttpResponse response, string message, string type) : base(message) {
             Response = response;
             StatusCode = response.StatusCode;

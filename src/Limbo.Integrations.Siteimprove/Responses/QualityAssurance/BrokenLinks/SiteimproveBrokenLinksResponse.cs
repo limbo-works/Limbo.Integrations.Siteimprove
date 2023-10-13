@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Responses.QualityAssurance.BrokenLinks {
-    
+
     public class SiteimproveBrokenLinksResponse : SiteimproveResponse<SiteimproveBrokenLinksResultList> {
 
         /// <summary>

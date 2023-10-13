@@ -17,7 +17,7 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content {
         public string Query { get; set; }
 
         /// <summary>
-        /// Gets or sets the field that <see cref="Query"/> should match. 
+        /// Gets or sets the field that <see cref="Query"/> should match.
         /// </summary>
         public SiteimproveAnalyticsGetAllPagesField SearchIn { get; set; }
 
@@ -57,12 +57,12 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content {
         protected override IHttpQueryString GetQueryString() {
 
             IHttpQueryString query = base.GetQueryString();
-            
+
             if (!string.IsNullOrWhiteSpace(Query)) {
                 query.Add("query", Query);
                 query.Add("search_in", SearchIn.ToString().ToLower());
             }
-            
+
             return query;
 
         }

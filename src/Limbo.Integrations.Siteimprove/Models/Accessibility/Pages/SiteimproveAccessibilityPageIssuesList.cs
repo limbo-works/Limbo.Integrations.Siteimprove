@@ -12,11 +12,11 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages {
         private readonly Dictionary<string, int> _lookup = new Dictionary<string, int>();
 
         #region Properties
-        
+
         public SiteimproveAccessibilityPageIssuesItem[] Items { get; }
-        
+
         public int TotalItems { get; }
-        
+
         public int TotalPages { get; }
 
         #endregion

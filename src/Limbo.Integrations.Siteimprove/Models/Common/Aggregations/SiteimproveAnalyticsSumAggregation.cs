@@ -2,11 +2,11 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Common.Aggregations {
-    
+
     public class SiteimproveAnalyticsSumAggregation : SiteimproveObject {
 
         #region Properties
-            
+
         public int Sum { get; }
 
         #endregion

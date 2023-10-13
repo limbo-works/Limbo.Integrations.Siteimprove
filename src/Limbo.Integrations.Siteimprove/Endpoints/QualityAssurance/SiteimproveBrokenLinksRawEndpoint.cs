@@ -101,7 +101,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.QualityAssurance {
             if (options == null) throw new ArgumentNullException(nameof(options));
             return Client.GetResponse(options);
         }
-        
+
         /// <summary>
         /// Gets a list of broken links on the site with the specified <code>siteId</code>.
         /// </summary>

@@ -4,7 +4,7 @@ using Limbo.Integrations.Siteimprove.Options.Analytics.Overview;
 using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
-    
+
     public class SiteimproveAnalyticsOverviewRawEndpoint {
 
         #region Properties
@@ -44,7 +44,7 @@ namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
             if (options == null) throw new ArgumentNullException(nameof(options));
             return Client.GetResponse(options);
         }
-        
+
         /// <summary>
         /// Gets a summary with the most common statistics for the site with the specified <code>siteId</code>.
         /// </summary>

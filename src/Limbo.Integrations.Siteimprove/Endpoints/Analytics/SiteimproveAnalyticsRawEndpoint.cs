@@ -1,7 +1,7 @@
 ﻿using Limbo.Integrations.Siteimprove.Http;
 
 namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
-    
+
     public class SiteimproveAnalyticsRawEndpoint {
 
         #region Properties

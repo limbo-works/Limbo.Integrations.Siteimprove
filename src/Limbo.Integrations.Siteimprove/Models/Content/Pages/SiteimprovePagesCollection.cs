@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
-    
+
     public class SiteimprovePagesCollection : SiteimproveObject {
 
         #region Properties
@@ -16,7 +16,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
         [JsonProperty("total_pages")]
         public int TotalPages { get; private set; }
-        
+
         #endregion
 
         #region Constructors

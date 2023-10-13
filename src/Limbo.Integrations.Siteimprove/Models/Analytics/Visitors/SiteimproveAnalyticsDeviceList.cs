@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
-   
+
     public class SiteimproveAnalyticsDeviceList : SiteimproveObject {
 
         #region Properties
@@ -21,7 +21,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
         /// Gets the total amount of pages matching the options sent to the API.
         /// </summary>
         public int TotalPages { get; }
-        
+
         public SiteimproveAnalyticsDeviceListAggregations Aggregations { get; }
 
         #endregion

@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Responses.Sites {
-    
+
     public class SiteimproveSiteListResponse : SiteimproveResponse<SiteimproveSiteList> {
 
         /// <summary>

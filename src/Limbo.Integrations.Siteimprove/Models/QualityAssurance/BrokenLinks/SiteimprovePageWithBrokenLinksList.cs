@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks {
-    
+
     public class SiteimprovePageWithBrokenLinksList : SiteimproveObject {
 
         #region Properties
@@ -24,7 +24,6 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks {
         }
 
         #endregion
-
 
         #region Static methods
 

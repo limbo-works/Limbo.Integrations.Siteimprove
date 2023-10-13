@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Sites {
-    
+
     public class SiteimproveSiteList : SiteimproveObject {
 
         #region Properties

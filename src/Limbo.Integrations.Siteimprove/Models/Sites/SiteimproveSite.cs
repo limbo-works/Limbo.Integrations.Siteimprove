@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 
 namespace Limbo.Integrations.Siteimprove.Models.Sites {
-    
+
     public class SiteimproveSite : SiteimproveSiteItem {
 
         #region Constructors
@@ -17,7 +17,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Sites {
         }
 
         #endregion
-    
+
     }
 
 }

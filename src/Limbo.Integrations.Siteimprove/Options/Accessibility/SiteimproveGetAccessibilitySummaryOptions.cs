@@ -4,7 +4,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Limbo.Integrations.Siteimprove.Options.Accessibility {
-    
+
     /// <see>
     ///     <cref>https://api.siteimprove.com/v2/documentation#!/Accessibility/get_sites_site_id_accessibility_overview_summary</cref>
     /// </see>

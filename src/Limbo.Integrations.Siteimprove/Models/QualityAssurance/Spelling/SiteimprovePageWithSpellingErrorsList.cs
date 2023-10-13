@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling {
-    
+
     public class SiteimprovePageWithSpellingErrorsList : SiteimproveObject {
 
         #region Properties

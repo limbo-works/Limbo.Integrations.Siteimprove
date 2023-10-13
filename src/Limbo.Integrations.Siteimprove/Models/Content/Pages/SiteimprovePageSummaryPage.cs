@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
-    
+
     public class SiteimprovePageSummaryPage : SiteimproveObject {
 
         #region Properties

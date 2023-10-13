@@ -28,7 +28,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility {
         #region Constructor
 
         private SiteimproveAccessibilitySummaryList(JObject obj) : base(obj) {
-            
+
             Items = obj.GetArray("items", SiteimproveAccessibilitySummaryItem.Parse);
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");

@@ -2,13 +2,13 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
-    
+
     public class SiteimprovePageWebLinkItem : SiteimproveObject {
 
         #region Properties
 
         public string PageReport { get; }
-        
+
         #endregion
 
         #region Constructors

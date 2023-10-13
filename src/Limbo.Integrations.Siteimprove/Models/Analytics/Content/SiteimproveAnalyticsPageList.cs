@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
-    
+
     /// <summary>
     /// Class representing a list of <see cref="SiteimproveAnalyticsContentPage"/>.
     /// </summary>

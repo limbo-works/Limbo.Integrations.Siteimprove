@@ -7,7 +7,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Overview {
     public class SiteimproveAnalyticsOverviewItem : SiteimproveObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the bounce rate is an indication of how many visitors only perform a single page view.
         /// </summary>

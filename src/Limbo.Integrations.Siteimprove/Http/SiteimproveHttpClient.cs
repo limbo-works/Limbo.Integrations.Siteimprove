@@ -9,21 +9,42 @@ using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Client;
 
 namespace Limbo.Integrations.Siteimprove.Http {
-    
+
+    /// <summary>
+    /// HTTP client for making HTTP based requests to the Siteimprove API.
+    /// </summary>
     public class SiteimproveHttpClient : HttpClient {
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets the credentials to be used for communicationg with the Siteimprove API.
+        /// </summary>
         public NetworkCredential Crendentials { get; private set; }
 
+        /// <summary>
+        /// Gets a reference to the raw <strong>Sites</strong> endpoint.
+        /// </summary>
         public SiteimproveSitesRawEndpoint Sites { get; }
-        
+
+        /// <summary>
+        /// Gets a reference to the raw <strong>Content</strong> endpoint.
+        /// </summary>
         public SiteimproveContentRawEndpoint Content { get; }
-        
-        public SiteimproveAnalyticsRawEndpoint Analytics { get; }
-        
+
+        /// <summary>
+        /// Gets a reference to the raw <strong>Accessibility</strong> endpoint.
+        /// </summary>
         public SiteimproveAccessibilityRawEndpoint Accessibility { get; }
-        
+
+        /// <summary>
+        /// Gets a reference to the raw <strong>Analytics</strong> endpoint.
+        /// </summary>
+        public SiteimproveAnalyticsRawEndpoint Analytics { get; }
+
+        /// <summary>
+        /// Gets a reference to the raw <strong>Quality Assurance</strong> endpoint.
+        /// </summary>
         public SiteimproveQualityAssuranceRawEndpoint QualityAssurance { get; }
 
         #endregion
@@ -67,7 +88,8 @@ namespace Limbo.Integrations.Siteimprove.Http {
         #endregion
 
         #region Member methods
-        
+
+        /// <inheritdoc />
         protected override void PrepareHttpRequest(IHttpRequest request) {
 
             // Append the scheme and host (if not already specified)

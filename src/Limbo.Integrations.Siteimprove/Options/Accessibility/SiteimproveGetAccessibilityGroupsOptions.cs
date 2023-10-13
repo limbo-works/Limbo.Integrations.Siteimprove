@@ -4,7 +4,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Limbo.Integrations.Siteimprove.Options.Accessibility {
-    
+
     public class SiteimproveGetAccessibilityGroupsOptions : IHttpRequestOptions {
 
         #region Properties

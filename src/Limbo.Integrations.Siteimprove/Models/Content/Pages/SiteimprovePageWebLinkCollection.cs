@@ -2,11 +2,11 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
-    
+
     public class SiteimprovePageWebLinkCollection : SiteimproveObject {
 
         #region Properties
-        
+
         public SiteimprovePageWebLinkItem Accessibility { get; }
 
         public SiteimprovePageWebLinkItem Policy { get; }

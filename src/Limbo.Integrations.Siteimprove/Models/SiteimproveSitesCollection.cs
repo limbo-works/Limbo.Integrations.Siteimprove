@@ -3,14 +3,14 @@
 //using Skybrud.Social.Json;
 
 //namespace Skybrud.Siteimprove.Objects {
-    
+
 //    public class SiteimproveSitesCollection : SocialJsonObject {
 
 //        #region Properties
 
 //        [JsonProperty("items")]
 //        public SiteimproveSiteSummary[] Items { get; private set; }
-        
+
 //        [JsonProperty("total_items")]
 //        public int TotalItems { get; private set; }
 

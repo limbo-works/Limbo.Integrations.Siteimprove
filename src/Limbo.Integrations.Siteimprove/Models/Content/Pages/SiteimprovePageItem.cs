@@ -21,7 +21,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
         /// Gets the URL of the page.
         /// </summary>
         public string Url { get; }
-        
+
         #endregion
 
         #region Constructors
