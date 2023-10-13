@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>1.0.0-alpha000</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
+    <Company>Limbo</Company>
+    <Product>Limbo.Integrations</Product>
+    <Authors>Anders Bjerner</Authors>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
+    <Description>.NET implementation and API wrapper for the Siteimprove API.</Description>
+  </PropertyGroup>
+
+  <!-- Information for the NuGet package -->
+  <PropertyGroup>
+    <PackageId>Limbo.Integrations.Siteimprove</PackageId>
+    <PackageTags>Limbo, Skybrud, Integrations, Siteimprove, API</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://packages.limbo.works/limbo.integrations.siteimprove/</PackageProjectUrl>
+    <PackageIcon>Limbo.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/limbo-works/Limbo.Integrations.Siteimprove</RepositoryUrl>
+  </PropertyGroup>
+
+  <!-- Include NuGet dependencies -->
+  <ItemGroup>
+    <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.14" />
+  </ItemGroup>
+
+  <!-- Include package icon for NuGet -->
+  <ItemGroup>
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- Generate XML documentation -->
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+
+</Project>

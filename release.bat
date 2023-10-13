@@ -1,3 +1,3 @@
 @echo off
 
-dotnet build src/Skybrud.Integrations.Siteimprove --configuration Release /t:rebuild /t:pack -p:BuildTools=1 -p:PackageOutputPath=../../releases/nuget
+dotnet build src/Limbo.Integrations.Siteimprove --configuration Release /t:rebuild /t:pack -p:PackageOutputPath=../../releases/nuget
