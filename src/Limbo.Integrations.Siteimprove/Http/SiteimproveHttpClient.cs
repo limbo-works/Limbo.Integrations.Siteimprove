@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System.Net;
+﻿using System.Net;
 using Limbo.Integrations.Siteimprove.Endpoints.Accessibility;
 using Limbo.Integrations.Siteimprove.Endpoints.Analytics;
 using Limbo.Integrations.Siteimprove.Endpoints.Content;
