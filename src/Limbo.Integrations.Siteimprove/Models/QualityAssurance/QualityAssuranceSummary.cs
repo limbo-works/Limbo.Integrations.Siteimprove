@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance {
 
@@ -35,14 +36,15 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance {
             PagesAffectedByBrokenLinks = obj.GetInt32("pages_affected_by_broken_links");
             PagesAffectedByMisspellings = obj.GetInt32("pages_affected_by_misspellings");
             PotentialMisspellings = obj.GetInt32("potential_misspellings");
-            WebApp = obj.GetString("_siteimprove.webapp.href");
+            WebApp = obj.GetString("_siteimprove.webapp.href")!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveQualityAssuranceSummary Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveQualityAssuranceSummary? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveQualityAssuranceSummary(obj);
         }
 

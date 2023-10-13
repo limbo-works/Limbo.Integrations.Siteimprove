@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
@@ -56,8 +57,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
         private SiteimproveAnalyticsContentPage(JObject obj) : base(obj) {
             Id = obj.GetUInt64("id");
-            Title = obj.GetString("title");
-            Url = obj.GetString("url");
+            Title = obj.GetString("title")!;
+            Url = obj.GetString("url")!;
             BounceRate = obj.GetFloat("bounce_rate");
             AveragePageViewsPerVisit = obj.GetFloat("average_page_views_per_visit");
             PageViews = obj.GetInt32("page_views");
@@ -78,7 +79,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
         /// </summary>
         /// <param name="json">The JSON object representing the content page.</param>
         /// <returns>An instance of <see cref="SiteimproveAnalyticsContentPage"/>.</returns>
-        public static SiteimproveAnalyticsContentPage Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static SiteimproveAnalyticsContentPage? Parse(JObject? json) {
             return json == null ? null : new SiteimproveAnalyticsContentPage(json);
         }
 

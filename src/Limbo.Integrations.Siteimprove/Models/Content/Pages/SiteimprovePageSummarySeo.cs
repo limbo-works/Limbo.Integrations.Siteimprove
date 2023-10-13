@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
@@ -27,7 +28,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
         #region Static methods
 
-        public static SiteimprovePageSummarySeo Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimprovePageSummarySeo? Parse(JObject? obj) {
             return obj == null ? null : new SiteimprovePageSummarySeo(obj);
         }
 

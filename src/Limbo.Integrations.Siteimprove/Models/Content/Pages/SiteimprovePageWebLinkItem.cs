@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
@@ -14,14 +15,15 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
         #region Constructors
 
         private SiteimprovePageWebLinkItem(JObject obj) : base(obj) {
-            PageReport = obj.GetString("page_report.href");
+            PageReport = obj.GetString("page_report.href")!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimprovePageWebLinkItem Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimprovePageWebLinkItem? Parse(JObject? obj) {
             return obj == null ? null : new SiteimprovePageWebLinkItem(obj);
         }
 

@@ -19,7 +19,7 @@ namespace Limbo.Integrations.Siteimprove.Http {
         /// <summary>
         /// Gets or sets the credentials to be used for communicationg with the Siteimprove API.
         /// </summary>
-        public NetworkCredential Crendentials { get; private set; }
+        public NetworkCredential? Crendentials { get; private set; }
 
         /// <summary>
         /// Gets a reference to the raw <strong>Sites</strong> endpoint.

@@ -13,11 +13,11 @@ namespace Limbo.Integrations.Siteimprove.Options.Accessibility.Pages {
 
         public long PageId { get; set; }
 
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
-        public int PageSize { get; set; }
+        public int? PageSize { get; set; }
 
-        public string Query { get; set; }
+        public string? Query { get; set; }
 
         #endregion
 
@@ -50,7 +50,7 @@ namespace Limbo.Integrations.Siteimprove.Options.Accessibility.Pages {
             IHttpQueryString query = new HttpQueryString();
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
-            if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", Query);
+            if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", Query!);
 
             // Initialize a new request
             return HttpRequest.Get($"/v2/sites/{SiteId}/accessibility/pages/{PageId}/issues", query);

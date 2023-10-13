@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
 
@@ -10,7 +12,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
         /// <summary>
         /// Gets the items (devices) on the current page.
         /// </summary>
-        public SiteimproveAnalyticsDevice[] Items { get; }
+        public IReadOnlyList<SiteimproveAnalyticsDevice> Items { get; }
 
         /// <summary>
         /// Gets the total amount of items matching the options sent to the API.
@@ -29,17 +31,18 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
         #region Constructors
 
         private SiteimproveAnalyticsDeviceList(JObject obj) : base(obj) {
-            Items = obj.GetArray("items", SiteimproveAnalyticsDevice.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveAnalyticsDevice.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
-            Aggregations = obj.GetObject("aggregations", SiteimproveAnalyticsDeviceListAggregations.Parse);
+            Aggregations = obj.GetObject("aggregations", SiteimproveAnalyticsDeviceListAggregations.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveAnalyticsDeviceList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsDeviceList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsDeviceList(obj);
         }
 

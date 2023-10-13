@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
@@ -10,7 +12,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
         /// <summary>
         /// Gets the items (popular pages) on the current page.
         /// </summary>
-        public SiteimproveAnalyticsPopularPage[] Items { get; }
+        public IReadOnlyList<SiteimproveAnalyticsPopularPage> Items { get; }
 
         /// <summary>
         /// Gets the total amount of items matching the options sent to the API.
@@ -27,7 +29,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
         #region Constructors
 
         private SiteimproveAnalyticsPopularPageList(JObject obj) : base(obj) {
-            Items = obj.GetArray("items", SiteimproveAnalyticsPopularPage.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveAnalyticsPopularPage.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
         }
@@ -36,7 +38,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsPopularPageList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsPopularPageList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsPopularPageList(obj);
         }
 

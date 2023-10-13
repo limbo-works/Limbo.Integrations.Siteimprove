@@ -11,11 +11,11 @@ namespace Limbo.Integrations.Siteimprove.Options.Accessibility {
 
         public long SiteId { get; set; }
 
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
-        public int PageSize { get; set; }
+        public int? PageSize { get; set; }
 
-        public string Query { get; set; }
+        public string? Query { get; set; }
 
         #endregion
 

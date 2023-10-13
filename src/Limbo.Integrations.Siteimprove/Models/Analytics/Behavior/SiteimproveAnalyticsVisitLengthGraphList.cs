@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Behavior {
 
@@ -10,7 +12,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Behavior {
         /// <summary>
         /// Gets the items on the current page.
         /// </summary>
-        public SiteimproveAnalyticsVisitLengthGraphItem[] Items { get; }
+        public IReadOnlyList<SiteimproveAnalyticsVisitLengthGraphItem> Items { get; }
 
         /// <summary>
         /// Gets the total amount of items matching the options sent to the API.
@@ -27,7 +29,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Behavior {
         #region Constructors
 
         private SiteimproveAnalyticsVisitLengthGraphList(JObject obj) : base(obj) {
-            Items = obj.GetArray("items", SiteimproveAnalyticsVisitLengthGraphItem.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveAnalyticsVisitLengthGraphItem.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
         }
@@ -36,7 +38,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Behavior {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsVisitLengthGraphList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsVisitLengthGraphList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsVisitLengthGraphList(obj);
         }
 

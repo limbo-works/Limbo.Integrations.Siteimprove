@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Sites {
@@ -18,7 +19,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Sites {
         #region Constructors
 
         private SiteimproveSiteList(JObject obj) : base(obj) {
-            Items = obj.GetArray("items", SiteimproveSiteItem.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveSiteItem.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
         }
@@ -27,7 +28,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Sites {
 
         #region Static methods
 
-        public static SiteimproveSiteList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveSiteList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveSiteList(obj);
         }
 

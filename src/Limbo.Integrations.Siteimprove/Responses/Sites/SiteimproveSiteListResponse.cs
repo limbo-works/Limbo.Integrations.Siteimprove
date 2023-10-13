@@ -10,7 +10,7 @@ namespace Limbo.Integrations.Siteimprove.Responses.Sites {
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         public SiteimproveSiteListResponse(IHttpResponse response) : base(response) {
-            Body = ParseJsonObject(response.Body, SiteimproveSiteList.Parse);
+            Body = ParseJsonObject(response.Body, SiteimproveSiteList.Parse)!;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Groups {
 
@@ -32,7 +33,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Groups {
             AIssues = obj.GetInt32("a_issues");
             AaIssues = obj.GetInt32("aa_issues");
             AaaIssues = obj.GetInt32("aaa_issues");
-            GroupName = obj.GetString("group_name");
+            GroupName = obj.GetString("group_name")!;
             Pages = obj.GetInt32("pages");
             PdfIssues = obj.GetInt32("pdf_issues");
             Users = obj.GetInt32("users");
@@ -42,7 +43,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Groups {
 
         #region Static methods
 
-        public static SiteimproveAccessibilityGroupItem Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAccessibilityGroupItem? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAccessibilityGroupItem(obj);
         }
 

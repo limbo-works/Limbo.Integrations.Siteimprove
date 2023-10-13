@@ -14,12 +14,12 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content {
         /// <summary>
         /// Gets or sets a text based query that all returned items should match.
         /// </summary>
-        public string Query { get; set; }
+        public string? Query { get; set; }
 
         /// <summary>
         /// Gets or sets the field that <see cref="Query"/> should match.
         /// </summary>
-        public SiteimproveAnalyticsGetAllPagesField SearchIn { get; set; }
+        public SiteimproveAnalyticsGetAllPagesField? SearchIn { get; set; }
 
         #endregion
 
@@ -44,7 +44,7 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items per page.</param>
-        public SiteimproveAnalyticsGetAllPagesOptions(long siteId, int page, int pageSize) {
+        public SiteimproveAnalyticsGetAllPagesOptions(long siteId, int? page, int? pageSize) {
             SiteId = siteId;
             Page = page;
             PageSize = pageSize;
@@ -58,10 +58,8 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content {
 
             IHttpQueryString query = base.GetQueryString();
 
-            if (!string.IsNullOrWhiteSpace(Query)) {
-                query.Add("query", Query);
-                query.Add("search_in", SearchIn.ToString().ToLower());
-            }
+            if (!string.IsNullOrWhiteSpace(Query)) query.Add("query", Query!);
+            if (SearchIn is not null) query.Add("search_in", SearchIn.Value.ToString().ToLower());
 
             return query;
 

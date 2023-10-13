@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview {
 
@@ -28,18 +29,19 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Ove
         #region Constructors
 
         private SiteimproveBrokenLinksResultList(JObject obj) : base(obj) {
-            Items = obj.GetArrayItems("items", SiteimproveBrokenLinksResult.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveBrokenLinksResult.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
-            Links = obj.GetObject("_links", LinkCollection.Parse);
-            Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse);
+            Links = obj.GetObject("_links", LinkCollection.Parse)!;
+            Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveBrokenLinksResultList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveBrokenLinksResultList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveBrokenLinksResultList(obj);
         }
 
@@ -50,10 +52,10 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Ove
             #region Properties
 
             [JsonProperty("prev")]
-            public string Previous { get; }
+            public string? Previous { get; }
 
             [JsonProperty("next")]
-            public string Next { get; }
+            public string? Next { get; }
 
             #endregion
 
@@ -68,7 +70,8 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Ove
 
             #region Static methods
 
-            public static SiteimproveLinkCollection Parse(JObject obj) {
+            [return: NotNullIfNotNull("obj")]
+            public static SiteimproveLinkCollection? Parse(JObject? obj) {
                 return obj == null ? null : new SiteimproveLinkCollection(obj);
             }
 
@@ -88,14 +91,15 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Ove
             #region Constructors
 
             private LinkCollection(JObject obj) : base(obj) {
-                WebApp = obj.GetString("webapp");
+                WebApp = obj.GetString("webapp")!;
             }
 
             #endregion
 
             #region Static methods
 
-            public static LinkCollection Parse(JObject obj) {
+            [return: NotNullIfNotNull("obj")]
+            public static LinkCollection? Parse(JObject? obj) {
                 return obj == null ? null : new LinkCollection(obj);
             }
 

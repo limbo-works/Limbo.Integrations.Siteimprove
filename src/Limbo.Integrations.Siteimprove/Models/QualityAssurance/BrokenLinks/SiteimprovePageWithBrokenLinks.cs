@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks {
 
@@ -17,7 +18,7 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks {
 
         public bool IsCheckingNow { get; }
 
-        public string CmsUrl { get; }
+        public string? CmsUrl { get; }
 
         public int PageLevel { get; }
 
@@ -31,8 +32,8 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks {
 
         private SiteimprovePageWithBrokenLinks(JObject json) : base(json) {
             Id = json.GetInt64("id");
-            Title = json.GetString("title");
-            Url = json.GetString("url");
+            Title = json.GetString("title")!;
+            Url = json.GetString("url")!;
             BrokenLinks = json.GetInt32("broken_links");
             IsCheckingNow = json.GetBoolean("checking_now");
             CmsUrl = json.GetString("cms_url");
@@ -46,7 +47,8 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks {
 
         #region Static methods
 
-        public static SiteimprovePageWithBrokenLinks Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static SiteimprovePageWithBrokenLinks? Parse(JObject? json) {
             return json == null ? null : new SiteimprovePageWithBrokenLinks(json);
         }
 

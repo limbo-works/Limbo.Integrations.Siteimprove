@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Exceptions {
@@ -20,7 +19,7 @@ namespace Limbo.Integrations.Siteimprove.Exceptions {
         public HttpStatusCode StatusCode { get; }
 
         /// <summary>
-        /// Gets the type of the 
+        /// Gets the type of the error.
         /// </summary>
         public string Type { get; }
 
@@ -28,6 +27,8 @@ namespace Limbo.Integrations.Siteimprove.Exceptions {
         /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+        /// <param name="message">The error message.</param>
+        /// <param name="type">The error type.</param>
         public SiteimproveApiException(IHttpResponse response, string message, string type) : base(message) {
             Response = response;
             StatusCode = response.StatusCode;

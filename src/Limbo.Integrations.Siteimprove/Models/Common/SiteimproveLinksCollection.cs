@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -6,8 +7,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Common {
 
     public class SiteimproveLinksCollection : SiteimproveObject {
 
-        private readonly Dictionary<string, SiteimproveLinksCollection> _collections = new Dictionary<string, SiteimproveLinksCollection>();
-        private readonly Dictionary<string, string> _links = new Dictionary<string, string>();
+        private readonly Dictionary<string, SiteimproveLinksCollection> _collections = new();
+        private readonly Dictionary<string, string> _links = new();
 
         #region Properties
 
@@ -24,9 +25,9 @@ namespace Limbo.Integrations.Siteimprove.Models.Common {
             foreach (JProperty property in obj.Properties()) {
                 JToken value = property.Value;
                 if (value.Type == JTokenType.String) {
-                    _links.Add(property.Name, obj.GetString(property.Name));
+                    _links.Add(property.Name, obj.GetString(property.Name)!);
                 } else if (value.Type == JTokenType.Object) {
-                    _collections.Add(property.Name, obj.GetObject(property.Name, Parse));
+                    _collections.Add(property.Name, obj.GetObject(property.Name, Parse)!);
                 }
             }
         }
@@ -47,7 +48,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Common {
 
         #region Static methods
 
-        public static SiteimproveLinksCollection Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveLinksCollection? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveLinksCollection(obj);
         }
 

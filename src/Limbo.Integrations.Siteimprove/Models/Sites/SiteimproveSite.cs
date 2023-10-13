@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Sites {
 
@@ -12,7 +13,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Sites {
 
         #region Static methods
 
-        public new static SiteimproveSite Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public new static SiteimproveSite? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveSite(obj);
         }
 

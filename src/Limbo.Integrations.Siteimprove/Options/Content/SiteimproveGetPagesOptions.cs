@@ -18,19 +18,19 @@ namespace Limbo.Integrations.Siteimprove.Options.Content {
         /// Gets or sets the page to retrive. If set to <code>0</code> (default), the parameter will not be send to the
         /// Siteimprove API.
         /// </summary>
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
         /// <summary>
         /// Gets or sets the number of items that should be returned for each page. If set to <code>0</code> (default),
         /// the parameter will not be send to the Siteimprove API.
         /// </summary>
-        public int PageSize { get; set; }
+        public int? PageSize { get; set; }
 
         /// <summary>
         /// Gets or sets the URL pattern. If specified, only pages with a URL that matches the pattern will be
         /// returned. If not specified, all pages will be returned.
         /// </summary>
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         #endregion
 

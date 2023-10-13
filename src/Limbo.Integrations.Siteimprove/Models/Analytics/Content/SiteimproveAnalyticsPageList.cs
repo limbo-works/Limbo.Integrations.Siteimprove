@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
@@ -13,7 +15,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
         /// <summary>
         /// Gets the items (content pages) on the current page.
         /// </summary>
-        public SiteimproveAnalyticsContentPage[] Items { get; }
+        public IReadOnlyList<SiteimproveAnalyticsContentPage> Items { get; }
 
         /// <summary>
         /// Gets the total amount of items matching the options sent to the API.
@@ -35,17 +37,18 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
         #region Constructors
 
         private SiteimproveAnalyticsPageList(JObject obj) : base(obj) {
-            Items = obj.GetArray("items", SiteimproveAnalyticsContentPage.Parse);
+            Items = obj.GetArray("items", SiteimproveAnalyticsContentPage.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
-            Aggregations = obj.GetObject("aggregations", SiteimproveAnalyticsContentPageListAggregations.Parse);
+            Aggregations = obj.GetObject("aggregations", SiteimproveAnalyticsContentPageListAggregations.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveAnalyticsPageList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsPageList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsPageList(obj);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Sites {
 
@@ -35,8 +36,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Sites {
 
         protected SiteimproveSiteItem(JObject obj) : base(obj) {
             Id = obj.GetInt64("id");
-            Name = obj.GetString("site_name");
-            Url = obj.GetString("url");
+            Name = obj.GetString("site_name")!;
+            Url = obj.GetString("url")!;
             Pages = obj.GetInt32("pages");
             Policies = obj.GetInt32("policies");
             Product = obj.GetStringArray("product");
@@ -47,7 +48,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Sites {
 
         #region Static methods
 
-        public static SiteimproveSiteItem Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveSiteItem? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveSiteItem(obj);
         }
 

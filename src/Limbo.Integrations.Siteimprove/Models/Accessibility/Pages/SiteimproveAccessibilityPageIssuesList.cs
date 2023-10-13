@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -9,11 +10,11 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages {
     /// </summary>
     public class SiteimproveAccessibilityPageIssuesList : SiteimproveObject {
 
-        private readonly Dictionary<string, int> _lookup = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> _lookup = new();
 
         #region Properties
 
-        public SiteimproveAccessibilityPageIssuesItem[] Items { get; }
+        public IReadOnlyList<SiteimproveAccessibilityPageIssuesItem> Items { get; }
 
         public int TotalItems { get; }
 
@@ -25,7 +26,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages {
 
         private SiteimproveAccessibilityPageIssuesList(JObject obj) : base(obj) {
 
-            Items = obj.GetArray("items", SiteimproveAccessibilityPageIssuesItem.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveAccessibilityPageIssuesItem.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
 
@@ -59,7 +60,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages {
 
         #region Static methods
 
-        public static SiteimproveAccessibilityPageIssuesList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAccessibilityPageIssuesList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAccessibilityPageIssuesList(obj);
         }
 

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
@@ -20,17 +21,18 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
         #region Constructors
 
         private SiteimprovePageWebLinkCollection(JObject obj) : base(obj) {
-            Accessibility = obj.GetObject("accessibility", SiteimprovePageWebLinkItem.Parse);
-            Policy = obj.GetObject("policy", SiteimprovePageWebLinkItem.Parse);
-            QualityAssurance = obj.GetObject("quality_assurance", SiteimprovePageWebLinkItem.Parse);
-            Seo = obj.GetObject("seo", SiteimprovePageWebLinkItem.Parse);
+            Accessibility = obj.GetObject("accessibility", SiteimprovePageWebLinkItem.Parse)!;
+            Policy = obj.GetObject("policy", SiteimprovePageWebLinkItem.Parse)!;
+            QualityAssurance = obj.GetObject("quality_assurance", SiteimprovePageWebLinkItem.Parse)!;
+            Seo = obj.GetObject("seo", SiteimprovePageWebLinkItem.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimprovePageWebLinkCollection Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimprovePageWebLinkCollection? Parse(JObject? obj) {
             return obj == null ? null : new SiteimprovePageWebLinkCollection(obj);
         }
 

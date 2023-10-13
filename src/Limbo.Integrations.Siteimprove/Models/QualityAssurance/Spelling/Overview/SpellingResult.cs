@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -40,7 +41,8 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overvi
 
         #region Static methods
 
-        public static SiteimproveSpellingResult Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveSpellingResult? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveSpellingResult(obj);
         }
 

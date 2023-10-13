@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
 
@@ -26,14 +27,15 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
         private SiteimproveAnalyticsDevice(JObject obj) : base(obj) {
             Visits = obj.GetInt32("visits");
             BounceRate = obj.GetFloat("bounce_rate");
-            DeviceType = obj.GetString("device_type");
+            DeviceType = obj.GetString("device_type")!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveAnalyticsDevice Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsDevice? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsDevice(obj);
         }
 

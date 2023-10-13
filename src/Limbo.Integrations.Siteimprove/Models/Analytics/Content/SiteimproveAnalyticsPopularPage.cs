@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -64,8 +65,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
         private SiteimproveAnalyticsPopularPage(JObject obj) : base(obj) {
             Id = obj.GetInt32("id");
-            Title = obj.GetString("title");
-            Url = obj.GetString("url");
+            Title = obj.GetString("title")!;
+            Url = obj.GetString("url")!;
             BounceRate = obj.GetFloat("bounce_rate");
             LastVisited = obj.GetString("last_visited", DateTime.Parse);
             AveragePageViewsPerVisit = obj.GetFloat("average_page_views_per_visit");
@@ -79,7 +80,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsPopularPage Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsPopularPage? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsPopularPage(obj);
         }
 

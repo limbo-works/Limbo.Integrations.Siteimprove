@@ -1,6 +1,7 @@
 using Limbo.Integrations.Siteimprove.Models.Common.Aggregations;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
 
@@ -23,15 +24,16 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
         #region Constructors
 
         private SiteimproveAnalyticsContentPageListAggregations(JObject obj) : base(obj) {
-            PageViews = obj.GetObject("page_views", SiteimproveAnalyticsSumAggregation.Parse);
-            Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse);
+            PageViews = obj.GetObject("page_views", SiteimproveAnalyticsSumAggregation.Parse)!;
+            Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveAnalyticsContentPageListAggregations Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsContentPageListAggregations? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsContentPageListAggregations(obj);
         }
 

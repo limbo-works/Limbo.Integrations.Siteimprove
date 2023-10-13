@@ -17,7 +17,7 @@ namespace Limbo.Integrations.Siteimprove {
         /// <summary>
         /// Gets a reference to the underlying client used for the raw communication.
         /// </summary>
-        public SiteimproveHttpClient Client { get; private set; }
+        public SiteimproveHttpClient Client { get; }
 
         /// <summary>
         /// Gets a reference to the <strong>Sites</strong> endpoint.
@@ -48,7 +48,8 @@ namespace Limbo.Integrations.Siteimprove {
 
         #region Constructor
 
-        private SiteimproveHttpService() {
+        private SiteimproveHttpService(SiteimproveHttpClient client) {
+            Client = client;
             Sites = new SiteimproveSitesEndpoint(this);
             Content = new SiteimproveContentEndpoint(this);
             Accessibility = new SiteimproveAccessibilityEndpoint(this);
@@ -65,9 +66,7 @@ namespace Limbo.Integrations.Siteimprove {
         /// </summary>
         /// <param name="client">The raw client to be used.</param>
         public static SiteimproveHttpService CreateFromClient(SiteimproveHttpClient client) {
-            return new SiteimproveHttpService {
-                Client = client
-            };
+            return new SiteimproveHttpService(client);
         }
 
         /// <summary>

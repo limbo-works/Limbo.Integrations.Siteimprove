@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Overview {
 
@@ -10,7 +12,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Overview {
         /// <summary>
         /// Gets the items on the current page.
         /// </summary>
-        public SiteimproveAnalyticsOverviewItem[] Items { get; }
+        public IReadOnlyList<SiteimproveAnalyticsOverviewItem> Items { get; }
 
         /// <summary>
         /// Gets the total amount of items matching the options sent to the API.
@@ -27,7 +29,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Overview {
         #region Constructors
 
         private SiteimproveAnalyticsOverviewList(JObject obj) : base(obj) {
-            Items = obj.GetArray("items", SiteimproveAnalyticsOverviewItem.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveAnalyticsOverviewItem.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
         }
@@ -36,7 +38,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Overview {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsOverviewList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsOverviewList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsOverviewList(obj);
         }
 

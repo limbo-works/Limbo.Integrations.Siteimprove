@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
@@ -25,7 +26,7 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
         /// <summary>
         /// Gets the URL for the cms entry for editing the page.
         /// </summary>
-        public string CmsUrl { get; }
+        public string? CmsUrl { get; }
 
         /// <summary>
         /// Gets the size of the page in bytes.
@@ -45,19 +46,20 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
         private SiteimprovePage(JObject obj) : base(obj) {
             Id = obj.GetInt64("id");
-            Title = obj.GetString("title");
-            Url = obj.GetString("url");
+            Title = obj.GetString("title")!;
+            Url = obj.GetString("url")!;
             CmsUrl = obj.GetString("cms_url");
             SizeBytes = obj.GetInt32("size_bytes");
-            Summary = obj.GetObject("summary", SiteimprovePageSummary.Parse);
-            WebLinks = obj.GetObject("_siteimprove", SiteimprovePageWebLinkCollection.Parse);
+            Summary = obj.GetObject("summary", SiteimprovePageSummary.Parse)!;
+            WebLinks = obj.GetObject("_siteimprove", SiteimprovePageWebLinkCollection.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimprovePage Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimprovePage? Parse(JObject? obj) {
             return obj == null ? null : new SiteimprovePage(obj);
         }
 

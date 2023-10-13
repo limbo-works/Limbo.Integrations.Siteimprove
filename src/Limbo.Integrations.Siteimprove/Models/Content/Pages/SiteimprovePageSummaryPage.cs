@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
 
@@ -46,16 +47,17 @@ namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
             CheckAllowed = obj.GetBoolean("check_allowed");
             CheckPaused = obj.GetBoolean("check_paused");
             CheckingNow = obj.GetBoolean("checking_now");
-            FirstSeen = obj.GetString("first_seen", EssentialsTime.Parse);
-            LastChanged = obj.GetString("last_changed", EssentialsTime.Parse);
-            LastSeen = obj.GetString("last_seen", EssentialsTime.Parse);
+            FirstSeen = obj.GetString("first_seen", EssentialsTime.Parse)!;
+            LastChanged = obj.GetString("last_changed", EssentialsTime.Parse)!;
+            LastSeen = obj.GetString("last_seen", EssentialsTime.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimprovePageSummaryPage Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimprovePageSummaryPage? Parse(JObject? obj) {
             return obj == null ? null : new SiteimprovePageSummaryPage(obj);
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -28,7 +29,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Analytics.Behavior {
 
         #region Static methods
 
-        public static SiteimproveAnalyticsVisitLengthGraphItem Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAnalyticsVisitLengthGraphItem? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAnalyticsVisitLengthGraphItem(obj);
         }
 

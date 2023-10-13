@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages {
 
@@ -30,7 +31,8 @@ namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages {
 
         #region Static methods
 
-        public static SiteimproveAccessibilityPageIssuesItem Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveAccessibilityPageIssuesItem? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveAccessibilityPageIssuesItem(obj);
         }
 

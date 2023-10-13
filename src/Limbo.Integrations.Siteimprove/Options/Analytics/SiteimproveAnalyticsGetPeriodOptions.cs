@@ -17,32 +17,32 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics {
         /// <summary>
         /// Gets or sets the page number to show when more than one page in paged output.
         /// </summary>
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
         /// <summary>
         /// Gets or sets the number of items/records per page in paged output.
         /// </summary>
-        public int PageSize { get; set; }
+        public int? PageSize { get; set; }
 
         /// <summary>
         /// Gets the sets the ID for specific group.
         /// </summary>
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
 
         /// <summary>
         /// Gets the sets the ID for specific filter.
         /// </summary>
-        public int FilterId { get; set; }
+        public int? FilterId { get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the page that should be returned. Not all endpoints support this property.
         /// </summary>
-        public int PageId { get; set; }
+        public int? PageId { get; set; }
 
         /// <summary>
         /// Gets or sets the period for which to retrieve data.
         /// </summary>
-        public string Period { get; set; }
+        public string? Period { get; set; }
 
         #endregion
 
@@ -67,7 +67,7 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics {
         /// <param name="siteId">The ID of the site.</param>
         /// <param name="page">The page that should be returned.</param>
         /// <param name="pageSize">The maximum amount of items per page.</param>
-        protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId, int page, int pageSize) {
+        protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId, int? page, int? pageSize) {
             SiteId = siteId;
             Page = page;
             PageSize = pageSize;
@@ -98,17 +98,15 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics {
             return this;
         }
 
-
         protected virtual IHttpQueryString GetQueryString() {
 
             IHttpQueryString query = new HttpQueryString();
-
             if (Page > 0) query.Add("page", Page);
             if (PageSize > 0) query.Add("page_size", PageSize);
             if (GroupId > 0) query.Add("group_id", GroupId);
             if (FilterId > 0) query.Add("filter_id", FilterId);
             if (PageId > 0) query.Add("page_id", PageId);
-            if (!string.IsNullOrWhiteSpace(Period)) query.Add("period", Period);
+            if (!string.IsNullOrWhiteSpace(Period)) query.Add("period", Period!);
 
             return query;
 

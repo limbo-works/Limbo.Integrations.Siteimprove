@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
@@ -9,7 +11,7 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overvi
         #region Properties
 
         [JsonProperty("items")]
-        public SiteimproveSpellingResult[] Items { get; }
+        public IReadOnlyList<SiteimproveSpellingResult> Items { get; }
 
         [JsonProperty("total_items")]
         public int TotalItems { get; }
@@ -28,18 +30,19 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overvi
         #region Constructor
 
         private SiteimproveSpellingResultList(JObject obj) : base(obj) {
-            Items = obj.GetArrayItems("items", SiteimproveSpellingResult.Parse);
+            Items = obj.GetArrayItems("items", SiteimproveSpellingResult.Parse)!;
             TotalItems = obj.GetInt32("total_items");
             TotalPages = obj.GetInt32("total_pages");
-            Links = obj.GetObject("_links", LinkCollection.Parse);
-            Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse);
+            Links = obj.GetObject("_links", LinkCollection.Parse)!;
+            Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse)!;
         }
 
         #endregion
 
         #region Static methods
 
-        public static SiteimproveSpellingResultList Parse(JObject obj) {
+        [return: NotNullIfNotNull("obj")]
+        public static SiteimproveSpellingResultList? Parse(JObject? obj) {
             return obj == null ? null : new SiteimproveSpellingResultList(obj);
         }
 
@@ -50,10 +53,10 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overvi
             #region Properties
 
             [JsonProperty("prev")]
-            public string Previous { get; private set; }
+            public string? Previous { get; }
 
             [JsonProperty("next")]
-            public string Next { get; private set; }
+            public string? Next { get; }
 
             #endregion
 
@@ -68,7 +71,8 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overvi
 
             #region Static methods
 
-            public static LinkCollection Parse(JObject obj) {
+            [return: NotNullIfNotNull("obj")]
+            public static LinkCollection? Parse(JObject? obj) {
                 return obj == null ? null : new LinkCollection(obj);
             }
 
@@ -81,21 +85,22 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling.Overvi
             #region Properties
 
             [JsonProperty("webapp")]
-            public string WebApp { get; private set; }
+            public string WebApp { get; }
 
             #endregion
 
             #region Constructor
 
             private SiteimproveLinkCollection(JObject obj) : base(obj) {
-                WebApp = obj.GetString("webapp");
+                WebApp = obj.GetString("webapp")!;
             }
 
             #endregion
 
             #region Static methods
 
-            public static SiteimproveLinkCollection Parse(JObject obj) {
+            [return: NotNullIfNotNull("obj")]
+            public static SiteimproveLinkCollection? Parse(JObject? obj) {
                 return obj == null ? null : new SiteimproveLinkCollection(obj);
             }
 
