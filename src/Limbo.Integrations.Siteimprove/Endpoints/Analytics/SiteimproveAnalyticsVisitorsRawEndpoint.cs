@@ -1,5 +1,6 @@
 ﻿using System;
 using Limbo.Integrations.Siteimprove.Http;
+using Limbo.Integrations.Siteimprove.Options.Analytics;
 using Limbo.Integrations.Siteimprove.Options.Analytics.Visitors;
 using Skybrud.Essentials.Http;
 
@@ -28,11 +29,11 @@ public class SiteimproveAnalyticsVisitorsRawEndpoint {
         return GetDevices(siteId, null, null, null, null, null);
     }
 
-    public IHttpResponse GetDevices(long siteId, int? page, int? pageSize, string? period) {
+    public IHttpResponse GetDevices(long siteId, int? page, int? pageSize, SiteimprovePeriod? period) {
         return GetDevices(siteId, page, pageSize, null, null, period);
     }
 
-    public IHttpResponse GetDevices(long siteId, int? page, int? pageSize, int? groupId, int? filterId, string? period) {
+    public IHttpResponse GetDevices(long siteId, int? page, int? pageSize, int? groupId, int? filterId, SiteimprovePeriod? period) {
         return GetDevices(new SiteimproveGetDevicesOptions {
             SiteId = siteId,
             Page = page,

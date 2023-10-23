@@ -1,4 +1,5 @@
-﻿using Limbo.Integrations.Siteimprove.Options.Analytics.Visitors;
+﻿using Limbo.Integrations.Siteimprove.Options.Analytics;
+using Limbo.Integrations.Siteimprove.Options.Analytics.Visitors;
 using Limbo.Integrations.Siteimprove.Responses.Analytics.Visitors;
 
 namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics;
@@ -39,11 +40,11 @@ public class SiteimproveAnalyticsVisitorsEndpoint {
         return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId));
     }
 
-    public SiteimproveAnalyticsDeviceListResponse GetDevices(long siteId, int page, int pageSize, string period) {
+    public SiteimproveAnalyticsDeviceListResponse GetDevices(long siteId, int page, int pageSize, SiteimprovePeriod? period) {
         return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId, page, pageSize, period));
     }
 
-    public SiteimproveAnalyticsDeviceListResponse GetDevices(long siteId, int page, int pageSize, int groupId, int filterId, string period) {
+    public SiteimproveAnalyticsDeviceListResponse GetDevices(long siteId, int page, int pageSize, int groupId, int filterId, SiteimprovePeriod? period) {
         return new SiteimproveAnalyticsDeviceListResponse(Raw.GetDevices(siteId, page, pageSize, groupId, filterId, period));
     }
 
