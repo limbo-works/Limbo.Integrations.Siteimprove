@@ -30,7 +30,11 @@ public abstract class SiteimproveAnalyticsOptionsBase : IHttpRequestOptions {
     /// <summary>
     /// Gets or sets the ID of the page that should be returned. Not all endpoints support this property.
     /// </summary>
-    public long? PageId { get; set; }
+    /// <remarks>
+    /// Siteimprove's documentation specifies that the type of the <c>page_id</c> parameter is <see cref="long"/>, but
+    /// also that the <c>id</c> property of the returned page items is <see cref="ulong"/>.
+    /// </remarks>
+    public ulong? PageId { get; set; }
 
     /// <summary>
     /// Gets or sets the period for which to retrieve data.
