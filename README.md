@@ -1,14 +1,26 @@
 # Limbo.Integrations.Siteimprove
 
-C# (.NET) library for communicating with the Siteimprove API.
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Integrations.Siteimprove/blob/v1/main/LICENSE.md)
+[![NuGet](https://img.shields.io/nuget/v/Limbo.Integrations.Siteimprove.svg)](https://www.nuget.org/packages/Limbo.Integrations.Siteimprove)
+[![NuGet](https://img.shields.io/nuget/dt/Limbo.Integrations.Siteimprove.svg)](https://www.nuget.org/packages/Limbo.Integrations.Siteimprove)
+
+.NET implementation and API wrapper for the [**Siteimprove API**](https://api.siteimprove.com/v2/documentation).
+
+
+
+
+<br /><br />
 
 ### Installation
 
-1. [**NuGet Package**][NuGetPackage]  
-Install this NuGet package in your Visual Studio project. Makes updating easy.
+Install via [**NuGet**](https://www.nuget.org/packages/Limbo.Integrations.Siteimprove/1.0.0-alpha001). Either via the .NET CLI:
 
-2. [**ZIP file**][GitHubRelease]  
-Grab a ZIP file of the latest release; unzip and move the files to the bin directory of your project.
+```
+dotnet add package Limbo.Integrations.Siteimprove --version 1.0.0-alpha001
+```
 
-[NuGetPackage]: https://www.nuget.org/packages/Limbo.Integrations.Siteimprove
-[GitHubRelease]: https://github.com/limbo-works/Limbo.Integrations.Siteimprove/releases/latest
+or the NuGet Package Manager:
+
+```
+Install-Package Limbo.Integrations.Siteimprove -Version 1.0.0-alpha001
+```
