@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
@@ -12,7 +13,31 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
     /// <summary>
     /// Gets or sets the ID of the site.
     /// </summary>
+#if NET7_0_OR_GREATER
+    public required long SiteId { get; set; }
+#else
     public long SiteId { get; set; }
+#endif
+
+    /// <summary>
+    /// Gets the sets the ID for specific group.
+    /// </summary>
+    public long? GroupId { get; set; }
+
+    /// <summary>
+    /// Gets the sets the ID for specific filter.
+    /// </summary>
+    public long? FilterId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the ID of the page that should be returned. Not all endpoints support this property.
+    /// </summary>
+    public long? PageId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the period for which to retrieve data.
+    /// </summary>
+    public string? Period { get; set; }
 
     /// <summary>
     /// Gets or sets the page number to show when more than one page in paged output.
@@ -23,26 +48,6 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
     /// Gets or sets the number of items/records per page in paged output.
     /// </summary>
     public int? PageSize { get; set; }
-
-    /// <summary>
-    /// Gets the sets the ID for specific group.
-    /// </summary>
-    public int? GroupId { get; set; }
-
-    /// <summary>
-    /// Gets the sets the ID for specific filter.
-    /// </summary>
-    public int? FilterId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the ID of the page that should be returned. Not all endpoints support this property.
-    /// </summary>
-    public int? PageId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the period for which to retrieve data.
-    /// </summary>
-    public string? Period { get; set; }
 
     #endregion
 
@@ -57,6 +62,9 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
     /// Initializes a new instance with the specified <paramref name="siteId"/>.
     /// </summary>
     /// <param name="siteId">The ID of the site.</param>
+#if NET7_0_OR_GREATER
+    [SetsRequiredMembers]
+#endif
     protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId) {
         SiteId = siteId;
     }
@@ -67,6 +75,9 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
     /// <param name="siteId">The ID of the site.</param>
     /// <param name="page">The page that should be returned.</param>
     /// <param name="pageSize">The maximum amount of items per page.</param>
+#if NET7_0_OR_GREATER
+    [SetsRequiredMembers]
+#endif
     protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId, int? page, int? pageSize) {
         SiteId = siteId;
         Page = page;
@@ -78,7 +89,7 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
     #region Member methods
 
     /// <summary>
-    /// Sets the <see cref="Period"/> property based on the specified <code>day</code>.
+    /// Sets the <see cref="Period"/> property based on the specified <paramref name="day"/>.
     /// </summary>
     /// <param name="day">The day.</param>
     /// <returns>Returns the options instance for method chaining.</returns>
@@ -88,13 +99,13 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
     }
 
     /// <summary>
-    /// Sets the <see cref="Period"/> property based on the specified <code>from</code> and <code>to</code>.
+    /// Sets the <see cref="Period"/> property based on the specified <paramref name="from"/> and <paramref name="to"/>.
     /// </summary>
     /// <param name="from">The start date of the period.</param>
     /// <param name="to">The end date of the period.</param>
     /// <returns>Returns the options instance for method chaining.</returns>
     public SiteimproveAnalyticsGetPeriodOptionsNope SetPeriod(DateTime from, DateTime to) {
-        Period = from.ToString("yyyyMMdd") + "_" + to.ToString("yyyyMMdd");
+        Period = $"{from:yyyyMMdd}_{to:yyyyMMdd}";
         return this;
     }
 

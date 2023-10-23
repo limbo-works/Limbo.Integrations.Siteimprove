@@ -4,8 +4,11 @@ using Skybrud.Essentials.Http.Collections;
 
 namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content;
 
+/// <summary>
+/// Class describing the options for getting all pages identified on a given site.
+/// </summary>
 /// <see>
-///     <cref>https://api.siteimprove.com/v2/documentation#!/Analytics/get_sites_site_id_analytics_content_all_pages</cref>
+///     <cref>https://api.siteimprove.com/v2/documentation#/Analytics/get_sites__site_id__analytics_content_all_pages</cref>
 /// </see>
 public class SiteimproveAnalyticsGetAllPagesOptions : SiteimproveAnalyticsGetPeriodOptionsNope {
 
@@ -28,12 +31,18 @@ public class SiteimproveAnalyticsGetAllPagesOptions : SiteimproveAnalyticsGetPer
     /// <summary>
     /// Initializes a new instance with default options.
     /// </summary>
+#if NET7_0_OR_GREATER
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
     public SiteimproveAnalyticsGetAllPagesOptions() { }
 
     /// <summary>
     /// Initializes a new instance with the specified <paramref name="siteId"/>.
     /// </summary>
     /// <param name="siteId">The ID of the site.</param>
+#if NET7_0_OR_GREATER
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
     public SiteimproveAnalyticsGetAllPagesOptions(long siteId) {
         SiteId = siteId;
     }

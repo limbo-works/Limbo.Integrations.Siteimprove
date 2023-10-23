@@ -16,6 +16,9 @@ public class SiteimproveGetVisitLengthHistoryOptions : SiteimproveAnalyticsGetPe
     /// Initializes a new instance with the specified <paramref name="siteId"/>.
     /// </summary>
     /// <param name="siteId">The ID of the site.</param>
+#if NET7_0_OR_GREATER
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
     public SiteimproveGetVisitLengthHistoryOptions(long siteId) {
         SiteId = siteId;
     }
@@ -26,6 +29,9 @@ public class SiteimproveGetVisitLengthHistoryOptions : SiteimproveAnalyticsGetPe
     /// <param name="siteId">The ID of the site.</param>
     /// <param name="page">The page that should be returned.</param>
     /// <param name="pageSize">The maximum amount of items per page.</param>
+#if NET7_0_OR_GREATER
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
     public SiteimproveGetVisitLengthHistoryOptions(long siteId, int page, int pageSize) {
         SiteId = siteId;
         Page = page;
