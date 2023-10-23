@@ -2,39 +2,37 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Accessibility {
+namespace Limbo.Integrations.Siteimprove.Models.Accessibility;
 
-    public class SiteimproveAccessibilitySummaryItem : SiteimproveObject {
+public class SiteimproveAccessibilitySummaryItem : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public SiteimproveAccessibilityConformanceLevel ConformanceLevel { get; }
+    public SiteimproveAccessibilityConformanceLevel ConformanceLevel { get; }
 
-        public SiteimproveAccessibilitySeverity Severity { get; }
+    public SiteimproveAccessibilitySeverity Severity { get; }
 
-        public int Issues { get; }
+    public int Issues { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructor
+    #region Constructor
 
-        private SiteimproveAccessibilitySummaryItem(JObject obj) : base(obj) {
-            ConformanceLevel = obj.GetEnum<SiteimproveAccessibilityConformanceLevel>("conformance_level");
-            Issues = obj.GetInt32("issues");
-            Severity = obj.GetEnum<SiteimproveAccessibilitySeverity>("severity");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimproveAccessibilitySummaryItem? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveAccessibilitySummaryItem(obj);
-        }
-
-        #endregion
-
+    private SiteimproveAccessibilitySummaryItem(JObject obj) : base(obj) {
+        ConformanceLevel = obj.GetEnum<SiteimproveAccessibilityConformanceLevel>("conformance_level");
+        Issues = obj.GetInt32("issues");
+        Severity = obj.GetEnum<SiteimproveAccessibilitySeverity>("severity");
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimproveAccessibilitySummaryItem? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveAccessibilitySummaryItem(obj);
+    }
+
+    #endregion
 
 }

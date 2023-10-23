@@ -2,42 +2,40 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
+namespace Limbo.Integrations.Siteimprove.Models.Content.Pages;
 
-    public class SiteimprovePageWebLinkCollection : SiteimproveObject {
+public class SiteimprovePageWebLinkCollection : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public SiteimprovePageWebLinkItem Accessibility { get; }
+    public SiteimprovePageWebLinkItem Accessibility { get; }
 
-        public SiteimprovePageWebLinkItem Policy { get; }
+    public SiteimprovePageWebLinkItem Policy { get; }
 
-        public SiteimprovePageWebLinkItem QualityAssurance { get; }
+    public SiteimprovePageWebLinkItem QualityAssurance { get; }
 
-        public SiteimprovePageWebLinkItem Seo { get; }
+    public SiteimprovePageWebLinkItem Seo { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimprovePageWebLinkCollection(JObject obj) : base(obj) {
-            Accessibility = obj.GetObject("accessibility", SiteimprovePageWebLinkItem.Parse)!;
-            Policy = obj.GetObject("policy", SiteimprovePageWebLinkItem.Parse)!;
-            QualityAssurance = obj.GetObject("quality_assurance", SiteimprovePageWebLinkItem.Parse)!;
-            Seo = obj.GetObject("seo", SiteimprovePageWebLinkItem.Parse)!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimprovePageWebLinkCollection? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimprovePageWebLinkCollection(obj);
-        }
-
-        #endregion
-
+    private SiteimprovePageWebLinkCollection(JObject obj) : base(obj) {
+        Accessibility = obj.GetObject("accessibility", SiteimprovePageWebLinkItem.Parse)!;
+        Policy = obj.GetObject("policy", SiteimprovePageWebLinkItem.Parse)!;
+        QualityAssurance = obj.GetObject("quality_assurance", SiteimprovePageWebLinkItem.Parse)!;
+        Seo = obj.GetObject("seo", SiteimprovePageWebLinkItem.Parse)!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimprovePageWebLinkCollection? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimprovePageWebLinkCollection(obj);
+    }
+
+    #endregion
 
 }

@@ -3,33 +3,31 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors {
+namespace Limbo.Integrations.Siteimprove.Models.Analytics.Visitors;
 
-    public class SiteimproveAnalyticsDeviceListAggregations : SiteimproveObject {
+public class SiteimproveAnalyticsDeviceListAggregations : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public SiteimproveAnalyticsSumAggregation Visits { get; }
+    public SiteimproveAnalyticsSumAggregation Visits { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimproveAnalyticsDeviceListAggregations(JObject obj) : base(obj) {
-            Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse)!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimproveAnalyticsDeviceListAggregations? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveAnalyticsDeviceListAggregations(obj);
-        }
-
-        #endregion
-
+    private SiteimproveAnalyticsDeviceListAggregations(JObject obj) : base(obj) {
+        Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse)!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimproveAnalyticsDeviceListAggregations? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveAnalyticsDeviceListAggregations(obj);
+    }
+
+    #endregion
 
 }

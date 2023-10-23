@@ -1,25 +1,23 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Sites {
+namespace Limbo.Integrations.Siteimprove.Models.Sites;
 
-    public class SiteimproveSite : SiteimproveSiteItem {
+public class SiteimproveSite : SiteimproveSiteItem {
 
-        #region Constructors
+    #region Constructors
 
-        protected SiteimproveSite(JObject obj) : base(obj) { }
+    protected SiteimproveSite(JObject obj) : base(obj) { }
 
-        #endregion
+    #endregion
 
-        #region Static methods
+    #region Static methods
 
-        [return: NotNullIfNotNull("obj")]
-        public new static SiteimproveSite? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveSite(obj);
-        }
-
-        #endregion
-
+    [return: NotNullIfNotNull("obj")]
+    public new static SiteimproveSite? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveSite(obj);
     }
+
+    #endregion
 
 }

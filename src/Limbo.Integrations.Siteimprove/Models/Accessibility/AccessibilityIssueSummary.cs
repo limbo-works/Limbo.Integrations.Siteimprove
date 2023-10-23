@@ -1,13 +1,11 @@
-﻿namespace Limbo.Integrations.Siteimprove.Models.Accessibility {
+﻿namespace Limbo.Integrations.Siteimprove.Models.Accessibility;
 
-    public class SiteimproveAccessibilityIssueSummary {
+public class SiteimproveAccessibilityIssueSummary {
 
-        public int Errors { get; internal set; }
+    public int Errors { get; internal set; }
 
-        public int Warnings { get; internal set; }
+    public int Warnings { get; internal set; }
 
-        public int Reviews { get; internal set; }
-
-    }
+    public int Reviews { get; internal set; }
 
 }

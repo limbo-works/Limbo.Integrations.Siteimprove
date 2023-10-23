@@ -3,42 +3,40 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content {
+namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content;
 
-    public class SiteimproveAnalyticsContentPageListAggregations : SiteimproveObject {
+public class SiteimproveAnalyticsContentPageListAggregations : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        /// <summary>
-        /// Gets the total amount of page views across the entire result set.
-        /// </summary>
-        public SiteimproveAnalyticsSumAggregation PageViews { get; }
+    /// <summary>
+    /// Gets the total amount of page views across the entire result set.
+    /// </summary>
+    public SiteimproveAnalyticsSumAggregation PageViews { get; }
 
-        /// <summary>
-        /// Gets the total amount of visits across the entire result set.
-        /// </summary>
-        public SiteimproveAnalyticsSumAggregation Visits { get; }
+    /// <summary>
+    /// Gets the total amount of visits across the entire result set.
+    /// </summary>
+    public SiteimproveAnalyticsSumAggregation Visits { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimproveAnalyticsContentPageListAggregations(JObject obj) : base(obj) {
-            PageViews = obj.GetObject("page_views", SiteimproveAnalyticsSumAggregation.Parse)!;
-            Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse)!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimproveAnalyticsContentPageListAggregations? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveAnalyticsContentPageListAggregations(obj);
-        }
-
-        #endregion
-
+    private SiteimproveAnalyticsContentPageListAggregations(JObject obj) : base(obj) {
+        PageViews = obj.GetObject("page_views", SiteimproveAnalyticsSumAggregation.Parse)!;
+        Visits = obj.GetObject("visits", SiteimproveAnalyticsSumAggregation.Parse)!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimproveAnalyticsContentPageListAggregations? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveAnalyticsContentPageListAggregations(obj);
+    }
+
+    #endregion
 
 }

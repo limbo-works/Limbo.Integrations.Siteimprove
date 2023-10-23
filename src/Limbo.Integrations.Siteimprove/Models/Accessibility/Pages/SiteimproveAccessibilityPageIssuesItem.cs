@@ -2,42 +2,40 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages {
+namespace Limbo.Integrations.Siteimprove.Models.Accessibility.Pages;
 
-    /// <summary>
-    /// Class representing an accessibility issue.
-    /// </summary>
-    public class SiteimproveAccessibilityPageIssuesItem : SiteimproveObject {
+/// <summary>
+/// Class representing an accessibility issue.
+/// </summary>
+public class SiteimproveAccessibilityPageIssuesItem : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public SiteimproveAccessibilityConformanceLevel ConformanceLevel { get; }
+    public SiteimproveAccessibilityConformanceLevel ConformanceLevel { get; }
 
-        public SiteimproveAccessibilitySeverity Severity { get; }
+    public SiteimproveAccessibilitySeverity Severity { get; }
 
-        public int Issues { get; }
+    public int Issues { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructor
+    #region Constructor
 
-        private SiteimproveAccessibilityPageIssuesItem(JObject obj) : base(obj) {
-            ConformanceLevel = obj.GetEnum<SiteimproveAccessibilityConformanceLevel>("conformance_level");
-            Issues = obj.GetInt32("issues");
-            Severity = obj.GetEnum<SiteimproveAccessibilitySeverity>("severity");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimproveAccessibilityPageIssuesItem? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveAccessibilityPageIssuesItem(obj);
-        }
-
-        #endregion
-
+    private SiteimproveAccessibilityPageIssuesItem(JObject obj) : base(obj) {
+        ConformanceLevel = obj.GetEnum<SiteimproveAccessibilityConformanceLevel>("conformance_level");
+        Issues = obj.GetInt32("issues");
+        Severity = obj.GetEnum<SiteimproveAccessibilitySeverity>("severity");
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimproveAccessibilityPageIssuesItem? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveAccessibilityPageIssuesItem(obj);
+    }
+
+    #endregion
 
 }

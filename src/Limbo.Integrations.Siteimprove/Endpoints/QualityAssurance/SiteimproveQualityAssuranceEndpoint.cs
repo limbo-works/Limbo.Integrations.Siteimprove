@@ -1,54 +1,52 @@
 ﻿using Limbo.Integrations.Siteimprove.Options.QualityAssurance.BrokenLinks;
 using Limbo.Integrations.Siteimprove.Responses.QualityAssurance;
 
-namespace Limbo.Integrations.Siteimprove.Endpoints.QualityAssurance {
+namespace Limbo.Integrations.Siteimprove.Endpoints.QualityAssurance;
 
-    public class SiteimproveQualityAssuranceEndpoint {
+public class SiteimproveQualityAssuranceEndpoint {
 
-        #region Properties
+    #region Properties
 
-        /// <summary>
-        /// A reference to the Siteimprove service.
-        /// </summary>
-        public SiteimproveHttpService Service { get; }
+    /// <summary>
+    /// A reference to the Siteimprove service.
+    /// </summary>
+    public SiteimproveHttpService Service { get; }
 
-        /// <summary>
-        /// A reference to the raw endpoint.
-        /// </summary>
-        public SiteimproveQualityAssuranceRawEndpoint Raw => Service.Client.QualityAssurance;
+    /// <summary>
+    /// A reference to the raw endpoint.
+    /// </summary>
+    public SiteimproveQualityAssuranceRawEndpoint Raw => Service.Client.QualityAssurance;
 
-        public SiteimproveBrokenLinksEndpoint BrokenLinks { get; }
+    public SiteimproveBrokenLinksEndpoint BrokenLinks { get; }
 
-        public SiteimproveSpellingEndpoint Spelling { get; }
+    public SiteimproveSpellingEndpoint Spelling { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        internal SiteimproveQualityAssuranceEndpoint(SiteimproveHttpService service) {
-            Service = service;
-            BrokenLinks = new SiteimproveBrokenLinksEndpoint(service);
-            Spelling = new SiteimproveSpellingEndpoint(service);
-        }
-
-        #endregion
-
-        #region Member methods
-
-        public SiteimproveQualityAssuranceSummaryResponse GetSummary(long siteId) {
-            return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(siteId));
-        }
-
-        public SiteimproveQualityAssuranceSummaryResponse GetSummary(long siteId, long groupId) {
-            return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(siteId, groupId));
-        }
-
-        public SiteimproveQualityAssuranceSummaryResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
-            return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(options));
-        }
-
-        #endregion
-
+    internal SiteimproveQualityAssuranceEndpoint(SiteimproveHttpService service) {
+        Service = service;
+        BrokenLinks = new SiteimproveBrokenLinksEndpoint(service);
+        Spelling = new SiteimproveSpellingEndpoint(service);
     }
+
+    #endregion
+
+    #region Member methods
+
+    public SiteimproveQualityAssuranceSummaryResponse GetSummary(long siteId) {
+        return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(siteId));
+    }
+
+    public SiteimproveQualityAssuranceSummaryResponse GetSummary(long siteId, long groupId) {
+        return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(siteId, groupId));
+    }
+
+    public SiteimproveQualityAssuranceSummaryResponse GetSummary(SiteimproveGetQualityAssuranceSummaryOptions options) {
+        return new SiteimproveQualityAssuranceSummaryResponse(Raw.GetSummary(options));
+    }
+
+    #endregion
 
 }

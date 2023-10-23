@@ -1,35 +1,33 @@
 ﻿using Limbo.Integrations.Siteimprove.Http;
 
-namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics {
+namespace Limbo.Integrations.Siteimprove.Endpoints.Analytics;
 
-    public class SiteimproveAnalyticsRawEndpoint {
+public class SiteimproveAnalyticsRawEndpoint {
 
-        #region Properties
+    #region Properties
 
-        public SiteimproveHttpClient Client { get; }
+    public SiteimproveHttpClient Client { get; }
 
-        public SiteimproveAnalyticsBehaviorRawEndpoint Behavior { get; }
+    public SiteimproveAnalyticsBehaviorRawEndpoint Behavior { get; }
 
-        public SiteimproveAnalyticsContentRawEndpoint Content { get; }
+    public SiteimproveAnalyticsContentRawEndpoint Content { get; }
 
-        public SiteimproveAnalyticsOverviewRawEndpoint Overview { get; }
+    public SiteimproveAnalyticsOverviewRawEndpoint Overview { get; }
 
-        public SiteimproveAnalyticsVisitorsRawEndpoint Visitors { get; }
+    public SiteimproveAnalyticsVisitorsRawEndpoint Visitors { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructor
+    #region Constructor
 
-        internal SiteimproveAnalyticsRawEndpoint(SiteimproveHttpClient client) {
-            Client = client;
-            Behavior = new SiteimproveAnalyticsBehaviorRawEndpoint(client, this);
-            Content = new SiteimproveAnalyticsContentRawEndpoint(client, this);
-            Overview = new SiteimproveAnalyticsOverviewRawEndpoint(client, this);
-            Visitors = new SiteimproveAnalyticsVisitorsRawEndpoint(client, this);
-        }
-
-        #endregion
-
+    internal SiteimproveAnalyticsRawEndpoint(SiteimproveHttpClient client) {
+        Client = client;
+        Behavior = new SiteimproveAnalyticsBehaviorRawEndpoint(client, this);
+        Content = new SiteimproveAnalyticsContentRawEndpoint(client, this);
+        Overview = new SiteimproveAnalyticsOverviewRawEndpoint(client, this);
+        Visitors = new SiteimproveAnalyticsVisitorsRawEndpoint(client, this);
     }
+
+    #endregion
 
 }

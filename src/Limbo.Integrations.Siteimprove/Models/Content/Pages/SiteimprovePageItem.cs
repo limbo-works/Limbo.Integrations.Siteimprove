@@ -2,48 +2,46 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
+namespace Limbo.Integrations.Siteimprove.Models.Content.Pages;
 
-    public class SiteimprovePageItem : SiteimproveObject {
+public class SiteimprovePageItem : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        /// <summary>
-        /// Gets the ID of the page.
-        /// </summary>
-        public long Id { get; }
+    /// <summary>
+    /// Gets the ID of the page.
+    /// </summary>
+    public long Id { get; }
 
-        /// <summary>
-        /// Gets the title of the page as specified in the <code>&lt;title&gt;</code> element in the HTML.
-        /// </summary>
-        public string Title { get; }
+    /// <summary>
+    /// Gets the title of the page as specified in the <code>&lt;title&gt;</code> element in the HTML.
+    /// </summary>
+    public string Title { get; }
 
-        /// <summary>
-        /// Gets the URL of the page.
-        /// </summary>
-        public string Url { get; }
+    /// <summary>
+    /// Gets the URL of the page.
+    /// </summary>
+    public string Url { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimprovePageItem(JObject obj) : base(obj) {
-            Id = obj.GetInt64("id");
-            Title = obj.GetString("title")!;
-            Url = obj.GetString("url")!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimprovePageItem? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimprovePageItem(obj);
-        }
-
-        #endregion
-
+    private SiteimprovePageItem(JObject obj) : base(obj) {
+        Id = obj.GetInt64("id");
+        Title = obj.GetString("title")!;
+        Url = obj.GetString("url")!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimprovePageItem? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimprovePageItem(obj);
+    }
+
+    #endregion
 
 }

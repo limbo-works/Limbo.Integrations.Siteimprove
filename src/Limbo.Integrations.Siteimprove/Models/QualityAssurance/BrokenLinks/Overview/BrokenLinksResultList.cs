@@ -3,37 +3,67 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview {
+namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
 
-    public class SiteimproveBrokenLinksResultList : SiteimproveObject {
+public class SiteimproveBrokenLinksResultList : SiteimproveObject {
+
+    #region Properties
+
+    [JsonProperty("items")]
+    public SiteimproveBrokenLinksResult[] Items { get; }
+
+    [JsonProperty("total_items")]
+    public int TotalItems { get; }
+
+    [JsonProperty("total_pages")]
+    public int TotalPages { get; }
+
+    [JsonProperty("_links")]
+    public LinkCollection Links { get; }
+
+    [JsonProperty("_siteimprove")]
+    public SiteimproveLinkCollection Siteimprove { get; }
+
+    #endregion
+
+    #region Constructors
+
+    private SiteimproveBrokenLinksResultList(JObject obj) : base(obj) {
+        Items = obj.GetArrayItems("items", SiteimproveBrokenLinksResult.Parse)!;
+        TotalItems = obj.GetInt32("total_items");
+        TotalPages = obj.GetInt32("total_pages");
+        Links = obj.GetObject("_links", LinkCollection.Parse)!;
+        Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse)!;
+    }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimproveBrokenLinksResultList? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveBrokenLinksResultList(obj);
+    }
+
+    #endregion
+
+    public class SiteimproveLinkCollection : SiteimproveObject {
 
         #region Properties
 
-        [JsonProperty("items")]
-        public SiteimproveBrokenLinksResult[] Items { get; }
+        [JsonProperty("prev")]
+        public string? Previous { get; }
 
-        [JsonProperty("total_items")]
-        public int TotalItems { get; }
-
-        [JsonProperty("total_pages")]
-        public int TotalPages { get; }
-
-        [JsonProperty("_links")]
-        public LinkCollection Links { get; }
-
-        [JsonProperty("_siteimprove")]
-        public SiteimproveLinkCollection Siteimprove { get; }
+        [JsonProperty("next")]
+        public string? Next { get; }
 
         #endregion
 
         #region Constructors
 
-        private SiteimproveBrokenLinksResultList(JObject obj) : base(obj) {
-            Items = obj.GetArrayItems("items", SiteimproveBrokenLinksResult.Parse)!;
-            TotalItems = obj.GetInt32("total_items");
-            TotalPages = obj.GetInt32("total_pages");
-            Links = obj.GetObject("_links", LinkCollection.Parse)!;
-            Siteimprove = obj.GetObject("_siteimprove", SiteimproveLinkCollection.Parse)!;
+        private SiteimproveLinkCollection(JObject obj) : base(obj) {
+            Previous = obj.GetString("prev");
+            Next = obj.GetString("next");
         }
 
         #endregion
@@ -41,71 +71,39 @@ namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Ove
         #region Static methods
 
         [return: NotNullIfNotNull("obj")]
-        public static SiteimproveBrokenLinksResultList? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveBrokenLinksResultList(obj);
+        public static SiteimproveLinkCollection? Parse(JObject? obj) {
+            return obj == null ? null : new SiteimproveLinkCollection(obj);
         }
 
         #endregion
 
-        public class SiteimproveLinkCollection : SiteimproveObject {
+    }
 
-            #region Properties
+    public class LinkCollection : SiteimproveObject {
 
-            [JsonProperty("prev")]
-            public string? Previous { get; }
+        #region Properties
 
-            [JsonProperty("next")]
-            public string? Next { get; }
+        [JsonProperty("webapp")]
+        public string WebApp { get; }
 
-            #endregion
+        #endregion
 
-            #region Constructors
+        #region Constructors
 
-            private SiteimproveLinkCollection(JObject obj) : base(obj) {
-                Previous = obj.GetString("prev");
-                Next = obj.GetString("next");
-            }
-
-            #endregion
-
-            #region Static methods
-
-            [return: NotNullIfNotNull("obj")]
-            public static SiteimproveLinkCollection? Parse(JObject? obj) {
-                return obj == null ? null : new SiteimproveLinkCollection(obj);
-            }
-
-            #endregion
-
+        private LinkCollection(JObject obj) : base(obj) {
+            WebApp = obj.GetString("webapp")!;
         }
 
-        public class LinkCollection : SiteimproveObject {
+        #endregion
 
-            #region Properties
+        #region Static methods
 
-            [JsonProperty("webapp")]
-            public string WebApp { get; }
-
-            #endregion
-
-            #region Constructors
-
-            private LinkCollection(JObject obj) : base(obj) {
-                WebApp = obj.GetString("webapp")!;
-            }
-
-            #endregion
-
-            #region Static methods
-
-            [return: NotNullIfNotNull("obj")]
-            public static LinkCollection? Parse(JObject? obj) {
-                return obj == null ? null : new LinkCollection(obj);
-            }
-
-            #endregion
-
+        [return: NotNullIfNotNull("obj")]
+        public static LinkCollection? Parse(JObject? obj) {
+            return obj == null ? null : new LinkCollection(obj);
         }
+
+        #endregion
 
     }
 

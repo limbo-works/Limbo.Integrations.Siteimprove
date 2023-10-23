@@ -3,51 +3,49 @@ using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview {
+namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.BrokenLinks.Overview;
+
+/// <summary>
+/// Describes the amount of broken links a specified time.
+/// </summary>
+public class SiteimproveBrokenLinksResult : SiteimproveObject {
+
+    #region Properties
 
     /// <summary>
-    /// Describes the amount of broken links a specified time.
+    /// Gets the amount of broken links.
     /// </summary>
-    public class SiteimproveBrokenLinksResult : SiteimproveObject {
+    public int BrokenLinkCount { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets the amount of pages
+    /// </summary>
+    public int PageCount { get; }
 
-        /// <summary>
-        /// Gets the amount of broken links.
-        /// </summary>
-        public int BrokenLinkCount { get; }
+    /// <summary>
+    /// Gets the UTC timestamp for the time the site was checked.
+    /// </summary>
+    public DateTime Timestamp { get; }
 
-        /// <summary>
-        /// Gets the amount of pages
-        /// </summary>
-        public int PageCount { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets the UTC timestamp for the time the site was checked.
-        /// </summary>
-        public DateTime Timestamp { get; }
+    #region Constructor
 
-        #endregion
-
-        #region Constructor
-
-        private SiteimproveBrokenLinksResult(JObject obj) : base(obj) {
-            BrokenLinkCount = obj.GetInt32("broken_link_count");
-            PageCount = obj.GetInt32("page_count");
-            Timestamp = obj.GetDateTime("timestamp");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimproveBrokenLinksResult? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveBrokenLinksResult(obj);
-        }
-
-        #endregion
-
+    private SiteimproveBrokenLinksResult(JObject obj) : base(obj) {
+        BrokenLinkCount = obj.GetInt32("broken_link_count");
+        PageCount = obj.GetInt32("page_count");
+        Timestamp = obj.GetDateTime("timestamp");
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimproveBrokenLinksResult? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveBrokenLinksResult(obj);
+    }
+
+    #endregion
 
 }

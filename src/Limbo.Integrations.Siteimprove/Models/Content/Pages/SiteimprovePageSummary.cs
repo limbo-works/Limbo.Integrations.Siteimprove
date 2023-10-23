@@ -2,45 +2,43 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
+namespace Limbo.Integrations.Siteimprove.Models.Content.Pages;
 
-    public class SiteimprovePageSummary : SiteimproveObject {
+public class SiteimprovePageSummary : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public SiteimprovePageSummaryAccessibility Accessibility { get; }
+    public SiteimprovePageSummaryAccessibility Accessibility { get; }
 
-        public SiteimprovePageSummaryPage Page { get; }
+    public SiteimprovePageSummaryPage Page { get; }
 
-        public SiteimprovePageSummaryPolicy Policy { get; }
+    public SiteimprovePageSummaryPolicy Policy { get; }
 
-        public SiteimprovePageSummaryQualityAssurance QualityAssurance { get; }
+    public SiteimprovePageSummaryQualityAssurance QualityAssurance { get; }
 
-        public SiteimprovePageSummarySeo Seo { get; }
+    public SiteimprovePageSummarySeo Seo { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimprovePageSummary(JObject obj) : base(obj) {
-            Accessibility = obj.GetObject("accessibility", SiteimprovePageSummaryAccessibility.Parse)!;
-            Page = obj.GetObject("page", SiteimprovePageSummaryPage.Parse)!;
-            Policy = obj.GetObject("policy", SiteimprovePageSummaryPolicy.Parse)!;
-            QualityAssurance = obj.GetObject("quality_assurance", SiteimprovePageSummaryQualityAssurance.Parse)!;
-            Seo = obj.GetObject("seo", SiteimprovePageSummarySeo.Parse)!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimprovePageSummary? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimprovePageSummary(obj);
-        }
-
-        #endregion
-
+    private SiteimprovePageSummary(JObject obj) : base(obj) {
+        Accessibility = obj.GetObject("accessibility", SiteimprovePageSummaryAccessibility.Parse)!;
+        Page = obj.GetObject("page", SiteimprovePageSummaryPage.Parse)!;
+        Policy = obj.GetObject("policy", SiteimprovePageSummaryPolicy.Parse)!;
+        QualityAssurance = obj.GetObject("quality_assurance", SiteimprovePageSummaryQualityAssurance.Parse)!;
+        Seo = obj.GetObject("seo", SiteimprovePageSummarySeo.Parse)!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimprovePageSummary? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimprovePageSummary(obj);
+    }
+
+    #endregion
 
 }

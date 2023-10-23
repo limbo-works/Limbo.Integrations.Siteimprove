@@ -1,8 +1,6 @@
-﻿namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content {
+﻿namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content;
 
-    public enum SiteimproveAnalyticsGetAllPagesField {
-        Url,
-        Title
-    }
-
+public enum SiteimproveAnalyticsGetAllPagesField {
+    Url,
+    Title
 }

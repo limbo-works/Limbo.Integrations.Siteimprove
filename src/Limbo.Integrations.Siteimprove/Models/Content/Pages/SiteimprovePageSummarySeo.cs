@@ -2,39 +2,37 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Content.Pages {
+namespace Limbo.Integrations.Siteimprove.Models.Content.Pages;
 
-    public class SiteimprovePageSummarySeo : SiteimproveObject {
+public class SiteimprovePageSummarySeo : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public int Errors { get; }
+    public int Errors { get; }
 
-        public int NeedsReview { get; }
+    public int NeedsReview { get; }
 
-        public int Warnings { get; }
+    public int Warnings { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimprovePageSummarySeo(JObject obj) : base(obj) {
-            Errors = obj.GetInt32("errors");
-            NeedsReview = obj.GetInt32("needs_review");
-            Warnings = obj.GetInt32("warnings");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimprovePageSummarySeo? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimprovePageSummarySeo(obj);
-        }
-
-        #endregion
-
+    private SiteimprovePageSummarySeo(JObject obj) : base(obj) {
+        Errors = obj.GetInt32("errors");
+        NeedsReview = obj.GetInt32("needs_review");
+        Warnings = obj.GetInt32("warnings");
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimprovePageSummarySeo? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimprovePageSummarySeo(obj);
+    }
+
+    #endregion
 
 }

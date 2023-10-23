@@ -2,33 +2,31 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.Common.Aggregations {
+namespace Limbo.Integrations.Siteimprove.Models.Common.Aggregations;
 
-    public class SiteimproveAnalyticsSumAggregation : SiteimproveObject {
+public class SiteimproveAnalyticsSumAggregation : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public int Sum { get; }
+    public int Sum { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimproveAnalyticsSumAggregation(JObject obj) : base(obj) {
-            Sum = obj.GetInt32("sum");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("obj")]
-        public static SiteimproveAnalyticsSumAggregation? Parse(JObject? obj) {
-            return obj == null ? null : new SiteimproveAnalyticsSumAggregation(obj);
-        }
-
-        #endregion
-
+    private SiteimproveAnalyticsSumAggregation(JObject obj) : base(obj) {
+        Sum = obj.GetInt32("sum");
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("obj")]
+    public static SiteimproveAnalyticsSumAggregation? Parse(JObject? obj) {
+        return obj == null ? null : new SiteimproveAnalyticsSumAggregation(obj);
+    }
+
+    #endregion
 
 }

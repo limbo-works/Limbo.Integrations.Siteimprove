@@ -2,60 +2,58 @@
 using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling {
+namespace Limbo.Integrations.Siteimprove.Models.QualityAssurance.Spelling;
 
-    public class SiteimprovePageWithSpellingErrors : SiteimproveObject {
+public class SiteimprovePageWithSpellingErrors : SiteimproveObject {
 
-        #region Properties
+    #region Properties
 
-        public long Id { get; }
+    public long Id { get; }
 
-        public string Title { get; }
+    public string Title { get; }
 
-        public string Url { get; }
+    public string Url { get; }
 
-        public bool IsCheckingNow { get; }
+    public bool IsCheckingNow { get; }
 
-        public string? CmsUrl { get; }
+    public string? CmsUrl { get; }
 
-        public int Misspellings { get; }
+    public int Misspellings { get; }
 
-        public int PageLevel { get; }
+    public int PageLevel { get; }
 
-        public float PageScore { get; }
+    public float PageScore { get; }
 
-        public int PageViews { get; }
+    public int PageViews { get; }
 
-        public int PotentialMisspellings { get; }
+    public int PotentialMisspellings { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        private SiteimprovePageWithSpellingErrors(JObject json) : base(json) {
-            Id = json.GetInt64("id");
-            Title = json.GetString("title")!;
-            Url = json.GetString("url")!;
-            IsCheckingNow = json.GetBoolean("checking_now");
-            CmsUrl = json.GetString("cms_url");
-            Misspellings = json.GetInt32("misspellings");
-            PageLevel = json.GetInt32("page_level");
-            PageScore = json.GetFloat("page_score");
-            PageViews = json.GetInt32("page_views");
-            PotentialMisspellings = json.GetInt32("potential_misspellings");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("json")]
-        public static SiteimprovePageWithSpellingErrors? Parse(JObject? json) {
-            return json == null ? null : new SiteimprovePageWithSpellingErrors(json);
-        }
-
-        #endregion
-
+    private SiteimprovePageWithSpellingErrors(JObject json) : base(json) {
+        Id = json.GetInt64("id");
+        Title = json.GetString("title")!;
+        Url = json.GetString("url")!;
+        IsCheckingNow = json.GetBoolean("checking_now");
+        CmsUrl = json.GetString("cms_url");
+        Misspellings = json.GetInt32("misspellings");
+        PageLevel = json.GetInt32("page_level");
+        PageScore = json.GetFloat("page_score");
+        PageViews = json.GetInt32("page_views");
+        PotentialMisspellings = json.GetInt32("potential_misspellings");
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("json")]
+    public static SiteimprovePageWithSpellingErrors? Parse(JObject? json) {
+        return json == null ? null : new SiteimprovePageWithSpellingErrors(json);
+    }
+
+    #endregion
 
 }
