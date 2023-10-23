@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Options.Analytics.Visitors;
 
-public class SiteimproveGetDevicesOptions : SiteimproveAnalyticsGetPeriodOptionsNope {
+public class SiteimproveGetDevicesOptions : SiteimproveAnalyticsOptionsBase {
 
     #region Constructors
 

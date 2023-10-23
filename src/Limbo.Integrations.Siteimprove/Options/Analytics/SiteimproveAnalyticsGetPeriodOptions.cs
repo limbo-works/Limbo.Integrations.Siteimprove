@@ -4,7 +4,7 @@ using Skybrud.Essentials.Http.Options;
 
 namespace Limbo.Integrations.Siteimprove.Options.Analytics;
 
-public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOptions {
+public abstract class SiteimproveAnalyticsOptionsBase : IHttpRequestOptions {
 
     #region Properties
 
@@ -54,7 +54,7 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
     /// <summary>
     /// Initializes a new instance with default options.
     /// </summary>
-    protected SiteimproveAnalyticsGetPeriodOptionsNope() { }
+    protected SiteimproveAnalyticsOptionsBase() { }
 
     /// <summary>
     /// Initializes a new instance with the specified <paramref name="siteId"/>.
@@ -63,7 +63,7 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
 #if NET7_0_OR_GREATER
     [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-    protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId) {
+    protected SiteimproveAnalyticsOptionsBase(long siteId) {
         SiteId = siteId;
     }
 
@@ -76,7 +76,7 @@ public abstract class SiteimproveAnalyticsGetPeriodOptionsNope : IHttpRequestOpt
 #if NET7_0_OR_GREATER
     [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-    protected SiteimproveAnalyticsGetPeriodOptionsNope(long siteId, int? page, int? pageSize) {
+    protected SiteimproveAnalyticsOptionsBase(long siteId, int? page, int? pageSize) {
         SiteId = siteId;
         Page = page;
         PageSize = pageSize;

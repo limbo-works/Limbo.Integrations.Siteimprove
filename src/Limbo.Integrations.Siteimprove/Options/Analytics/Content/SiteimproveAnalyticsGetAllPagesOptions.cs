@@ -10,7 +10,7 @@ namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content;
 /// <see>
 ///     <cref>https://api.siteimprove.com/v2/documentation#/Analytics/get_sites__site_id__analytics_content_all_pages</cref>
 /// </see>
-public class SiteimproveAnalyticsGetAllPagesOptions : SiteimproveAnalyticsGetPeriodOptionsNope {
+public class SiteimproveAnalyticsGetAllPagesOptions : SiteimproveAnalyticsOptionsBase {
 
     #region Properties
 

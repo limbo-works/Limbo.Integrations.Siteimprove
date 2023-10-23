@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.Siteimprove.Options.Analytics.Content;
 
-public class SiteimproveGetLeastPopularPagesOptions : SiteimproveAnalyticsGetPeriodOptionsNope {
+public class SiteimproveGetLeastPopularPagesOptions : SiteimproveAnalyticsOptionsBase {
 
     #region Constructors
 
