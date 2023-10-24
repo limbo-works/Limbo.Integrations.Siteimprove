@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
 using System.Diagnostics.CodeAnalysis;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Limbo.Integrations.Siteimprove.Models.Analytics.Content;
 
