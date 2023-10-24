@@ -13,14 +13,14 @@
 
 ### Installation
 
-Install via [**NuGet**](https://www.nuget.org/packages/Limbo.Integrations.Siteimprove/1.0.0-alpha001). Either via the .NET CLI:
+Install via [**NuGet**](https://www.nuget.org/packages/Limbo.Integrations.Siteimprove/1.0.0-alpha002). Either via the .NET CLI:
 
 ```
-dotnet add package Limbo.Integrations.Siteimprove --version 1.0.0-alpha001
+dotnet add package Limbo.Integrations.Siteimprove --version 1.0.0-alpha002
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Integrations.Siteimprove -Version 1.0.0-alpha001
+Install-Package Limbo.Integrations.Siteimprove -Version 1.0.0-alpha002
 ```
